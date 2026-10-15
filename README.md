@@ -51,7 +51,9 @@ python3 -m http.server 8000
 
 ## Deploy
 
-The site is a static page deployed on Vercel. From this folder:
+The site is a static page hosted on Vercel and connected to this repository. Every push to `main` deploys to production at https://aireadyreps.com automatically, and other branches get preview deployments.
+
+To deploy by hand from this folder:
 
 ```sh
 vercel --prod
