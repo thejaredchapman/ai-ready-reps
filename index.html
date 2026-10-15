@@ -1,0 +1,2038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AI Ready Reps: a plain-English guide, quiz, and arcade game that teach sales teams to use AI safely.">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font-size:14px}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>AI Ready Reps</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Press+Start+2P&display=swap">
+<style>
+/* Layout: sticky masthead with always-on Legal/IT notice, tabbed workspace below; the use-case library is the main working view. */
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --fg: #14212b;
+  --muted: #55646f;
+  --line: #d6dde3;
+  --accent: #0b5c73;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcecf1;
+  --safe: #1d6b3a; --safe-bg: #ddf1e3;
+  --guard: #8a5a00; --guard-bg: #fbecc8;
+  --no: #a2271d; --no-bg: #fbdcd8;
+  --notice-bg: #14212b; --notice-fg: #f3f5f7;
+  --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f-pixel: "Press Start 2P", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e171d; --surface: #16232c; --fg: #e8eef2; --muted: #9bacb8; --line: #2a3a46;
+    --accent: #5fc0d9; --accent-ink: #08222b; --accent-soft: #17323d;
+    --safe: #7ad398; --safe-bg: #14341f;
+    --guard: #f0c25a; --guard-bg: #3a2e0c;
+    --no: #ff9a8f; --no-bg: #3d1713;
+    --notice-bg: #e8eef2; --notice-fg: #0e171d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e171d; --surface: #16232c; --fg: #e8eef2; --muted: #9bacb8; --line: #2a3a46;
+  --accent: #5fc0d9; --accent-ink: #08222b; --accent-soft: #17323d;
+  --safe: #7ad398; --safe-bg: #14341f;
+  --guard: #f0c25a; --guard-bg: #3a2e0c;
+  --no: #ff9a8f; --no-bg: #3d1713;
+  --notice-bg: #e8eef2; --notice-fg: #0e171d;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.55; margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-size: 26px; }
+h3 { font-size: 18px; }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.notice { background: var(--notice-bg); color: var(--notice-fg); }
+.notice .wrap { padding-block: 10px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; font-size: 14px; }
+.notice strong { font-family: var(--f-display); font-size: 15px; }
+
+header.mast { padding-block: 28px 8px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(30px, 5vw, 46px); margin-top: 6px; max-width: 18ch; }
+.lede { color: var(--muted); max-width: 66ch; margin-top: 12px; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 18px; }
+nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; }
+.tab { background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+main { padding-block: 28px 56px; }
+section[hidden] { display: none; }
+.stack { display: grid; gap: 22px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+.grid3 { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 500; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip.t-s[aria-pressed="true"] { background: var(--safe); color: var(--bg); border-color: var(--safe); }
+.chip.t-g[aria-pressed="true"] { background: var(--guard); color: var(--bg); border-color: var(--guard); }
+.chip.t-n[aria-pressed="true"] { background: var(--no); color: var(--bg); border-color: var(--no); }
+
+.tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+.tag.s { background: var(--safe-bg); color: var(--safe); }
+.tag.g { background: var(--guard-bg); color: var(--guard); }
+.tag.n { background: var(--no-bg); color: var(--no); }
+.tag.type { background: var(--accent-soft); color: var(--accent); }
+.calc { display: grid; gap: 8px; max-width: 520px; }
+.calc input { padding: 10px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; width: 100%; max-width: 200px; }
+.calc label { font-size: 14px; }
+details.card summary { cursor: pointer; }
+.spot { display: block; width: 100%; text-align: left; padding: 12px 14px; border-radius: 6px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); min-height: 48px; }
+.spot[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.spot.right { border-color: var(--safe); background: var(--safe-bg); }
+.spot.wrong { border-color: var(--no); background: var(--no-bg); }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 8px; }
+.pcard .prompt { margin: 0; }
+.menu-btn { display: none; }
+.sheet { position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: var(--bg); z-index: 15; overflow: auto; padding: 20px max(16px, env(safe-area-inset-left, 0px)) calc(90px + env(safe-area-inset-bottom, 0px)); }
+.sheetgrid { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 560px; margin: 0 auto; }
+.sheetbtn { padding: 16px 12px; min-height: 56px; text-align: left; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); font-weight: 600; }
+.sheetbtn[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+/* Arcade: the game screen is a deliberate fixed-palette retro display inside the themed page */
+.arcade { max-width: 560px; margin: 0 auto; display: grid; gap: 10px; width: 100%; }
+.hud { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #0b1020; color: #e8eef2; padding: 10px; border: 4px solid #5fc0d9; font-family: var(--f-pixel); }
+#gBot { width: 48px; height: 48px; image-rendering: pixelated; flex: none; }
+.hudcol { display: grid; gap: 6px; font-size: 10px; }
+.hudcol .hl { font-size: 8px; color: #8fa5b3; }
+.lives { display: flex; gap: 4px; min-height: 12px; }
+.life { width: 12px; height: 12px; background: #ff4d4d; box-shadow: inset -3px -3px 0 #a31515; }
+.screen { position: relative; height: 300px; background-color: #0b1020; border: 4px solid #5fc0d9; overflow: hidden;
+  background-image: radial-gradient(#26406b 1px, transparent 1.5px), radial-gradient(#1a2c4d 1px, transparent 1.5px); background-size: 38px 38px, 23px 23px; background-position: 0 0, 11px 17px; }
+.gcard { position: absolute; left: 12px; right: 12px; top: 0; background: #f3f5f7; color: #0b1020; padding: 14px; font-family: var(--f-pixel); font-size: 11px; line-height: 1.7; border: 4px solid #ffffff; box-shadow: 4px 4px 0 #000; will-change: transform; overflow-wrap: anywhere; }
+.gcard.ok { background: #7ee09a; }
+.gstage { display: block; font-size: 8px; color: #55646f; margin-bottom: 8px; text-transform: uppercase; }
+.overlay { position: absolute; inset: 0; background: rgba(11, 16, 32, .95); color: #e8eef2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 16px; font-family: var(--f-pixel); font-size: 10px; line-height: 1.8; overflow: auto; }
+.ovt { font-size: 18px; color: #f2b632; }
+.ovt.bad { color: #ff6b5e; }
+.ovt.big { font-size: 22px; }
+.overlay p { margin: 0; max-width: 40ch; }
+.overlay .why { font-family: var(--f-body); font-size: 14px; line-height: 1.5; color: #cfe0e8; }
+.bins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.bin { border: 0; padding: 12px 4px; min-height: 80px; font-family: var(--f-pixel); display: grid; gap: 6px; justify-items: center; align-content: center; color: #0b1020; box-shadow: 0 6px 0 rgba(0, 0, 0, .5); }
+.bin.go { background: #2fbf5b; }
+.bin.caution { background: #f2b632; }
+.bin.stop { background: #e5483c; color: #ffffff; }
+.bin b { font-size: 14px; }
+.bin span { font-size: 8px; }
+.bin i { font-style: normal; font-size: 8px; opacity: .8; }
+.bin:active:not([disabled]) { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0, 0, 0, .5); }
+.bin[disabled] { opacity: .35; }
+.gtools { display: flex; gap: 8px; flex-wrap: wrap; }
+.gbtn { font-family: var(--f-pixel); font-size: 9px; line-height: 1.4; padding: 12px; min-height: 44px; background: var(--surface); color: var(--fg); border: 3px solid var(--fg); border-radius: 0; }
+.gbtn[disabled] { opacity: .45; }
+.gbtn.big { background: #5fc0d9; color: #0b1020; border-color: #e8eef2; font-size: 11px; }
+.learn { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; font-size: 14px; min-height: 64px; }
+.rolegrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 14px; }
+.rolegrid ul { margin: 8px 0 0; padding-left: 18px; }
+.rolegrid li { margin-bottom: 4px; }
+
+/* Compare */
+.tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { font-family: var(--f-display); font-size: 16px; background: var(--accent-soft); }
+tbody th { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--surface); width: 130px; }
+tr:last-child td, tr:last-child th { border-bottom: 0; }
+
+/* Use cases */
+.controls { display: grid; gap: 14px; }
+.search { width: 100%; max-width: 420px; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; }
+.count { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.list { display: grid; gap: 10px; }
+.uc { background: var(--surface); border: 1px solid var(--line); border-left-width: 6px; border-radius: 6px; padding: 12px 14px; }
+.uc.s { border-left-color: var(--safe); }
+.uc.g { border-left-color: var(--guard); }
+.uc.n { border-left-color: var(--no); }
+.uc-top { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; }
+.uc-title { font-weight: 600; min-width: 0; }
+.uc-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+.stage { font-size: 12px; color: var(--muted); }
+.uc-note { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.uc-note b { color: var(--fg); font-weight: 600; }
+
+/* Safety */
+.rule { display: grid; gap: 6px; }
+.rule h3 { display: flex; gap: 10px; align-items: center; }
+.rule ul { margin: 8px 0 0; padding-left: 18px; }
+.rule li { margin-bottom: 4px; }
+
+/* Checklist */
+.check { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.check:last-child { border-bottom: 0; }
+.check input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); flex: none; }
+.check label { cursor: pointer; }
+.progress { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 10px; }
+.progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+@media (prefers-reduced-motion: reduce) { .progress i { transition: none; } }
+
+.pick { display: grid; gap: 8px; }
+.pick select { padding: 10px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; max-width: 100%; }
+footer { border-top: 1px solid var(--line); padding-block: 22px 40px; color: var(--muted); font-size: 13px; }
+footer .wrap { display: grid; gap: 8px; }
+footer a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Beginner layer: brand row, hero, basics, quiz, mobile bottom nav */
+.brand { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px 0; font-family: var(--f-display); font-weight: 700; font-size: 17px; }
+.brand span { font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.hero { display: grid; gap: 18px; padding-block: 8px 4px; }
+.hero h1 { font-size: clamp(36px, 9vw, 64px); max-width: 13ch; margin-top: 0; }
+.hero .lede { font-size: 17px; margin-top: 0; }
+.btn { border: 0; border-radius: 8px; padding: 14px 18px; min-height: 48px; font-weight: 600; font-size: 16px; background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--fg); border: 1.5px solid var(--line); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.stat b { display: block; font-family: var(--f-display); font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+.light { display: flex; gap: 12px; align-items: flex-start; padding-block: 8px; }
+.dot { width: 14px; height: 14px; border-radius: 50%; margin-top: 6px; flex: none; }
+.dot.s { background: var(--safe); } .dot.g { background: var(--guard); } .dot.n { background: var(--no); }
+.steps { display: grid; gap: 12px; counter-reset: st; }
+.steps .card { display: grid; gap: 4px; }
+.prompt { background: var(--accent-soft); border-radius: 6px; padding: 12px; font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.copy { margin-top: 8px; }
+.btn.sm { padding: 8px 12px; min-height: 40px; font-size: 14px; }
+.good, .weak { border-radius: 6px; padding: 10px 12px; font-size: 14px; }
+.good { background: var(--safe-bg); color: var(--fg); }
+.weak { background: var(--no-bg); color: var(--fg); }
+dl { margin: 0; display: grid; gap: 12px; }
+dt { font-weight: 600; }
+dd { margin: 2px 0 0; color: var(--muted); }
+.qhead { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.qprog { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; margin-top: 8px; }
+.qprog i { display: block; height: 100%; background: var(--accent); }
+.qopt { display: block; width: 100%; text-align: left; padding: 14px; min-height: 52px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); margin-top: 10px; }
+.qopt.right { border-color: var(--safe); background: var(--safe-bg); }
+.qopt.wrong { border-color: var(--no); background: var(--no-bg); }
+.qopt[disabled] { cursor: default; }
+.qwhy { margin-top: 14px; padding: 12px 14px; border-radius: 8px; background: var(--accent-soft); font-size: 14px; }
+.score { font-family: var(--f-display); font-size: 56px; line-height: 1; }
+.review { display: grid; gap: 10px; margin-top: 14px; }
+@media (max-width: 700px) {
+  nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; top: auto; margin-top: 0; border-bottom: 0; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 20; }
+  nav.tabs .wrap { padding-left: 0; padding-right: 0; }
+  .tab { min-height: 54px; padding: 12px 14px; border-bottom: 0; border-top: 3px solid transparent; font-size: 13px; }
+  .tab[aria-selected="true"] { border-top-color: var(--accent); }
+  body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+  .tab.sec { display: none; }
+  .tab.menu-btn { display: block; }
+  nav.tabs .wrap { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; }
+  .tab { padding-left: 4px; padding-right: 4px; text-align: center; }
+  main { padding-block-start: 18px; }
+}
+</style>
+
+<div class="notice" role="note">
+  <div class="wrap">
+    <strong>Talk to Legal and IT before you try any of this.</strong>
+    <span>Company policy, customer contracts, and approved tools vary. This guide is general information, not legal or security advice.</span>
+  </div>
+</div>
+
+<div class="wrap brand"><div>AI Ready Reps</div><span>Sales enablement</span></div>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" id="t-home" data-tab="home" aria-selected="true">Home</button>
+    <button class="tab" role="tab" id="t-why" data-tab="why" aria-selected="false">Why AI</button>
+    <button class="tab" role="tab" id="t-basics" data-tab="basics" aria-selected="false">AI basics</button>
+    <button class="tab" role="tab" id="t-types" data-tab="types" aria-selected="false">3 types</button>
+    <button class="tab" role="tab" id="t-cases" data-tab="cases" aria-selected="false">Use cases</button>
+    <button class="tab" role="tab" id="t-prompts" data-tab="prompts" aria-selected="false">Prompts</button>
+    <button class="tab" role="tab" id="t-playbook" data-tab="playbook" aria-selected="false">Playbook</button>
+    <button class="tab" role="tab" id="t-gtm" data-tab="gtm" aria-selected="false">Go-to-market</button>
+    <button class="tab" role="tab" id="t-practices" data-tab="practices" aria-selected="false">Best practices</button>
+    <button class="tab" role="tab" id="t-quiz" data-tab="quiz" aria-selected="false">Quiz</button>
+    <button class="tab" role="tab" id="t-game" data-tab="game" aria-selected="false">Game</button>
+    <button class="tab" role="tab" id="t-safety" data-tab="safety" aria-selected="false">Safety</button>
+    <button class="tab" role="tab" id="t-compare" data-tab="compare" aria-selected="false">Compare</button>
+    <button class="tab" role="tab" id="t-vendors" data-tab="vendors" aria-selected="false">Vendors</button>
+    <button class="tab" role="tab" id="t-check" data-tab="check" aria-selected="false">Checklist</button>
+    <button class="tab menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuSheet">Menu</button>
+  </div>
+</nav>
+<div class="sheet" id="menuSheet" hidden><div class="sheetgrid" id="sheetGrid"></div></div>
+
+<main class="wrap">
+  <section id="home" class="stack" aria-labelledby="t-home">
+    <div class="hero">
+      <div class="eyebrow">New to AI? Start here</div>
+      <h1>Sell smarter with AI, and stay safe.</h1>
+      <p class="lede">A plain-English guide for sales reps who have never used AI at work. Learn what it is, try safe first steps, and know exactly what to keep out of any chat box.</p>
+      <div class="btn-row">
+        <button class="btn" data-go="basics">Start the 5-minute basics</button>
+        <button class="btn ghost" data-go="quiz">Take the quiz</button>
+      </div>
+    </div>
+    <div class="stats" aria-label="What is inside">
+      <div class="stat"><b id="hmUc">0</b><span>real sales use cases</span></div>
+      <div class="stat"><b id="hmModels">6</b><span>AI tools compared</span></div>
+      <div class="stat"><b id="hmQuiz">10</b><span>quiz questions</span></div>
+    </div>
+    <div class="card">
+      <h3>Your first week, in three steps</h3>
+      <div class="steps" style="margin-top:12px">
+        <div class="light"><span class="eyebrow">Step 1</span><div><b>Learn the basics.</b> What AI is, what it gets wrong, and how to ask it well.</div></div>
+        <div class="light"><span class="eyebrow">Step 2</span><div><b>Try the green use cases.</b> Low-risk tasks like rewriting your own email or practicing objections.</div></div>
+        <div class="light"><span class="eyebrow">Step 3</span><div><b>Check yourself.</b> Take the quiz, then talk to Legal and IT before using any tool for real work.</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>You can do this</h3>
+      <p class="muted" style="margin-top:8px">Nobody was born knowing how to use AI. The reps who get good at it are the ones who try one small, safe thing and keep going. AI handles the busywork so you can spend more time on the part only you can do: listening, building trust, and helping a customer decide.</p>
+      <div class="btn-row" style="margin-top:12px"><button class="btn ghost" data-go="why">Why this matters for you</button></div>
+    </div>
+    <div class="card">
+      <h3>The traffic-light rule</h3>
+      <p class="muted" style="margin-top:6px">Every use case in this guide gets one of three lights.</p>
+      <div class="light"><span class="dot s"></span><div><b>Green, safe.</b> Your own writing or public information, in a tool your company approved. Example: tighten an email you wrote.</div></div>
+      <div class="light"><span class="dot g"></span><div><b>Amber, guardrails.</b> Touches customer or company data. Allowed only with the listed control and sign-off. Example: summarize a recorded call.</div></div>
+      <div class="light"><span class="dot n"></span><div><b>Red, not safe.</b> Breaks privacy, confidentiality, or honesty. Example: pasting a customer contract into a free chatbot.</div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn ghost" data-go="game">Play the arcade game</button>
+      <button class="btn ghost" data-go="cases">Browse use cases</button>
+      <button class="btn ghost" data-go="compare">Compare the AI tools</button>
+    </div>
+  </section>
+
+  <section id="basics" class="stack" aria-labelledby="t-basics" hidden>
+    <div>
+      <h2>AI basics in five minutes</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">No technical background needed.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><h3>What it is</h3><p class="muted" style="margin-top:8px">An AI assistant is a program you chat with. You type a request, called a prompt, and it writes a reply. It predicts likely words from patterns it learned, so it sounds confident whether or not it is right.</p></div>
+      <div class="card"><h3>What it is good at</h3><p class="muted" style="margin-top:8px">Drafting, rewriting, summarizing, brainstorming, practicing conversations, and organizing messy notes.</p></div>
+      <div class="card"><h3>What it is bad at</h3><p class="muted" style="margin-top:8px">Exact facts and numbers, math, live traffic or news, your private deal details, and knowing when it is wrong.</p></div>
+    </div>
+    <div class="card">
+      <h3>Four rules to start with</h3>
+      <ol style="margin:10px 0 0;padding-left:20px">
+        <li><b>Ask Legal and IT first.</b> They decide which tools and data are allowed.</li>
+        <li><b>Do not paste what you would not post publicly</b> unless the tool is approved for that kind of data.</li>
+        <li><b>You are the author.</b> Check every fact, name, number, and promise before it leaves your hands.</li>
+        <li><b>Start small.</b> Begin with green use cases and move up only with approval.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>How to write a better prompt</h3>
+      <p class="muted" style="margin-top:6px">Give it a role, a task, context, and the format you want.</p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="weak"><b>Weak</b><br>Write me an email.</div>
+        <div class="good"><b>Strong</b><br>Act as a sales coach. Rewrite the follow-up email below for a busy operations manager. Keep it under 90 words and end with one clear question.</div>
+      </div>
+    </div>
+    <div class="stack">
+      <h3>Four first prompts to try</h3>
+      <p class="muted small">Replace the bracketed parts. Use only content that is public or your own, in a tool your company approved.</p>
+      <div class="card"><b>Improve your own email</b><div class="prompt" id="p1">Act as a friendly sales coach. Here is a cold email I wrote: [paste your draft]. Make it shorter, keep my tone, and give me three subject line options.</div><button class="btn sm copy" data-copy="p1">Copy prompt</button></div>
+      <div class="card"><b>Practice objections</b><div class="prompt" id="p2">Play a skeptical purchasing manager at a mid-size manufacturing company. I will pitch you. Push back with realistic objections about price and timing. After five exchanges, give me feedback on what I did well and what to improve.</div><button class="btn sm copy" data-copy="p2">Copy prompt</button></div>
+      <div class="card"><b>Plan a route of stops</b><div class="prompt" id="p3">I am visiting these businesses tomorrow: [list of business names and street addresses]. Suggest the most logical order to reduce backtracking, group nearby stops, and put the most important meeting at the best time of day. Tell me what to double-check in a mapping app.</div><button class="btn sm copy" data-copy="p3">Copy prompt</button></div>
+      <div class="card"><b>Prepare from a public article</b><div class="prompt" id="p4">Summarize the key points of this public article in five bullets, then suggest three questions I could ask a prospect in this industry: [paste article text].</div><button class="btn sm copy" data-copy="p4">Copy prompt</button></div>
+    </div>
+    <div class="card">
+      <h3>Words you will hear</h3>
+      <dl style="margin-top:12px">
+        <div><dt>Prompt</dt><dd>The instruction you type to the AI.</dd></div>
+        <div><dt>Model</dt><dd>The AI engine behind a tool. Claude, GPT, Gemini, Grok, Nova, and Llama are model families.</dd></div>
+        <div><dt>Hallucination</dt><dd>When the AI states something false in a confident tone, such as a fake quote or statistic.</dd></div>
+        <div><dt>Business account</dt><dd>A company-managed plan with a contract and admin controls. Safer than a personal account for work.</dd></div>
+        <div><dt>Training</dt><dd>When a vendor uses what you type to improve its AI. Business plans usually say they do not. Always check.</dd></div>
+        <div><dt>Personal data</dt><dd>Anything that identifies a person, such as names, emails, phone numbers, or health details.</dd></div>
+        <div><dt>Shadow IT</dt><dd>Using tools your company has not approved. The biggest AI risk for sales teams.</dd></div>
+      </dl>
+    </div>
+    <div class="btn-row"><button class="btn" data-go="quiz">Test what you learned</button></div>
+  </section>
+
+  <section id="why" class="stack" aria-labelledby="t-why" hidden>
+    <div class="hero">
+      <div class="eyebrow">A note to every seller</div>
+      <h2 style="font-size:clamp(28px,6vw,42px);max-width:20ch">AI is not replacing the part of selling you love. It is taking away the part you don't.</h2>
+      <p class="lede">Trust, curiosity, and judgment are what close deals, and they are yours. AI is a tool that gives you more time and more room to use them.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><h3>It gives time back</h3><p class="muted" style="margin-top:8px">Call notes, CRM updates, account research, first drafts, and scheduling add up to hours each week. AI can take a first pass at all of them.</p></div>
+      <div class="card"><h3>It lowers the blank-page fear</h3><p class="muted" style="margin-top:8px">Staring at an empty email is hard. Starting from a draft you can reshape is easy. You stay the author; you just stop starting from zero.</p></div>
+      <div class="card"><h3>It helps you walk in prepared</h3><p class="muted" style="margin-top:8px">Role-play a tough buyer, learn an unfamiliar industry in minutes, and arrive at each call with sharper questions.</p></div>
+    </div>
+    <div class="card">
+      <h3>Why this is the path forward</h3>
+      <ul style="margin:10px 0 0;padding-left:18px">
+        <li><b>Buyers are already using it.</b> More buyers research vendors with AI before they ever talk to you. Meeting them there is part of the job.</li>
+        <li><b>The routine work is shrinking.</b> What stays valuable is judgment, relationships, and creativity, which are the skills sellers are best at.</li>
+        <li><b>Skills compound.</b> A rep who learns to prompt, check, and refine today gets better every month. The gap between early learners and late ones widens.</li>
+        <li><b>It rewards good habits.</b> Teams that pair AI speed with human review and clear rules get the benefits without the headlines.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>How it frees you up</h3>
+      <div class="grid3" style="margin-top:12px">
+        <div><div class="eyebrow">Time AI can take back</div><ul style="margin:8px 0 0;padding-left:18px"><li>Typing up call notes</li><li>Hunting for account background</li><li>First drafts of routine emails</li><li>Formatting proposals and recaps</li><li>Cleaning and updating records</li></ul></div>
+        <div><div class="eyebrow">Time you can reinvest</div><ul style="margin:8px 0 0;padding-left:18px"><li>Real conversations with buyers</li><li>Deeper listening and discovery</li><li>Multi-threading into the account</li><li>Following up while interest is warm</li><li>Learning your craft</li></ul></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>How outreach becomes scalable</h3>
+      <p class="muted" style="margin-top:8px">Before AI, personal outreach meant a rep could only research and write so many messages a day. With AI doing the first pass, one rep can give more people a message that is actually relevant to them.</p>
+      <div class="steps" style="margin-top:12px">
+        <div class="light"><span class="eyebrow">1</span><div><b>Research.</b> AI gathers public context on the account and role.</div></div>
+        <div class="light"><span class="eyebrow">2</span><div><b>Draft.</b> AI writes a first version in your voice with a clear reason to reach out.</div></div>
+        <div class="light"><span class="eyebrow">3</span><div><b>Review.</b> You check facts, tone, and fit, and cut anything that feels off.</div></div>
+        <div class="light"><span class="eyebrow">4</span><div><b>Send and learn.</b> Track replies and feed what worked into your next prompts.</div></div>
+      </div>
+      <p class="small muted" style="margin-top:10px">Scale quality, not just volume. Messages that are generic, inaccurate, or unwanted hurt your name and your company's, and may break the law. Keep a human in the loop and honor opt-outs.</p>
+    </div>
+    <div class="card">
+      <h3>Start this week</h3>
+      <p class="muted" style="margin-top:8px">Pick one green use case, try it once, and note what you learned. After that, check with Legal and IT about which tools you can use for real work.</p>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn" data-go="basics">Learn the basics</button>
+        <button class="btn ghost" data-go="cases">Pick a use case</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="types" class="stack" aria-labelledby="t-types" hidden>
+    <div>
+      <h2>Three kinds of AI help</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Most sales AI falls into one of three groups. Knowing which one you are using tells you how much to check and who needs to approve it. A good path is to start with augmentation, add analysis, and automate last.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag type">Augmentation</span>
+        <h3 style="margin-top:10px">AI works with you</h3>
+        <p class="muted" style="margin-top:8px">You stay in the driver's seat. AI drafts, brainstorms, explains, and coaches, and you decide what to use.</p>
+        <p class="small" style="margin-top:10px"><b>Examples:</b> rewriting an email, role-playing a buyer, preparing call questions, outlining a proposal.</p>
+        <p class="small" style="margin-top:6px"><b>Tools:</b> chat assistants from any of the eight tools in the Compare tab, plus assistants built into email, documents, and meetings.</p>
+        <p class="small" style="margin-top:6px"><b>Main risk:</b> trusting a confident but wrong answer. <b>Your job:</b> review every output.</p>
+        <p class="small" style="margin-top:6px"><b>Start level:</b> easiest, mostly green.</p>
+        <button class="btn sm" style="margin-top:12px" data-gotype="Augmentation">See augmentation use cases</button>
+      </div>
+      <div class="card">
+        <span class="tag type">Analysis</span>
+        <h3 style="margin-top:10px">AI finds the pattern</h3>
+        <p class="muted" style="margin-top:8px">AI reads lots of data or text and surfaces what matters, so you can decide where to spend time.</p>
+        <p class="small" style="margin-top:10px"><b>Examples:</b> forecast commentary, lead scoring, call themes, win/loss patterns, churn risk, account prioritization.</p>
+        <p class="small" style="margin-top:6px"><b>Tools:</b> analytics inside your CRM, call analytics tools, spreadsheets and BI tools with AI, and long-document assistants.</p>
+        <p class="small" style="margin-top:6px"><b>Main risk:</b> poor data, bias, and false precision. <b>Your job:</b> sanity-check findings and decide.</p>
+        <p class="small" style="margin-top:6px"><b>Start level:</b> moderate, often amber.</p>
+        <button class="btn sm" style="margin-top:12px" data-gotype="Analysis">See analysis use cases</button>
+      </div>
+      <div class="card">
+        <span class="tag type">Automation</span>
+        <h3 style="margin-top:10px">AI does the task</h3>
+        <p class="muted" style="margin-top:8px">AI completes steps on its own once set up: moving data, routing leads, sending sequences, transcribing calls.</p>
+        <p class="small" style="margin-top:10px"><b>Examples:</b> logging calls, updating CRM fields, routing inbound leads, scheduling follow-ups, running outreach sequences.</p>
+        <p class="small" style="margin-top:6px"><b>Tools:</b> workflow and sales-engagement platforms, CRM automations, and custom agents built by IT on cloud or in-house models.</p>
+        <p class="small" style="margin-top:6px"><b>Main risk:</b> one mistake repeats at scale. <b>Your job:</b> set limits, audit samples, and keep an off switch.</p>
+        <p class="small" style="margin-top:6px"><b>Start level:</b> highest, needs Legal and IT.</p>
+        <button class="btn sm" style="margin-top:12px" data-gotype="Automation">See automation use cases</button>
+      </div>
+    </div>
+    <div class="tablebox"><table style="min-width:560px">
+      <thead><tr><th></th><th>Augmentation</th><th>Analysis</th><th>Automation</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Who is in control</th><td>You, every time</td><td>You decide from its findings</td><td>The system, within limits you set</td></tr>
+        <tr><th scope="row">Biggest benefit</th><td>Quality and speed</td><td>Focus and insight</td><td>Time and consistency</td></tr>
+        <tr><th scope="row">Biggest danger</th><td>Over-trust</td><td>Bad data</td><td>Errors at scale</td></tr>
+        <tr><th scope="row">Review needed</th><td>Each output</td><td>Findings and inputs</td><td>Samples, logs, and permissions</td></tr>
+        <tr><th scope="row">Who sets it up</th><td>You, with an approved tool</td><td>RevOps or analytics, with IT</td><td>IT or RevOps, with Legal</td></tr>
+        <tr><th scope="row">Vendor fit (directional)</th><td>Chat apps from Claude, GPT, Gemini, Grok</td><td>Long-document and data-capable models; Gemini inside Google data tools</td><td>APIs: Nova on Bedrock, Llama self-hosted, and Claude, GPT, or Gemini APIs</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="gtm" class="stack" aria-labelledby="t-gtm" hidden>
+    <div>
+      <h2>AI for go-to-market teams</h2>
+      <p class="muted" style="margin-top:8px;max-width:72ch">Go-to-market (GTM) is everyone who finds, wins, and grows customers: sales, marketing, customer success, sales engineering, enablement, partnerships, and revenue operations. Pick a role to see where AI fits and what to watch for.</p>
+    </div>
+    <div class="chips" id="gtmRoleChips" role="group" aria-label="Choose a role"></div>
+    <div class="card" id="gtmRole"></div>
+
+    <div>
+      <h3>Where AI fits across the customer journey</h3>
+      <div class="grid3" id="gtmJourney" style="margin-top:12px"></div>
+    </div>
+
+    <div>
+      <h3>The GTM AI tool stack</h3>
+      <p class="muted small" style="margin-top:6px">Most teams end up with several layers. Each has a different owner and risk.</p>
+      <div class="tablebox" style="margin-top:12px"><table id="gtmStack" style="min-width:640px"></table></div>
+    </div>
+
+    <div>
+      <h3>Crawl, walk, run</h3>
+      <div class="grid3" id="gtmMaturity" style="margin-top:12px"></div>
+    </div>
+
+    <div>
+      <h3>Who owns what</h3>
+      <div class="tablebox" style="margin-top:12px"><table id="gtmOwners" style="min-width:560px"></table></div>
+    </div>
+
+    <div>
+      <h3>How to know it is working</h3>
+      <div class="grid3" id="gtmKpis" style="margin-top:12px"></div>
+    </div>
+
+    <div>
+      <h3>A 30-60-90 day plan</h3>
+      <div class="grid3" id="gtmPlan" style="margin-top:12px"></div>
+    </div>
+    <div class="card">
+      <h3>Estimate the time you get back</h3>
+      <p class="muted small" style="margin-top:6px">Change the numbers to match your team. The starting values are examples, not benchmarks.</p>
+      <div class="calc" style="margin-top:12px">
+        <label for="cReps">Reps on the team</label><input id="cReps" type="number" min="1" value="10" inputmode="numeric">
+        <label for="cHours">Admin hours per rep per week (notes, CRM, research, first drafts)</label><input id="cHours" type="number" min="0" value="8" inputmode="decimal">
+        <label for="cPct">Share of that time AI could take back (%)</label><input id="cPct" type="number" min="0" max="100" value="25" inputmode="numeric">
+        <label for="cCost">Cost of one hour of rep time ($)</label><input id="cCost" type="number" min="0" value="60" inputmode="numeric">
+      </div>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat"><b id="cWeek">0</b><span>hours back per week, team</span></div>
+        <div class="stat"><b id="cYear">0</b><span>hours back per year</span></div>
+        <div class="stat"><b id="cValue">$0</b><span>value per year</span></div>
+      </div>
+      <p class="small muted" style="margin-top:10px">Assumes 46 working weeks. Time back only creates value if it goes into selling activity, and tool costs and training time are not included.</p>
+    </div>
+    <div class="card small muted">Check every tool and workflow with Legal and IT before rollout. Ownership and approval paths differ by company.</div>
+  </section>
+
+  <section id="practices" class="stack" aria-labelledby="t-practices" hidden>
+    <div>
+      <h2>Best practices</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Habits that make AI useful and keep you out of trouble.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><h3>Ask better</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Give it a role, a task, context, and a format.</li>
+        <li>Say who the reader is and what you want them to do.</li>
+        <li>Paste a sample of your own writing so it matches your tone.</li>
+        <li>Ask for three options, then choose.</li>
+        <li>Tell it what to avoid, such as jargon or hype.</li>
+        <li>Ask it to ask you questions before it answers.</li>
+        <li>Iterate. The second prompt is usually better than the first.</li>
+      </ul></div>
+      <div class="card"><h3>Check everything</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Verify every fact, number, name, and date against a source.</li>
+        <li>Ask for sources, then open them.</li>
+        <li>Recalculate math and ROI in a spreadsheet.</li>
+        <li>Read the whole draft aloud before sending.</li>
+        <li>Confirm product, pricing, and compliance claims with the owner.</li>
+        <li>Treat confident tone as a warning sign, not proof.</li>
+      </ul></div>
+      <div class="card"><h3>Protect data</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Use only company-approved accounts.</li>
+        <li>Share the minimum needed, and swap names for placeholders.</li>
+        <li>Never paste passwords, keys, payment, or health data.</li>
+        <li>Know whether your plan trains on your inputs.</li>
+        <li>Keep customer contracts and unreleased plans out unless approved.</li>
+        <li>Report mistakes quickly. Early reports are cheap.</li>
+      </ul></div>
+      <div class="card"><h3>Earn customer trust</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Be relevant, not creepy. Reference professional context only.</li>
+        <li>Keep your own voice and real opinions in the message.</li>
+        <li>Disclose AI use where law or contract requires.</li>
+        <li>Never claim to be human if someone sincerely asks.</li>
+        <li>Honor unsubscribe and do-not-contact requests.</li>
+        <li>Never invent references, quotes, or urgency.</li>
+      </ul></div>
+      <div class="card"><h3>Build habits</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Start with one task and time-box it.</li>
+        <li>Keep a personal library of prompts that worked.</li>
+        <li>Use AI for the first draft, not the last word.</li>
+        <li>Keep a short log of wins and misses.</li>
+        <li>Review automations on a schedule, with a sample audit.</li>
+        <li>Share what you learn with your team.</li>
+      </ul></div>
+      <div class="card"><h3>For managers</h3><ul style="margin:10px 0 0;padding-left:18px">
+        <li>Publish simple rules using the three traffic lights.</li>
+        <li>Create a shared, approved prompt library.</li>
+        <li>Measure outcomes such as response quality and time saved, not usage alone.</li>
+        <li>Make it safe to admit mistakes.</li>
+        <li>Keep a direct line to Legal and IT.</li>
+        <li>Coach the checking habit as much as the prompting habit.</li>
+      </ul></div>
+    </div>
+    <div class="card">
+      <h3>Before you hit send</h3>
+      <div class="steps" style="margin-top:12px">
+        <div class="light"><span class="dot s"></span><div>Did I use an approved tool and keep confidential data out?</div></div>
+        <div class="light"><span class="dot s"></span><div>Did I verify every fact, number, and name?</div></div>
+        <div class="light"><span class="dot g"></span><div>Does it sound like me, and would I say this out loud?</div></div>
+        <div class="light"><span class="dot g"></span><div>Is the claim something we can prove and are allowed to say?</div></div>
+        <div class="light"><span class="dot n"></span><div>Would I be comfortable if the customer saw exactly how I made this?</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="stack" aria-labelledby="t-compare" hidden>
+    <div>
+      <h2>Compare the AI tools</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">There are many AI tools, and each comes from a company with different strengths. Pick the ones you want side by side. These are directional profiles, not benchmarks. Model names, plans, and data terms change often, so confirm every row with the vendor and your IT team.</p>
+    </div>
+    <div class="chips" id="modelChips" role="group" aria-label="Models to compare"></div>
+    <div class="tablebox"><table id="cmpTable"></table></div>
+
+    <div class="card pick">
+      <h3>Which one fits where my team already works?</h3>
+      <label for="situation" class="muted small">Choose your situation</label>
+      <select id="situation">
+        <option value="">Select a situation</option>
+        <option value="google">We run on Google Workspace (Gmail, Meet, Docs)</option>
+        <option value="aws">Our company is built on AWS</option>
+        <option value="writing">Reps mostly need drafting, research, and long documents</option>
+        <option value="inhouse">Data must stay inside our own environment</option>
+        <option value="social">We sell by watching social and news in real time</option>
+        <option value="ecosystem">We want the widest range of apps and plug-ins</option>
+        <option value="microsoft">We run on Microsoft 365 (Outlook, Teams, Word)</option>
+        <option value="research">Reps mostly need fast, cited web research</option>
+      </select>
+      <p id="situationOut" class="small"></p>
+    </div>
+
+    <div class="card small muted">
+      <b style="color:var(--fg)">Disclosure.</b> This guide was drafted with Claude, which is made by Anthropic, one of the vendors covered. Every vendor row includes real limits, including Anthropic's. Vendor facts were last checked on October 14, 2026, mostly against each vendor's own pages. The Vendors tab shows, for every vendor, which statements were read at the source and which were read only from an excerpt. Verify against your contract before relying on any of them.
+    </div>
+  </section>
+
+  <section id="cases" class="stack" aria-labelledby="t-cases" hidden>
+    <div>
+      <h2>Use case library</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Each card is one task, with a light: green is safe, amber needs guardrails, red is not safe. "Safe" assumes you use a tool your company has approved and you review the output. Nothing here is permission to use a tool, so confirm with Legal and IT.</p>
+    </div>
+    <div class="controls">
+      <input class="search" id="search" type="search" placeholder="Search use cases" aria-label="Search use cases">
+      <div class="chips" id="tierChips" role="group" aria-label="Filter by safety tier"></div>
+      <div class="chips" id="typeChips" role="group" aria-label="Filter by type of AI help"></div>
+      <div class="chips" id="stageChips" role="group" aria-label="Filter by sales stage"></div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+    <div class="list" id="ucList"></div>
+  </section>
+
+  <section id="safety" class="stack" aria-labelledby="t-safety" hidden>
+    <div>
+      <h2>Three questions before any prompt</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Answer these in order. One bad answer is enough to stop or escalate.</p>
+    </div>
+    <div class="grid3">
+      <div class="card rule">
+        <h3>1. What data goes in?</h3>
+        <ul>
+          <li><b>Public:</b> websites, filings, press releases. Lowest risk.</li>
+          <li><b>Internal:</b> playbooks, non-public pricing, forecasts. Approved enterprise tool only.</li>
+          <li><b>Customer or regulated:</b> contracts, personal data, health, payment. Needs written approval from Legal and IT.</li>
+        </ul>
+      </div>
+      <div class="card rule">
+        <h3>2. Who checks the output?</h3>
+        <ul>
+          <li>A named person reads everything before it reaches a customer.</li>
+          <li>Numbers, quotes, names, and claims get verified against a source.</li>
+          <li>Nothing sends, saves to the CRM, or commits to terms on its own.</li>
+        </ul>
+      </div>
+      <div class="card rule">
+        <h3>3. What if it is wrong?</h3>
+        <ul>
+          <li><b>Low:</b> a clumsy draft only you see.</li>
+          <li><b>Medium:</b> a wrong fact in a customer email.</li>
+          <li><b>High:</b> a pricing, legal, security, or compliance statement. Needs expert sign-off.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="card rule"><h3><span class="tag s">Safe</span> Green</h3><p class="muted">Public or your own non-confidential content, approved tool, you review. Go.</p></div>
+      <div class="card rule"><h3><span class="tag g">Guardrails</span> Amber</h3><p class="muted">Touches internal or customer data, or affects customers. Allowed only with the control listed on the use case and sign-off from Legal and IT.</p></div>
+      <div class="card rule"><h3><span class="tag n">Not safe</span> Red</h3><p class="muted">Breaks confidentiality, privacy law, consent, or honesty. Do not do it, even in an approved tool, unless Legal explicitly says otherwise.</p></div>
+    </div>
+    <div>
+      <h3>Laws and rules that touch sales AI</h3>
+      <p class="muted small" style="margin-top:6px;max-width:72ch">A plain-language overview, not legal advice. Rules differ by country and state and change often. Ask Legal what applies to you.</p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card"><b>Anti-spam and marketing email</b><p class="muted" style="margin-top:8px">Laws such as CAN-SPAM in the US, CASL in Canada, and ePrivacy rules in the EU and UK cover commercial email. Under US CAN-SPAM, the FTC says headers and subject lines must be accurate, messages must include a valid physical address and a clear opt-out, opt-outs must be honored within 10 business days, and each violating email can carry penalties of up to $53,088 (FTC figure). AI-written volume does not change the rules. <span class="small">Sources: <b>[L1]</b></span></p></div>
+        <div class="card"><b>Privacy and personal data</b><p class="muted" style="margin-top:8px">GDPR, UK GDPR, CCPA/CPRA, and many state laws limit how personal data is collected and used. Putting personal data into an AI tool is processing it, which can require a lawful basis, vendor terms, and transparency.</p></div>
+        <div class="card"><b>Call recording</b><p class="muted" style="margin-top:8px">Some places require everyone's consent and others only one party's. AI note-takers and transcription count as recording. Ask Legal about every region you sell in.</p></div>
+        <div class="card"><b>Automated calls and texts</b><p class="muted" style="margin-top:8px">In the US, the TCPA restricts autodialed and prerecorded calls and texts, and in February 2024 the FCC ruled that AI-generated voices count as "artificial" voices under the TCPA, so calls generally need prior express consent. Consent rules are strict. <span class="small">Sources: <b>[L3]</b></span></p></div>
+        <div class="card"><b>AI transparency</b><p class="muted" style="margin-top:8px">Some laws and contracts require telling people when they are talking to an AI or when content is AI-generated, such as Article 50 of the EU AI Act, which requires people to be told they are interacting with an AI system and requires disclosure of deepfakes. The text source lists these duties as applying from 2 August 2026, so confirm the current status with Legal. <span class="small">Sources: <b>[L2]</b></span></p></div>
+        <div class="card"><b>Confidentiality and contracts</b><p class="muted" style="margin-top:8px">NDAs and customer agreements often limit sharing information with third parties, which can include AI vendors. Check before pasting anything covered.</p></div>
+        <div class="card"><b>Regulated industries</b><p class="muted" style="margin-top:8px">Health (HIPAA), financial services (GLBA and securities rules), payments (PCI), and public-sector buyers add stricter requirements. Ask before selling or using AI there.</p></div>
+        <div class="card"><b>Copyright and brand</b><p class="muted" style="margin-top:8px">AI output can resemble existing work. Check images, text, and music before using them publicly, and follow your brand and approval rules.</p></div>
+        <div class="card"><b>Sources for this section</b><ul class="small" style="margin:8px 0 0;padding-left:18px">
+          <li><b>[L1]</b> <a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" target="_blank" rel="noopener noreferrer">FTC, CAN-SPAM Act: A Compliance Guide for Business</a>. Opened and read October 14, 2026.</li>
+          <li><b>[L2]</b> <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener noreferrer">EU AI Act, Article 50: Transparency obligations</a>. Text site, not the official journal. Opened and read October 14, 2026.</li>
+          <li><b>[L3]</b> <a href="https://www.cooley.com/news/insight/2024/2024-02-15-fcc-ai-generated-robocalls-illegal-under-the-tcpa" target="_blank" rel="noopener noreferrer">Cooley, FCC: AI-Generated Robocalls Illegal Under the TCPA</a>. Law-firm summary of the FCC's February 8, 2024 ruling. The FCC's own page blocked automated access, so confirm there. Summary read October 14, 2026.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>If you slip</h3>
+      <p class="muted" style="margin-top:6px">Pasted something you should not have? It happens. Fast, honest reporting is what keeps a small mistake small.</p>
+      <div class="steps" style="margin-top:12px">
+        <div class="light"><span class="eyebrow">1</span><div><b>Stop.</b> Do not paste or send anything else.</div></div>
+        <div class="light"><span class="eyebrow">2</span><div><b>Do not delete or hide it.</b> Leave the evidence so IT can assess it.</div></div>
+        <div class="light"><span class="eyebrow">3</span><div><b>Write down the basics.</b> What you shared, which tool and account, and when.</div></div>
+        <div class="light"><span class="eyebrow">4</span><div><b>Tell your manager, IT, and Legal right away.</b> Early reports have the most options.</div></div>
+        <div class="light"><span class="eyebrow">5</span><div><b>Follow their instructions.</b> That may include deleting data with the vendor or notifying a customer.</div></div>
+        <div class="light"><span class="eyebrow">6</span><div><b>Learn from it.</b> Share what you would do differently so the team benefits.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Agents and connected tools: extra care</h3>
+      <p class="muted" style="margin-top:6px">AI agents can read your email, browse the web, and take actions. That is powerful, and it is a new kind of risk.</p>
+      <ul style="margin:10px 0 0;padding-left:18px">
+        <li><b>Hidden instructions are real.</b> A web page or email can contain text that tries to steer the AI. This is called prompt injection.</li>
+        <li><b>Give the least access that works.</b> Start read-only. Do not grant send, delete, or payment rights early.</li>
+        <li><b>Keep a person approving outside actions.</b> Sending an email or changing a record should wait for a human.</li>
+        <li><b>Never put secrets in prompts or connected files.</b> Passwords and keys belong in a vault.</li>
+        <li><b>Know how to turn it off.</b> Have an off switch and a log of what the agent did.</li>
+        <li><b>Ask IT first.</b> Connecting tools to your accounts needs security review.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Rules that apply to every vendor</h3>
+      <ul style="margin:10px 0 0;padding-left:18px">
+        <li>The plan matters more than the brand. Free and personal accounts often have different data terms than business plans.</li>
+        <li>Use work accounts only. Never move work data through a personal account.</li>
+        <li>Check call recording and transcription consent rules in every region you sell in.</li>
+        <li>Disclose AI where law or contract requires it, and never deny being an AI when someone sincerely asks.</li>
+        <li>Ask for the vendor's data retention, training, and subprocessor terms in writing.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="quiz" class="stack" aria-labelledby="t-quiz" hidden>
+    <div>
+      <h2>Check your instincts</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Ten real sales situations, drawn at random from a larger set, so a retake is different. Tap an answer to see why. Your best score is saved on this device.</p>
+    </div>
+    <div class="card" id="quizBox"></div>
+  </section>
+
+  <section id="prompts" class="stack" aria-labelledby="t-prompts" hidden>
+    <div>
+      <h2>Prompt library</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Copy a prompt, replace the [brackets], and read the result critically. Use only public or your own content, in a tool your company approved. Each prompt lists what to check before you use the answer.</p>
+    </div>
+    <div class="chips" id="promptChips" role="group" aria-label="Filter prompts by stage"></div>
+    <div class="count" id="promptCount" aria-live="polite"></div>
+    <div class="list" id="promptList"></div>
+  </section>
+
+  <section id="playbook" class="stack" aria-labelledby="t-playbook" hidden>
+    <div>
+      <h2>Playbook</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Worked examples, a spot-the-error exercise, what to say to customers, and answers to common rep worries. All names here are fictional.</p>
+    </div>
+
+    <div class="card">
+      <h3>Example: from generic to useful</h3>
+      <div class="grid3" style="margin-top:12px">
+        <div class="weak"><b>Weak AI draft</b><br>"Dear Sir/Madam, I hope this email finds you well. Our industry-leading, best-in-class solution can revolutionize your business. We have helped hundreds of companies achieve amazing results. Let me know when you are free for a call."</div>
+        <div class="good"><b>After your edit</b><br>"Hi Priya, I saw Northwind is hiring an operations lead. When that role opens, keeping scheduling consistent across plants is often the first thing to slip. Is that on your list this quarter? I can share a one-page example of how another fabricator handled it. Sam"</div>
+      </div>
+      <ul style="margin:12px 0 0;padding-left:18px">
+        <li><b>Specific reason to write.</b> A public trigger replaces flattery.</li>
+        <li><b>No unproven claims.</b> "Hundreds of companies" and "revolutionize" are gone.</li>
+        <li><b>One clear question.</b> The reader knows what to do next.</li>
+        <li><b>You verified it.</b> Only claim "another fabricator" if it is true and you can share it.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Example: upgrade the prompt</h3>
+      <div class="grid3" style="margin-top:12px">
+        <div class="weak"><b>Weak prompt</b><br>Summarize this call.</div>
+        <div class="good"><b>Strong prompt</b><br>Summarize the call notes below for my manager in under 120 words. List the customer's top three priorities, any objections, and next steps with owners and dates. Mark anything unclear as "unclear". [notes with names replaced by roles]</div>
+      </div>
+    </div>
+
+    <div class="card" id="spotBox">
+      <h3>Exercise: spot what to verify</h3>
+      <p class="muted small" style="margin-top:6px">You pasted this public blurb about a fictional company: <i>"Northwind Fabrication makes custom metal parts for construction and sells to regional contractors. A recent press release mentions hiring an operations lead."</i> The AI returned the brief below. Tap every sentence you would verify before using it.</p>
+      <div class="list" id="spotList" style="margin-top:12px"></div>
+      <div class="btn-row" style="margin-top:12px"><button class="btn sm" id="spotCheck">Check my answers</button></div>
+      <div class="qwhy" id="spotResult" hidden></div>
+    </div>
+
+    <div>
+      <h3>What to say to customers</h3>
+      <p class="muted small" style="margin-top:6px">Starting points only. Use the wording Legal approves for your company.</p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card"><b>"Are you using AI on my data?"</b><p class="muted" style="margin-top:8px">"Fair question. Here is exactly how we handle customer data: [approved statement]. If you need more detail, I will connect you with our security team."</p><p class="uc-note"><b>Never:</b> guess or say "no" without confirming.</p></div>
+        <div class="card"><b>"Did AI write this email?"</b><p class="muted" style="margin-top:8px">"I used AI to help draft it, and I reviewed and edited every line. Happy to tell you more about how I work."</p><p class="uc-note"><b>Never:</b> deny it when someone sincerely asks.</p></div>
+        <div class="card"><b>Asking to use an AI note-taker</b><p class="muted" style="margin-top:8px">"I would like to use an AI note-taker so I can focus on you. It records and transcribes this call. Is that okay with everyone?"</p><p class="uc-note"><b>Never:</b> start without consent where it is required.</p></div>
+        <div class="card"><b>"How accurate is your product's AI?"</b><p class="muted" style="margin-top:8px">"Here is what it does well, here is where a person should review, and here is how we measure it: [approved facts]."</p><p class="uc-note"><b>Never:</b> promise accuracy you cannot prove.</p></div>
+        <div class="card"><b>A prospect sends a long AI-written message</b><p class="muted" style="margin-top:8px">Answer the real question inside it. Reply short and human, and ask one clarifying question.</p><p class="uc-note"><b>Tip:</b> AI polish does not mean low intent.</p></div>
+        <div class="card"><b>A customer asks for sensitive advice</b><p class="muted" style="margin-top:8px">"That is a legal question, so I would rather connect you with the right expert than guess."</p><p class="uc-note"><b>Never:</b> pass AI answers off as legal, tax, or compliance advice.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Questions reps ask</h3>
+      <div class="list" style="margin-top:12px">
+        <details class="card"><summary><b>Will AI replace me?</b></summary><p class="muted" style="margin-top:8px">AI is good at drafts, summaries, and patterns. Buyers still choose people they trust, and trust, judgment, and relationships stay human. Reps who use AI well will likely outperform those who do not, so learning it is the safest career move.</p></details>
+        <details class="card"><summary><b>Will I be judged on how much I use it?</b></summary><p class="muted" style="margin-top:8px">That is a question for your manager. Healthy teams measure outcomes, such as quality and time saved, rather than raw usage.</p></details>
+        <details class="card"><summary><b>What if the AI is wrong and I did not notice?</b></summary><p class="muted" style="margin-top:8px">It happens to everyone. Follow the checking habits, report fast if something went out, and fix it with the customer. See "If you slip" on the Safety tab.</p></details>
+        <details class="card"><summary><b>Can I use my own free account because it is faster?</b></summary><p class="muted" style="margin-top:8px">Not for work data. Personal accounts often have weaker data terms and no company visibility. Ask IT for an approved option.</p></details>
+        <details class="card"><summary><b>Do I have to tell customers I use AI?</b></summary><p class="muted" style="margin-top:8px">Sometimes the law or the contract requires it, and you should never deny it when sincerely asked. Ask Legal what applies to your company.</p></details>
+        <details class="card"><summary><b>My manager asked me to do something marked red. What now?</b></summary><p class="muted" style="margin-top:8px">Pause and ask Legal or IT before doing it. Raise it calmly and put the question in writing. That protects you and the company.</p></details>
+        <details class="card"><summary><b>Is using AI cheating?</b></summary><p class="muted" style="margin-top:8px">No. It is a tool, like a CRM or a calculator. What matters is honesty, accuracy, and using approved tools.</p></details>
+        <details class="card"><summary><b>How do I get better at it?</b></summary><p class="muted" style="margin-top:8px">Pick one task a week, keep the prompts that work, compare results, and share what you learn with teammates.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="game" class="stack" aria-labelledby="t-game" hidden>
+    <div>
+      <h2>Light Sorter</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">A retro sorting game. Real sales AI use cases fall from the top. Send each one to GO, CAUTION, or STOP before it lands. Every answer teaches you why.</p>
+    </div>
+    <div class="arcade">
+      <div class="hud">
+        <canvas id="gBot" width="12" height="12" aria-hidden="true"></canvas>
+        <div class="hudcol"><span class="hl">SCORE</span><b id="gScore">0</b></div>
+        <div class="hudcol"><span class="hl">LEVEL</span><b id="gLevel">1</b></div>
+        <div class="hudcol"><span class="hl">COMBO</span><b id="gCombo">x1</b></div>
+        <div class="hudcol"><span class="hl">LIVES</span><span id="gLives" class="lives"></span></div>
+        <div class="hudcol"><span class="hl">BEST</span><b id="gBest">0</b></div>
+      </div>
+      <div class="screen" id="gScreen">
+        <div class="gcard" id="gCard" hidden><span class="gstage" id="gStage"></span><span id="gText"></span></div>
+        <div class="overlay" id="gOverlay"></div>
+      </div>
+      <div class="bins" role="group" aria-label="Sort the use case">
+        <button class="bin go" data-tier="s" disabled><b>GO</b><span>Safe</span><i>1 or Left</i></button>
+        <button class="bin caution" data-tier="g" disabled><b>CAUTION</b><span>Guardrails</span><i>2 or Down</i></button>
+        <button class="bin stop" data-tier="n" disabled><b>STOP</b><span>Not safe</span><i>3 or Right</i></button>
+      </div>
+      <div class="gtools">
+        <button class="gbtn" id="gHint" disabled>Ask Legal and IT (3)</button>
+        <button class="gbtn" id="gMode">Mode: Arcade</button>
+        <button class="gbtn" id="gSound">Sound: off</button>
+        <button class="gbtn" id="gEnd" disabled>End run</button>
+      </div>
+      <div class="learn" id="gLearn" role="status" aria-live="polite">Tap GO, CAUTION, or STOP. After each answer you will see why.</div>
+    </div>
+    <div class="card small">
+      <h3>How to play</h3>
+      <ul style="margin:10px 0 0;padding-left:18px">
+        <li><b>GO:</b> safe, in an approved tool, with your review. <b>CAUTION:</b> allowed only with the control listed. <b>STOP:</b> do not do it.</li>
+        <li>Assume every task uses a tool your company has approved.</li>
+        <li>Keep a streak for a bigger multiplier. A level up comes every five correct answers and the cards fall faster.</li>
+        <li><b>Ask Legal and IT</b> crosses out one wrong answer. You get three per run.</li>
+        <li><b>Chill mode</b> removes the timer and the lives, so you can learn at your own pace.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="vendors" class="stack" aria-labelledby="t-vendors" hidden>
+    <div>
+      <h2>Vendor pages</h2>
+      <p class="muted" style="margin-top:8px;max-width:72ch">One page per vendor: what the vendor itself says about your data, when it was last checked, and numbered sources you can open. Vendors change terms often, so treat this as a starting point and confirm in your contract.</p>
+    </div>
+    <div class="chips" id="vendorChips" role="group" aria-label="Choose a vendor"></div>
+    <div class="card" id="vendorPage"></div>
+    <div class="card small muted">
+      <b style="color:var(--fg)">How to read the check labels.</b> <span class="tag s">Checked at source</span> means the vendor's own page was opened and read on the check date. <span class="tag g">Excerpt only</span> means the vendor's page is named, but it blocked automated access, so the statement was read from a search-result excerpt of that page. Confirm it on the page itself. Nothing here is legal advice.
+    </div>
+  </section>
+
+  <section id="check" class="stack" aria-labelledby="t-check" hidden>
+    <div>
+      <h2>Rollout checklist</h2>
+      <p class="muted" style="margin-top:8px;max-width:70ch">Work top to bottom. Progress saves in this browser only.</p>
+      <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+      <p class="count" id="barText" style="margin-top:8px"></p>
+    </div>
+    <div class="card" id="checkList"></div>
+    <div class="card">
+      <h3>Use this guide inside your company</h3>
+      <p class="muted" style="margin-top:8px">A Markdown version of this guide is available as a starting template for an internal AI policy and training document. It includes fill-in sections for your approved tools and contacts, the full use case catalog, the prompt library, vendor notes with sources and check dates, and a rollout plan. Edit it freely, and have your Legal and IT teams review it before publishing.</p>
+      <div class="btn-row" style="margin-top:12px">
+        <a class="btn" href="ai-ready-reps-company-guide.md" download target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Download the company guide (Markdown)</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Talk to Legal and IT before trying anything in this guide. Vendor details can change without notice; confirm current models, pricing, and data terms with each vendor.</p>
+    <p>Model names, plans, and terms change often. Treat vendor details as a starting point and confirm them in your contract.</p>
+    <p><b>Last updated: October 14, 2026.</b> Vendor facts last checked: October 14, 2026. See the Vendors tab for sources and check labels.</p>
+    <p><a href="ai-ready-reps-company-guide.md" download target="_blank" rel="noopener">Download the company guide (Markdown)</a> &nbsp;|&nbsp; <a href="https://github.com/thejaredchapman/ai-ready-reps" target="_blank" rel="noopener noreferrer">View the source on GitHub</a></p>
+    <p><b>Suggestions or updates?</b> Spotted something unclear, outdated, or missing? Tell me and I will review it. Message me on <a href="https://www.linkedin.com/in/thejaredchapman" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+    <p>Built by <a href="https://www.linkedin.com/in/thejaredchapman" target="_blank" rel="noopener noreferrer">Jared Chapman</a>. A personal portfolio project, not affiliated with any AI vendor. Reach one, teach one.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var MODELS = [
+    { id: 'claude', name: 'Anthropic Claude', rows: {
+      known: 'Careful long-form writing, instruction following, long documents, coding.',
+      access: 'Claude apps, API, and through AWS Bedrock and Google Cloud.',
+      data: 'Anthropic states it does not use inputs or outputs from commercial products for training by default. Free, Pro, and Max have a training choice, and opting in extends retention to five years.',
+      fits: 'Proposals, account research, call summaries, and document-heavy work.',
+      watch: 'Fewer built-in consumer features than the biggest ecosystems. CRM links usually come through connectors set up by IT.',
+      setup: 'Reps for chat use. IT for connectors and API.' } },
+    { id: 'openai', name: 'OpenAI GPT', rows: {
+      known: 'Broadest ecosystem: custom assistants, voice, images, many third-party integrations.',
+      access: 'ChatGPT, API, and Microsoft Azure.',
+      data: 'OpenAI states it does not train on data from ChatGPT Enterprise, Business, Edu, or its API by default, and that you own your data. Personal accounts follow different terms.',
+      fits: 'Teams that want one tool for many tasks and many plug-ins.',
+      watch: 'Popularity drives shadow IT: reps using personal accounts. Model lineup and plan names change often.',
+      setup: 'Reps for chat. IT for admin controls and integrations.' } },
+    { id: 'gemini', name: 'Google Gemini', rows: {
+      known: 'Built into Gmail, Docs, Sheets, and Meet. Strong with images, video, and very long inputs.',
+      access: 'Gemini app, Workspace add-ons, and Google Cloud Vertex AI.',
+      data: 'Google states Workspace does not use customer data to train models without permission, and that Gemini app chats are not human reviewed. Some features, such as Gemini Notebook, lack certifications.',
+      fits: 'Teams already living in Google Workspace.',
+      watch: 'Available features depend on your Workspace edition. Consumer and Workspace terms are different.',
+      setup: 'Workspace admin turns features on. Reps then use them in place.' } },
+    { id: 'grok', name: 'xAI Grok', rows: {
+      known: 'Real-time access to posts on X and fast-moving news.',
+      access: 'Grok app, X, and API. Business and Enterprise tiers exist.',
+      data: 'xAI\'s enterprise FAQ states it does not use enterprise or API data for training and deletes conversations after 30 days, with exceptions. Consumer terms differ.',
+      fits: 'Monitoring social signals, news, and public sentiment.',
+      watch: 'Newest enterprise track record of the six. Reported ownership and contract entity changes. Brand-safety review is wise.',
+      setup: 'Legal and IT should review contracts before any rep use.' } },
+    { id: 'nova', name: 'Amazon Nova', rows: {
+      known: 'Lower-cost models for high-volume automation and document processing inside AWS.',
+      access: 'Amazon Bedrock only. Not a chat app for reps.',
+      data: 'Runs inside your AWS account. Bedrock lets you choose a retention mode, and AWS states model providers cannot access Bedrock logs or customer prompts.',
+      fits: 'Engineered workflows such as lead routing, ticket tagging, and document extraction.',
+      watch: 'The lineup changes. AWS lists Nova Canvas, Nova Reel, and Nova Sonic v1 as end-of-life in September 2026, so confirm which models are current.',
+      setup: 'Developers and IT build it. Reps use the result.' } },
+    { id: 'llama', name: 'Meta Llama', rows: {
+      known: 'Open-weight models you can run yourself and customize.',
+      access: 'Self-hosted, or through cloud providers. The Meta AI app is a separate consumer product.',
+      data: 'Data can stay entirely in your environment. You own the security and safety work.',
+      fits: 'Strict data control, custom tuning, and cost at large scale.',
+      watch: 'Needs engineering skill. It uses a custom Meta license with attribution, naming, and 700-million-user terms, so Legal should read it.',
+      setup: 'Engineering team. Not a rep-level choice.' } },
+    { id: 'copilot', name: 'Microsoft Copilot', rows: {
+      known: 'AI built into Word, Excel, Outlook, Teams, and PowerPoint, grounded in your Microsoft 365 files and meetings.',
+      access: 'Copilot add-on for Microsoft 365 business plans, plus a separate consumer Copilot app.',
+      data: 'Microsoft states that prompts, responses, and your Graph data are not used to train its foundation models. It draws on models from more than one provider, and admins can control which are on.',
+      fits: 'Teams already standardized on Microsoft 365 who want AI inside the apps they use.',
+      watch: 'It can surface anything a user already has access to, so overshared files and loose permissions get exposed. Clean up access first.',
+      setup: 'IT admins license and configure it. Reps then use it in place.' } },
+    { id: 'perplexity', name: 'Perplexity', rows: {
+      known: 'Answer engine that searches the web and shows cited sources. Popular for fast research.',
+      access: 'Perplexity app and website, enterprise plans, and an API.',
+      data: 'Perplexity states Enterprise data is never used for training. Free, Pro, and Max have AI data retention on by default, and opting out applies only going forward.',
+      fits: 'Quick public-web research on companies, markets, and competitors.',
+      watch: 'Citations can still be wrong or low quality, so open the sources. Not a place for confidential data on consumer plans.',
+      setup: 'Reps for research. IT for the enterprise plan.' } }
+  ];
+  var ROWLABELS = [['known','Best known for'],['access','How you get it'],['data','Business data'],['fits','Fits best when'],['watch','Watch out for'],['setup','Who sets it up'],['src','Last checked']];
+  var SITUATIONS = {
+    google: 'Start with Gemini inside Workspace, since it is already where reps write email and join meetings. Ask IT about your edition and admin settings.',
+    aws: 'Amazon Bedrock lets IT use Nova, Claude, and Llama under your existing AWS controls. Good for back-office workflows. Reps still need an approved chat tool.',
+    writing: 'Claude and OpenAI GPT are the usual starting points for drafting and research. Run the same three real tasks through each and have a manager judge the output.',
+    inhouse: 'Llama self-hosted, or any model through your own cloud account, keeps data inside your boundary. Expect an engineering project, not a rep tool.',
+    social: 'Grok is built around real-time posts on X. Use it for public signals only, and review contract terms with Legal first.',
+    ecosystem: 'OpenAI GPT has the largest set of integrations and third-party apps. Make sure IT approves each plug-in, since each one can see your data.',
+    microsoft: 'Start with Microsoft Copilot, since it works inside Outlook, Teams, and Word. Before turning it on, have IT review file permissions, because Copilot can surface anything a user can already open.',
+    research: 'Perplexity is built around cited web answers, and Gemini, GPT, and Claude all offer web search too. Open the sources every time, and keep confidential data out.'
+  };
+
+  var STAGES = ['Prospecting','Discovery','Proposal','Negotiation','Post-sale','Field sales','Sales ops','Coaching'];
+  var TIERS = { s: 'Safe', g: 'Guardrails', n: 'Not safe' };
+
+  /* [tier, stage, title, note] */
+  var UC = [
+    ['s','Prospecting','Brainstorm subject lines for a cold email you wrote','Uses your own copy and no prospect data.'],
+    ['s','Prospecting','Tighten your own outreach draft so it is shorter and clearer','Review the result before sending.'],
+    ['s','Prospecting','Summarize a public annual report or earnings call into five bullets','Public source. Check figures against the original.'],
+    ['s','Prospecting','Draft an account brief from a company website and press releases','Public information only.'],
+    ['s','Prospecting','Generate first-call questions for an industry you do not know','General knowledge, no customer data.'],
+    ['s','Prospecting','Explain unfamiliar industry jargon before a call','Low impact if slightly off. Confirm in conversation.'],
+    ['s','Prospecting','List likely buyer personas for a product category','Brainstorming aid. Validate with real customers.'],
+    ['s','Prospecting','Write connection-note templates with placeholders','No real names go into the tool.'],
+    ['s','Prospecting','Turn your own win patterns, described in general terms, into an ideal-customer checklist','Keep customer names out.'],
+    ['s','Prospecting','Fix grammar and tone in a message you wrote','Your own text. No confidential content.'],
+    ['s','Discovery','Role-play a discovery call with AI as a skeptical, fictional buyer','Fictional scenario. Great practice.'],
+    ['s','Discovery','Build a discovery question bank organized by your qualification framework','Generic and reusable.'],
+    ['s','Discovery','Turn non-confidential meeting notes into a clean agenda','Strip customer names and numbers first.'],
+    ['s','Discovery','Draft a pre-call agenda template','No customer data needed.'],
+    ['s','Discovery','Practice answers to common objections','Fictional scenarios only.'],
+    ['s','Discovery','List what could go wrong in a typical deal of your type','Generic risk brainstorm.'],
+    ['s','Proposal','Create a proposal outline with placeholders','Fill in real details yourself.'],
+    ['s','Proposal','Rewrite already-public product copy in plain English','Source text is already approved and public.'],
+    ['s','Proposal','Draft an executive-summary template','Structure only.'],
+    ['s','Proposal','Write alternate phrasings of approved value propositions','Stay inside approved claims.'],
+    ['s','Proposal','Build an FAQ from your public product documentation','Public source. Product team spot-checks.'],
+    ['s','Proposal','Outline a presentation from a topic you describe','You supply the facts.'],
+    ['s','Negotiation','Role-play a negotiation with a fictional buyer','No real terms or customers.'],
+    ['s','Negotiation','Brainstorm a trade-off framework in generic terms','No real pricing goes in.'],
+    ['s','Negotiation','Draft polite follow-up templates for silent prospects','Templates with placeholders.'],
+    ['s','Post-sale','Draft a kickoff email template','Add customer specifics yourself.'],
+    ['s','Post-sale','Create an onboarding checklist template','Generic structure.'],
+    ['s','Post-sale','Draft a QBR agenda template','No customer data needed.'],
+    ['s','Post-sale','Write a generic renewal-reminder template','Placeholders only.'],
+    ['s','Post-sale','Turn public release notes into a friendly customer update','Public source. Product team approves.'],
+    ['s','Sales ops','Explain or build a spreadsheet formula using sample data','Use made-up data.'],
+    ['s','Sales ops','Plan and prioritize your own week','Personal productivity.'],
+    ['s','Sales ops','Summarize a long public article or industry report','Public source.'],
+    ['s','Sales ops','Convert bullet points into an internal recap you will edit','Only non-confidential internal content.'],
+    ['s','Sales ops','Learn a new product feature by asking for plain explanations from public docs','Learning aid.'],
+    ['s','Sales ops','Prepare likely questions for a webinar','Topic-level only.'],
+    ['s','Sales ops','Create a battlecard format from public competitor information','Public sources only. Cite them.'],
+    ['s','Sales ops','Suggest questions that expose competitor weaknesses, from public reviews','Public sources.'],
+    ['s','Coaching','Ask for feedback on your own pitch script','Remove customer names.'],
+    ['s','Coaching','Make flashcards for product knowledge from public docs','Study aid.'],
+    ['s','Coaching','Generate variations of a 30-second pitch','Practice material.'],
+    ['s','Coaching','Describe a call you ran in general terms and get coaching tips','No names, no figures.'],
+    ['s','Coaching','Draft a personal development plan','Your own career, not company data.'],
+    ['s','Coaching','Practice a tough conversation with your manager','Fictional, private.'],
+    ['s','Coaching','Ask for a plain-language explanation of a sales methodology','Learning aid.'],
+
+    ['s','Field sales','Practice planning a day of visits with made-up stops or public business addresses','Nothing private goes in. Compare the order it suggests with a mapping app.'],
+    ['g','Field sales','Map out the stops on a route and rank the most logical order','Control: use AI to group nearby stops and place priority meetings, then confirm drive times, traffic, and opening hours in a mapping app. Share only the customer details your policy allows.'],
+    ['g','Field sales','Rank the stops on a route by deal value and urgency','Control: you supply the priorities, check them against the CRM, and use an approved tool only.'],
+    ['s','Field sales','Draft a short script for introducing yourself to a receptionist or gatekeeper','Template wording. Adjust it to your style.'],
+    ['s','Field sales','Plan a visit day around lunch, breaks, and buffer time using fictional stops','Practice planning with made-up stops.'],
+    ['s','Field sales','Brainstorm ways to open a conversation at a trade show or event','General ideas with no customer data.'],
+    ['s','Field sales','Create a checklist for preparing your car and materials before a field day','Personal preparation.'],
+    ['s','Field sales','Draft a polite "I was in the area" message template','Template. Only send it to people you already know.'],
+    ['s','Field sales','Write a template for confirming a visit the day before','Fill in names and times yourself.'],
+    ['s','Field sales','Draft a "sorry I missed you" note template','Template with placeholders.'],
+    ['s','Field sales','Practice explaining your product in 30 seconds to someone on a job site','Fictional practice.'],
+    ['s','Field sales','Create a pre-visit research checklist for a local business using public information','Public sources only.'],
+    ['s','Field sales','Write a template for requesting a facility visit, including safety expectations','Template. Follow the customer\'s own rules.'],
+    ['s','Field sales','Practice handling a walk-in conversation when the buyer is busy','Fictional role-play.'],
+    ['s','Field sales','Brainstorm what to do with ten unexpected minutes between visits','Personal productivity.'],
+    ['s','Field sales','Draft a weekly territory review template','Structure only, no customer data.'],
+    ['s','Field sales','Learn general business etiquette for visiting a new region','Learning aid. Confirm with locals or colleagues.'],
+    ['s','Field sales','Create a simple end-of-day routine for logging your visits','Personal process.'],
+    ['s','Field sales','Draft a template for a short post-visit recap you send to yourself','Template with placeholders.'],
+    ['s','Field sales','Make a cheat sheet of common field objections with approved responses','Use only approved messaging.'],
+    ['s','Field sales','Brainstorm professional ways to follow up after a chance meeting','General ideas.'],
+    ['g','Field sales','Cluster a list of customer business addresses into daily visit zones','Control: business addresses only, approved tool, and confirm the result in a mapping app.'],
+    ['g','Field sales','Build a weekly territory plan from account priorities and locations','Control: approved tool, and a manager reviews fairness and coverage.'],
+    ['g','Field sales','Reorder the day\'s route after a cancellation','Control: confirm drive times in a mapping app and tell affected customers.'],
+    ['g','Field sales','Suggest visit windows based on typical business hours for each stop','Control: verify real opening hours and call ahead.'],
+    ['g','Field sales','Estimate how much time each visit needs from past visit notes','Control: use as a rough guide and add buffer.'],
+    ['g','Field sales','Plan a multi-day trip with hotels and meals','Control: follow your travel and expense policy and verify every booking.'],
+    ['g','Field sales','Draft a visit brief for each stop from CRM notes','Control: approved enterprise tool and minimal personal data.'],
+    ['g','Field sales','Build a route that balances priority accounts with prospecting stops','Control: manager review, and confirm in a mapping app.'],
+    ['g','Field sales','Generate a safety checklist for visiting industrial or construction sites','Control: follow the site\'s own rules and confirm requirements with the customer.'],
+    ['g','Field sales','Draft visit confirmations to several customers at once','Control: review each message, name, and time before sending.'],
+    ['g','Field sales','Suggest which customers to visit near a conference or event','Control: check against the CRM and any do-not-contact list.'],
+    ['g','Field sales','Summarize which customers in a region have open issues before you visit','Control: use only data you are permitted to access, for internal use.'],
+    ['g','Field sales','Estimate mileage and cost for a planned route','Control: verify in a mapping or expense tool, and never submit AI figures as is.'],
+    ['g','Field sales','Draft follow-up tasks from your visit notes','Control: confirm each task before it goes into the CRM.'],
+    ['g','Field sales','Prepare a local-market brief for a new territory from public sources','Control: public sources only, and verify key facts.'],
+    ['g','Field sales','Plan visits around local holidays and regional events','Control: confirm dates on an official calendar.'],
+    ['g','Field sales','Create bilingual visit scripts or leave-behinds','Control: native-speaker review.'],
+    ['n','Field sales','Post a customer\'s exact location or schedule publicly','Privacy and safety risk.'],
+    ['n','Field sales','Use AI to track a customer\'s or coworker\'s real-time location without consent','Surveillance without consent is unlawful in many places.'],
+    ['n','Field sales','Paste a list of customers\' home addresses into a public AI tool','Personal data shared with a third party.'],
+    ['n','Field sales','Follow AI directions onto a site without checking access and safety rules','Sites have their own entry rules and hazards. Confirm with the customer.'],
+    ['n','Field sales','Let AI decide you can skip a required safety procedure','Safety rules are not optional.'],
+    ['n','Field sales','Type prompts into an AI assistant by hand while driving','Distracted driving. Plan before you drive, or use hands-free approved tools.'],
+    ['n','Field sales','Ask AI to invent a reason for being on a customer\'s site to get access','Deceptive and may be trespassing.'],
+    ['n','Field sales','Use AI to fake visit logs or mileage claims','Falsifying records is fraud.'],
+    ['n','Field sales','Upload photos taken inside a customer facility to a public AI tool without permission','Confidential, and possibly restricted by site policy.'],
+    ['n','Field sales','Rely on AI to know a site\'s access rules, permits, or restrictions','Only the customer and site owner can confirm these.'],
+    ['n','Field sales','Use AI-generated directions in remote areas without checking offline maps','Bad directions can strand you. Verify with a reliable map.'],
+    ['n','Field sales','Ask AI to identify people in photos taken at a customer site','Privacy and biometric data risk.'],
+    ['n','Field sales','Use AI to plan gifts or entertainment that break your gift or anti-bribery policy','Compliance and legal risk. Follow your policy.'],
+    ['n','Field sales','Record an in-person conversation with an AI device without consent','Consent laws apply to in-person recording too.'],
+    ['n','Field sales','Use AI to profile a customer\'s employees\' personal routines','Invasive and potentially harassment.'],
+    ['s','Prospecting','Brainstorm angles for a first email to a role you have never sold to','General brainstorming with no prospect data.'],
+    ['s','Prospecting','Draft a short voicemail script for a cold call','Your own script. Read it aloud and edit it.'],
+    ['s','Prospecting','Write three versions of an opening line for a call','Practice material you can adapt.'],
+    ['s','Prospecting','List common reasons a prospect in a given industry ignores outreach','General reasoning. Test it against real replies.'],
+    ['s','Prospecting','Draft a polite message asking a colleague for an introduction','Your own words and no confidential data.'],
+    ['s','Prospecting','Learn a few polite phrases in a customer\'s language','Learning aid. Ask a native speaker to confirm tone.'],
+    ['s','Prospecting','Turn a feature list into one-sentence benefits using approved public copy','Stay inside approved messaging.'],
+    ['s','Prospecting','Create a checklist for researching a new account before a first call','A reusable process template.'],
+    ['s','Discovery','List follow-up questions for common buyer answers such as "we are happy with our vendor"','General technique with no customer data.'],
+    ['s','Discovery','Draft a script for opening a call and setting the agenda','A template you can adjust.'],
+    ['s','Discovery','Practice restating a buyer\'s problem in two sentences','Fictional practice. Great for listening skills.'],
+    ['s','Discovery','Brainstorm ways to handle silence on a call','General technique.'],
+    ['s','Discovery','Draft a meeting-request message that offers two time options','Template with placeholders.'],
+    ['s','Discovery','Build a one-page glossary of terms for a new industry','Public knowledge. Confirm important terms with an expert.'],
+    ['s','Proposal','Draft a proposal cover letter with placeholders','Fill in real details yourself.'],
+    ['s','Proposal','Explain your pricing model in plain language from your public pricing page','Public source only. Confirm accuracy.'],
+    ['s','Proposal','Write a "what happens next" section for a proposal template','Structure only.'],
+    ['s','Proposal','Draft a thank-you note after a presentation','Template. Add specifics yourself.'],
+    ['s','Proposal','Suggest a clearer title and structure for a slide deck you wrote','Your own work. Remove confidential content first.'],
+    ['s','Proposal','Rewrite long approved product paragraphs as short bullets','Approved copy only. Check the meaning did not change.'],
+    ['s','Negotiation','Practice staying calm and polite when a buyer pushes back hard','Fictional role-play.'],
+    ['s','Negotiation','Draft a respectful way to say no to a request outside your authority','Template wording.'],
+    ['s','Negotiation','Brainstorm questions that uncover a buyer\'s real priorities before discussing terms','General technique.'],
+    ['s','Post-sale','Draft a welcome message for new customers with placeholders','Template.'],
+    ['s','Post-sale','Write a short "how to get help" guide from your public support pages','Public source.'],
+    ['s','Post-sale','Draft a thank-you note for a customer referral with placeholders','Template. Personalize it yourself.'],
+    ['s','Post-sale','Create a template for asking a happy customer for a review','Template. Only ask people who agreed to be contacted.'],
+    ['s','Field sales','Plan what to pack and prepare for a day of in-person visits','Personal planning.'],
+    ['s','Field sales','Draft an outline for a leave-behind after a site visit','Template using approved messaging.'],
+    ['s','Field sales','Brainstorm good questions to ask during a facility walk-through','General ideas.'],
+    ['s','Sales ops','Write a plain-English description of your sales stages for a new hire','Generic process with no confidential detail.'],
+    ['s','Sales ops','Draft a weekly pipeline update template with placeholders','Structure only.'],
+    ['s','Sales ops','Explain a report concept such as conversion rate or win rate in simple terms','Learning aid.'],
+    ['s','Sales ops','Draft a checklist for cleaning your own contact list','Process template.'],
+    ['s','Sales ops','Turn a rough process into a clear step-by-step guide','Your own process, with confidential detail removed.'],
+    ['s','Coaching','Create a five-minute daily practice routine for objection handling','Personal skill building.'],
+    ['s','Coaching','Ask for an explanation of a sales term you keep hearing','Learning aid.'],
+    ['s','Coaching','Generate practice scenarios for handling a difficult customer email','Fictional scenarios.'],
+    ['s','Coaching','Draft quarterly goals in clear, measurable wording','Personal planning.'],
+    ['s','Coaching','Prepare questions for a mentor or manager one-on-one','Personal preparation.'],
+
+    ['g','Prospecting','Write outreach in a customer\'s local language and have a native speaker review it','Control: native-speaker review before anything is sent.'],
+    ['g','Prospecting','Infer likely priorities from a company\'s public job postings','Control: public postings only, and treat conclusions as hypotheses.'],
+    ['g','Prospecting','Draft personalized messages that reference a prospect\'s public professional post','Control: professional context only, nothing personal or sensitive.'],
+    ['g','Discovery','Prepare a stakeholder map from CRM contact notes','Control: approved enterprise tool and minimal personal data.'],
+    ['g','Discovery','Generate follow-up emails from call transcripts','Control: the rep edits and confirms every fact before sending.'],
+    ['g','Discovery','Create a customer-specific demo script from discovery notes','Control: remove confidential details and have a sales engineer review it.'],
+    ['g','Proposal','Draft a business case document from discovery data','Control: numbers verified and inputs confirmed by the customer.'],
+    ['g','Proposal','Build competitor comparison tables for internal use from public sources','Control: cite sources, and have product marketing review before external use.'],
+    ['g','Proposal','Draft a summary of contract clauses for your own understanding','Control: Legal interprets the contract. Never rely on the AI summary.'],
+    ['g','Proposal','Prepare an executive briefing for a strategic account','Control: approved tool, verified facts, and limited sensitive data.'],
+    ['g','Post-sale','Draft a customer email about a delayed delivery or issue','Control: facts confirmed with operations, and manager approval for sensitive cases.'],
+    ['g','Sales ops','Condense a long email thread before a handoff to a colleague','Control: check accuracy and leave out sensitive attachments.'],
+    ['g','Post-sale','Create a customer onboarding plan from the signed scope','Control: the delivery lead reviews it.'],
+    ['g','Post-sale','Rewrite a support article so sales can share it with customers','Control: the support owner approves.'],
+    ['g','Post-sale','Build a quarterly review deck from usage exports','Control: de-identify data, verify figures, and keep it customer-safe.'],
+    ['g','Sales ops','Classify inbound inquiries by topic and urgency','Control: sample audits, and no sensitive categories acted on automatically.'],
+    ['g','Prospecting','Draft answers to common prospect questions in a website chat','Control: approved answers only, and escalate anything unknown to a person.'],
+    ['g','Sales ops','Propose meeting times across time zones','Control: you confirm in your own calendar.'],
+    ['g','Sales ops','Adapt internal enablement docs into partner job-aids','Control: check the partner agreement and confidentiality first.'],
+    ['g','Proposal','Create tailored value messaging by industry from approved positioning','Control: product marketing approval.'],
+    ['g','Post-sale','Prepare for a contract renewal using account history','Control: approved tool, and the account owner verifies facts.'],
+    ['g','Proposal','Draft a mutual success plan from stakeholder goals','Control: the customer reviews and agrees to it.'],
+    ['g','Sales ops','Suggest next best actions for open deals from CRM fields','Control: managers check the logic and the rep decides.'],
+    ['g','Coaching','Convert recorded training sessions into written guides','Control: participant consent and an accuracy check.'],
+    ['g','Proposal','Draft talking points for an executive sponsor meeting','Control: verify facts and align with the account lead.'],
+    ['g','Post-sale','Create FAQs for a new product launch from internal briefs','Control: product approval and respect embargo dates.'],
+    ['g','Negotiation','Draft a response to a quote request using approved price lists','Control: pricing and terms come only from approved sources.'],
+    ['g','Sales ops','Write a competitive win/loss narrative from deal notes','Control: de-identify the notes and verify claims.'],
+    ['g','Post-sale','Draft an apology and recovery plan after a customer escalation','Control: manager review, and Legal review for serious issues.'],
+    ['g','Post-sale','Prepare questions for a customer advisory board from feedback themes','Control: redact names and get approval.'],
+    ['g','Field sales','Capture field visit notes by voice and have AI write them up','Control: approved tool, consent where required, and no sensitive spoken detail.'],
+    ['g','Field sales','Convert handwritten visit notes into typed notes','Control: approved tool and no sensitive personal data.'],
+    ['g','Sales ops','Create localized versions of marketing copy','Control: native review and Legal review of claims.'],
+    ['g','Coaching','Create onboarding quizzes for new reps from internal playbooks','Control: approved sources, and Enablement verifies the answers.'],
+    ['g','Post-sale','Suggest an agenda and talking points for a partner business review','Control: check partner data-sharing terms.'],
+
+    ['n','Prospecting','Use AI to infer a prospect\'s health, finances, or family situation from their activity','Sensitive inferences are invasive and often unlawful. Stick to professional, public context.'],
+    ['n','Prospecting','Ask AI to write a message pretending to come from a colleague or executive','Impersonation is deceptive and can be fraud.'],
+    ['n','Negotiation','Paste a competitor\'s leaked confidential pricing sheet into a tool','Using it creates legal exposure. Tell Legal instead.'],
+    ['n','Proposal','Have AI generate fake case study numbers to hit a deadline','Fabrication. Use real, approved results only.'],
+    ['n','Sales ops','Upload a spreadsheet containing national ID or social security numbers','Highly sensitive data never goes into AI tools.'],
+    ['n','Prospecting','Create deepfake video or voice of a customer or executive','Impersonation and likely illegal.'],
+    ['n','Post-sale','Share a customer\'s security incident details in a public AI tool','Confidential and potentially regulated.'],
+    ['n','Post-sale','Let AI reply to customer complaints with nobody reviewing','Complaints need human judgment and accountability.'],
+    ['n','Discovery','Use AI to screen out prospects based on their accent, name, or appearance','Discriminatory. Never use protected traits.'],
+    ['n','Negotiation','Let AI approve discounts or credits in a billing system without review','Financial commitments need an authorized human.'],
+    ['n','Sales ops','Paste internal HR documents or performance reviews into a tool','Confidential personal information.'],
+    ['n','Negotiation','Ask AI to find loopholes in a customer\'s contract to your advantage without Legal','Contract interpretation belongs with Legal, and bad-faith tactics harm trust.'],
+    ['n','Post-sale','Translate a confidential customer document with a public tool','The text is shared with a third party. Use an approved process.'],
+    ['n','Discovery','Upload customer call recordings to a free transcription site','Confidential and possibly in breach of consent rules.'],
+    ['n','Proposal','Ask AI to write a negative review about a competitor','Deceptive and potentially defamatory.'],
+    ['n','Sales ops','Use AI to monitor coworkers\' personal social media','Privacy violation and a workplace policy issue.'],
+    ['n','Negotiation','Let AI accept or sign online terms on a customer\'s behalf','Binding acts need an authorized person.'],
+    ['n','Prospecting','Have AI scrape a competitor\'s customer list from a gated portal','Unauthorized access and likely illegal.'],
+    ['n','Post-sale','Ask AI to word a message that hides a known product defect or outage','Deceptive and can create liability.'],
+    ['n','Proposal','Feed a customer\'s proprietary source code or designs into a public tool','Intellectual property and confidentiality breach.'],
+    ['n','Proposal','Insert AI-written legal terms into a customer contract without Legal review','Contract language needs qualified review.'],
+    ['n','Post-sale','Rely on AI to decide eligibility for a regulated product or service','Regulated decisions need approved processes and accountability.'],
+    ['n','Prospecting','Ask AI to dig up private information about a person to use as pressure','Harassment and privacy risk.'],
+    ['n','Proposal','Publish customer logos or names generated by AI without permission','Needs written customer approval.'],
+    ['n','Prospecting','Use AI to run fake accounts that boost social engagement','Deceptive and against platform rules.'],
+    ['n','Discovery','Paste a prospect\'s private messages into a tool for tone analysis','Private communication shared with a third party.'],
+    ['n','Negotiation','Use AI answers about export controls or sanctions as a final decision','Compliance questions need qualified experts.'],
+    ['n','Sales ops','Leave an AI agent with admin rights running on your CRM unattended','One bad instruction can change everything. Restrict permissions and supervise.'],
+    ['n','Sales ops','Use AI to generate meeting notes for activity that never happened','Falsifying records is misconduct.'],
+    ['n','Prospecting','Use a real customer\'s name or data as an example in a public forum prompt','Confidentiality breach. Use fictional examples.'],
+
+    ['s','Coaching','Ask AI to review your own draft for claims that need a source','Make it list issues instead of rewriting. You decide what to change.'],
+    ['s','Coaching','Rewrite your own message in a warmer, more empathetic tone','Your own text with no confidential data.'],
+    ['s','Coaching','Create a study guide for a product or certification exam from public material','Learning aid built from public sources.'],
+    ['s','Field sales','Brainstorm conversation starters for a trade show booth','Generic ideas, no customer data.'],
+    ['s','Prospecting','Turn a long public blog post into talking points','Public source. Check anything you will quote.'],
+    ['g','Post-sale','Write a customer-facing FAQ from your internal support docs','Control: support owner approves each answer and removes internal-only detail.'],
+    ['g','Prospecting','Use an AI research assistant that browses the web for account news','Control: read-only access, open every cited source, and keep confidential data out of the query.'],
+    ['g','Prospecting','Combine a customer\'s public earnings commentary with your CRM notes','Control: approved enterprise tool, and verify every figure.'],
+    ['g','Prospecting','Generate personalized video scripts for outreach','Control: review for accuracy and tone, and disclose AI where required.'],
+    ['g','Sales ops','Propose territory or account assignments from account data','Control: leaders review fairness and logic before adopting anything.'],
+    ['g','Post-sale','Draft replies in a shared support or sales inbox for a person to approve','Control: nothing sends until a human approves it.'],
+    ['g','Prospecting','Personalize outreach at scale from CRM fields','Control: human spot-checks every batch, no sensitive fields, and compliance with anti-spam and privacy rules.'],
+    ['g','Prospecting','Enrich account lists with AI research','Control: verify each fact and keep the source link.'],
+    ['g','Prospecting','Score or prioritize leads with AI','Control: documented criteria, bias check, and a human decides.'],
+    ['g','Prospecting','Summarize a prospect\'s public professional posts for context','Control: professional information only, and follow each platform\'s terms.'],
+    ['g','Prospecting','Draft multi-step outreach sequences','Control: a manager approves every template before launch.'],
+    ['g','Prospecting','Generate account plans from internal CRM data','Control: approved enterprise tool only.'],
+    ['g','Prospecting','Run an AI assistant that books meetings','Control: disclose AI where required, honor opt-outs, limit what it may claim.'],
+    ['g','Discovery','Transcribe and summarize customer calls','Control: recording consent, vendor retention terms approved by Legal.'],
+    ['g','Discovery','Extract action items from call transcripts','Control: rep confirms before anything is shared.'],
+    ['g','Discovery','Auto-fill qualification fields in the CRM from calls','Control: rep reviews and accepts each field.'],
+    ['g','Discovery','Suggest talk tracks during live calls','Control: disclose to participants where required, and never read suggestions blindly.'],
+    ['g','Discovery','Analyze your call library for objection patterns','Control: de-identify, and restrict access.'],
+    ['g','Discovery','Summarize a long customer email thread','Control: approved tool, and check the summary against the thread.'],
+    ['g','Proposal','Draft answers to RFPs and security questionnaires from an approved answer library','Control: subject-matter expert and Legal review every answer.'],
+    ['g','Proposal','Draft proposals from templates plus customer details','Control: a person checks pricing, scope, and terms line by line.'],
+    ['g','Proposal','Assemble slides from approved case studies','Control: only approved facts and quotes.'],
+    ['g','Proposal','Write an ROI narrative','Control: calculate numbers outside the AI and verify them.'],
+    ['g','Proposal','Translate proposals into other languages','Control: native-speaker review.'],
+    ['g','Proposal','Summarize a customer\'s contract redlines for yourself','Control: Legal makes every decision. Approved tool only.'],
+    ['g','Proposal','Draft a mutual action plan','Control: both sides review dates and owners.'],
+    ['g','Negotiation','Prepare negotiation strategy from deal context','Control: approved enterprise tool and minimal data.'],
+    ['g','Negotiation','Compare differences between competing quotes','Control: verify each figure.'],
+    ['g','Negotiation','Draft concession-request emails','Control: review tone and commitments before sending.'],
+    ['g','Post-sale','Draft renewal and expansion emails from usage data','Control: data use approved, and facts checked.'],
+    ['g','Post-sale','Summarize support tickets to spot churn risk','Control: remove personal data before processing.'],
+    ['g','Post-sale','Summarize customer feedback for a business review','Control: redact names, and check themes against the source.'],
+    ['g','Post-sale','Write customer health narratives','Control: account owner confirms every claim.'],
+    ['g','Post-sale','Write customer-facing release communications','Control: product team approval.'],
+    ['g','Sales ops','Write forecast commentary from pipeline data','Control: a leader verifies the numbers.'],
+    ['g','Sales ops','Clean and deduplicate CRM records','Control: test on a sample and keep a backup.'],
+    ['g','Sales ops','Categorize and route inbound leads','Control: audit results for bias and errors.'],
+    ['g','Sales ops','Analyze win/loss notes','Control: de-identify and verify patterns.'],
+    ['g','Sales ops','Build sales enablement content from internal documents','Control: answer only from approved sources, with citations.'],
+    ['g','Sales ops','Stand up a product-question assistant on internal docs','Control: respects document permissions and shows sources.'],
+    ['g','Sales ops','Create shared custom assistants for the team','Control: IT approves, and no confidential files uploaded without sign-off.'],
+    ['g','Sales ops','Generate marketing images or video','Control: brand and IP review, and disclose where required.'],
+    ['g','Sales ops','Use synthetic voice or avatars for outreach video','Control: consent, disclosure, and Legal approval.'],
+    ['g','Sales ops','Summarize third-party competitive reports','Control: check the license allows internal summarization.'],
+
+    ['n','Prospecting','Ask AI to guess a prospect\'s personal email address or phone number','Guesses are often wrong and may break privacy and anti-spam rules. Use approved data sources.'],
+    ['n','Proposal','Use AI to fabricate a testimonial or review','Fake endorsements are deceptive and often illegal. Use real, approved customer quotes.'],
+    ['n','Proposal','Paste another company\'s internal documents you received by mistake','Do not open or share them. Tell Legal.'],
+    ['n','Post-sale','Let an AI answer customer questions about pricing or contracts unsupervised','Binding statements need a person with authority.'],
+    ['n','Sales ops','Connect an AI agent to your inbox with permission to send and delete','Hidden instructions or mistakes can cause real damage. Start read-only with approval for outside actions.'],
+    ['n','Prospecting','Ask AI to evade spam filters or hide who is really sending','Deceptive, and it breaks sending rules.'],
+    ['n','Field sales','Trust AI-estimated drive times or distances without checking a map','AI does not see live traffic or closures, and a missed appointment costs trust. Instead: confirm the plan in a mapping app.'],
+    ['n','Negotiation','Paste a customer contract or MSA into a consumer or unapproved AI tool','Breaches confidentiality. Instead: an approved enterprise tool with Legal\'s written OK.'],
+    ['n','Sales ops','Upload a CRM export with customer personal data to a free chatbot','Exposes personal data. Instead: use the approved tool or anonymize first.'],
+    ['n','Sales ops','Enter payment card or bank details','Payment data never goes into AI tools.'],
+    ['n','Post-sale','Paste patient or health information without a signed agreement','Regulated data. Needs a business associate agreement and Legal sign-off.'],
+    ['n','Negotiation','Share non-public pricing, margins, or discount matrices in an unapproved tool','Competitive and contractual risk.'],
+    ['n','Proposal','Paste unreleased roadmap or NDA material','Breaks your NDA obligations.'],
+    ['n','Sales ops','Share passwords, API keys, or access tokens','Security incident waiting to happen.'],
+    ['n','Prospecting','Auto-send unreviewed AI emails at scale','One error replicates thousands of times. Instead: review a sample of every batch.'],
+    ['n','Proposal','Invent customer references, quotes, case studies, or statistics','Fabrication. AI can produce convincing fakes, so use only verified material.'],
+    ['n','Negotiation','Let AI set prices, discounts, or contract commitments','Binding commitments need a human with authority.'],
+    ['n','Proposal','Give customers legal, tax, or regulatory advice from AI output','Needs a qualified professional.'],
+    ['n','Proposal','State security or compliance certifications from AI memory','Wrong claims create liability. Use the vendor\'s current documents.'],
+    ['n','Discovery','Record or transcribe calls with an AI note-taker without consent','Violates recording laws in many places.'],
+    ['n','Prospecting','Scrape personal data from social profiles to build individual profiles','Privacy-law risk and platform-terms violation.'],
+    ['n','Prospecting','Build lead lists from scraped personal emails and mass-mail them','Anti-spam and privacy violations.'],
+    ['n','Prospecting','Clone an executive\'s or customer\'s voice or likeness without consent','Impersonation and fraud risk.'],
+    ['n','Discovery','Pass an AI off as a human when disclosure is required or someone sincerely asks','Deceptive, and illegal in some places.'],
+    ['n','Negotiation','Use AI to fabricate urgency, scarcity, or false claims','Deceptive practice.'],
+    ['n','Prospecting','Target or score people by protected traits such as age, race, or religion','Discrimination risk.'],
+    ['n','Sales ops','Submit an AI forecast as your commit without checking the numbers','You own the number, not the tool.'],
+    ['n','Prospecting','Upload a competitor\'s confidential material you were not meant to have','Legal exposure. Report it to Legal instead.'],
+    ['n','Proposal','Trust AI arithmetic in a quote or ROI without checking','Models can miscalculate. Use a spreadsheet and verify.'],
+    ['n','Sales ops','Feed customer data into a tool that trains models without contract rights','Contract and privacy breach.'],
+    ['n','Sales ops','Use personal AI accounts for work data','Shadow IT. The company loses control and visibility.'],
+    ['n','Sales ops','Bypass security or data-loss controls to use AI faster','Policy violation and incident risk.'],
+    ['n','Proposal','Submit AI-written security questionnaire answers without verification','These are formal attestations.'],
+    ['n','Post-sale','Let AI write incident, outage, or layoff communications alone','Sensitive. Needs communications and Legal review.'],
+    ['n','Sales ops','Give an AI agent unrestricted write access to the CRM or email','One bad instruction can change or send everything. Scope permissions tightly.']
+  ];
+
+  var CHECK = [
+    'Ask Legal what data, customers, and regions are off limits for AI tools.',
+    'Ask IT which AI tools are approved and which plans are covered by a contract.',
+    'Confirm in writing each vendor\'s training, retention, and subprocessor terms.',
+    'Write a one-page acceptable-use policy using the safe, guardrails, and not-safe tiers.',
+    'Confirm call-recording and transcription consent rules for every region you sell in.',
+    'Start with a pilot team and three safe use cases.',
+    'Name an owner who reviews outputs and tracks errors during the pilot.',
+    'Test the same three real tasks across two or more models and compare results.',
+    'Add verification steps for numbers, claims, and quotes before anything reaches a customer.',
+    'Train reps on what never goes into a tool.',
+    'Decide how AI use is disclosed to customers where required.',
+    'Review results after 30 days with Legal and IT before expanding.'
+  ];
+
+  function $(id) { return document.getElementById(id); }
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
+  /* Tabs */
+  var tabs = document.querySelectorAll('.tab[data-tab]');
+  var PRIMARY = { home: 1, cases: 1, quiz: 1, game: 1 };
+  tabs.forEach(function (t) { if (!PRIMARY[t.dataset.tab]) t.classList.add('sec'); });
+  function buildSheet() {
+    var g = $('sheetGrid'); g.innerHTML = '';
+    tabs.forEach(function (t) {
+      var b = document.createElement('button');
+      b.className = 'sheetbtn'; b.textContent = t.textContent; b.dataset.tab = t.dataset.tab;
+      b.setAttribute('aria-current', String(t.getAttribute('aria-selected') === 'true'));
+      b.addEventListener('click', function () { showTab(t.dataset.tab); });
+      g.appendChild(b);
+    });
+  }
+  function toggleSheet(open) {
+    var s = $('menuSheet'); var show = open === undefined ? s.hidden : open;
+    if (show) buildSheet();
+    s.hidden = !show; $('menuBtn').setAttribute('aria-expanded', String(show));
+    $('menuBtn').textContent = show ? 'Close' : 'Menu';
+  }
+  $('menuBtn').addEventListener('click', function () { toggleSheet(); });
+  function showTab(name) {
+    try { if (name !== 'game') gameLeave(); } catch (e) {}
+    toggleSheet(false);
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.tab === name)); });
+    ['home','why','basics','types','cases','prompts','playbook','gtm','practices','quiz','game','safety','compare','vendors','check'].forEach(function (id) { $(id).hidden = id !== name; });
+    window.scrollTo(0, 0);
+    try { document.querySelector('.tab[aria-selected="true"]').scrollIntoView({ inline: 'center', block: 'nearest' }); } catch (e) {}
+    store('saf-tab', name);
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { showTab(t.dataset.tab); }); });
+
+  /* Compare */
+  var selected = {}; MODELS.forEach(function (m) { selected[m.id] = true; });
+  function renderChips() {
+    var box = $('modelChips'); box.innerHTML = '';
+    MODELS.forEach(function (m) {
+      var b = document.createElement('button');
+      b.className = 'chip'; b.textContent = m.name; b.setAttribute('aria-pressed', String(!!selected[m.id]));
+      b.addEventListener('click', function () {
+        var on = Object.keys(selected).filter(function (k) { return selected[k]; }).length;
+        if (selected[m.id] && on <= 1) return;
+        selected[m.id] = !selected[m.id]; renderChips(); renderTable();
+      });
+      box.appendChild(b);
+    });
+  }
+  function renderTable() {
+    var ms = MODELS.filter(function (m) { return selected[m.id]; });
+    var h = '<thead><tr><th scope="col"></th>' + ms.map(function (m) { return '<th scope="col">' + m.name + '</th>'; }).join('') + '</tr></thead><tbody>';
+    ROWLABELS.forEach(function (r) {
+      h += '<tr><th scope="row">' + r[1] + '</th>' + ms.map(function (m) { return '<td>' + m.rows[r[0]] + '</td>'; }).join('') + '</tr>';
+    });
+    $('cmpTable').innerHTML = h + '</tbody>';
+  }
+  $('situation').addEventListener('change', function (e) { $('situationOut').textContent = SITUATIONS[e.target.value] || ''; });
+
+  /* Use cases */
+  var fTier = null, fStage = null, fType = null, q = '';
+  var TYPENAMES = ['Augmentation', 'Analysis', 'Automation'];
+  var RE_AUTO = /\bauto[- ]|at scale|sequences|books meetings|deduplicate|route inbound|\bagent\b|transcri|extract action|scrape|mass-mail|tool that trains|bypass|classify|convert|capture|unattended|reply to customer complaints|without review|on a customer\'s behalf|fake accounts|generate follow-up|generate meeting notes/i;
+  var RE_ANALYSIS = /summar|analy|score|forecast|compare|comparison|differences|rank|prioriti|pattern|enrich|health|churn|drive times|arithmetic|calculat|infer|condense|next best|stakeholder map|business case|eligib|screen out|win\/loss/i;
+  UC.forEach(function (u) { u.push(RE_AUTO.test(u[2]) ? 'Automation' : (RE_ANALYSIS.test(u[2]) ? 'Analysis' : 'Augmentation')); });
+  function chip(label, cls, pressed, fn) {
+    var b = document.createElement('button');
+    b.className = 'chip ' + cls; b.textContent = label; b.setAttribute('aria-pressed', String(pressed));
+    b.addEventListener('click', fn); return b;
+  }
+  function renderFilters() {
+    var tc = $('tierChips'); tc.innerHTML = '';
+    tc.appendChild(chip('All tiers', '', fTier === null, function () { fTier = null; refresh(); }));
+    ['s','g','n'].forEach(function (k) {
+      var n = UC.filter(function (u) { return u[0] === k; }).length;
+      tc.appendChild(chip(TIERS[k] + ' (' + n + ')', 't-' + k, fTier === k, function () { fTier = fTier === k ? null : k; refresh(); }));
+    });
+    var yc = $('typeChips'); yc.innerHTML = '';
+    yc.appendChild(chip('All types', '', fType === null, function () { fType = null; refresh(); }));
+    TYPENAMES.forEach(function (t) {
+      var n = UC.filter(function (u) { return u[4] === t; }).length;
+      yc.appendChild(chip(t + ' (' + n + ')', '', fType === t, function () { fType = fType === t ? null : t; refresh(); }));
+    });
+    var sc = $('stageChips'); sc.innerHTML = '';
+    sc.appendChild(chip('All stages', '', fStage === null, function () { fStage = null; refresh(); }));
+    STAGES.forEach(function (s) {
+      sc.appendChild(chip(s, '', fStage === s, function () { fStage = fStage === s ? null : s; refresh(); }));
+    });
+  }
+  function renderList() {
+    var needle = q.trim().toLowerCase();
+    var items = UC.filter(function (u) {
+      return (!fTier || u[0] === fTier) && (!fStage || u[1] === fStage) && (!fType || u[4] === fType) &&
+        (!needle || (u[2] + ' ' + u[3]).toLowerCase().indexOf(needle) !== -1);
+    });
+    $('count').textContent = items.length + ' of ' + UC.length + ' use cases';
+    $('ucList').innerHTML = items.map(function (u) {
+      var label = u[0] === 'n' ? 'Why not' : (u[0] === 'g' ? 'Guardrail' : 'Why safe');
+      var note = u[3];
+      if (u[0] === 'g') note = note.replace(/^Control:\s*/, '');
+      return '<article class="uc ' + u[0] + '"><div class="uc-top"><div class="uc-title">' + u[2] + '</div><span class="tag ' + u[0] + '">' + TIERS[u[0]] + '</span></div>' +
+        '<div class="uc-meta"><span class="stage">' + u[1] + '</span><span class="tag type">' + u[4] + '</span></div>' +
+        '<p class="uc-note"><b>' + label + ':</b> ' + note + '</p></article>';
+    }).join('') || '<p class="muted">No use cases match. Clear a filter or change the search.</p>';
+  }
+  function refresh() { renderFilters(); renderList(); }
+  $('search').addEventListener('input', function (e) { q = e.target.value; renderList(); });
+
+  /* Checklist */
+  var done = {};
+  try { done = JSON.parse(store('saf-check') || '{}') || {}; } catch (e) { done = {}; }
+  function renderCheck() {
+    $('checkList').innerHTML = CHECK.map(function (t, i) {
+      return '<div class="check"><input type="checkbox" id="ck' + i + '"' + (done[i] ? ' checked' : '') + '><label for="ck' + i + '">' + t + '</label></div>';
+    }).join('');
+    CHECK.forEach(function (_, i) {
+      $('ck' + i).addEventListener('change', function (e) {
+        done[i] = e.target.checked; store('saf-check', JSON.stringify(done)); progress();
+      });
+    });
+    progress();
+  }
+  function progress() {
+    var n = CHECK.filter(function (_, i) { return done[i]; }).length;
+    $('bar').style.width = Math.round(n / CHECK.length * 100) + '%';
+    $('barText').textContent = n + ' of ' + CHECK.length + ' steps done';
+  }
+
+  /* Game: Light Sorter */
+  var GS = { st: 'title', lives: 3, score: 0, level: 1, combo: 0, correct: 0, inLevel: 0, deck: [], card: null,
+             t0: 0, dur: 9000, raf: 0, hints: 3, hintUsed: false, missed: [], seen: 0,
+             chill: false, sound: false };
+  try { GS.chill = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var TIERLABEL = { s: 'GO (safe)', g: 'CAUTION (guardrails)', n: 'STOP (not safe)' };
+  var BOT = ['....kkkk....', '..kkbbbbkk..', '.kbbbbbbbbk.', '.kbwwbbwwbk.', '.kbwkbbwkbk.', '.kbbbbbbbbk.',
+             '.kbbmmmmbbk.', '..kkbbbbkk..', '...kbbbbk...', '..kbbbbbbk..', '..kbk..kbk..', '..kkk..kkk..'];
+  var BOT_COL = { k: '#0b1020', b: '#5fc0d9', w: '#ffffff', m: '#0b1020' };
+  var audioCtx = null;
+  function beep(freq, dur) {
+    if (!GS.sound) return;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = 'square'; o.frequency.value = freq; g.gain.value = 0.04;
+      o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + dur);
+    } catch (e) {}
+  }
+  function drawBot(mood) {
+    var rows = BOT.slice();
+    if (mood === 'happy') { rows[5] = '.kbmbbbbmbk.'; }
+    if (mood === 'sad') { rows[5] = '.kbbmmmmbbk.'; rows[6] = '.kbmbbbbmbk.'; }
+    var c = $('gBot').getContext('2d'); c.clearRect(0, 0, 12, 12);
+    rows.forEach(function (row, y) {
+      for (var x = 0; x < 12; x++) { var ch = row.charAt(x); if (BOT_COL[ch]) { c.fillStyle = BOT_COL[ch]; c.fillRect(x, y, 1, 1); } }
+    });
+  }
+  function shuffleArr(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function bestScore() { return parseInt(store('saf-game-best') || '0', 10) || 0; }
+  function gHud() {
+    $('gScore').textContent = GS.score; $('gLevel').textContent = GS.level;
+    $('gCombo').textContent = 'x' + Math.min(GS.combo + 1, 5);
+    $('gBest').textContent = Math.max(bestScore(), GS.score);
+    var l = ''; if (GS.chill) l = '<span style="font-size:10px">CHILL</span>'; else for (var i = 0; i < GS.lives; i++) l += '<span class="life"></span>';
+    $('gLives').innerHTML = l;
+    $('gHint').textContent = 'Ask Legal and IT (' + GS.hints + ')';
+    $('gMode').textContent = 'Mode: ' + (GS.chill ? 'Chill' : 'Arcade');
+    $('gSound').textContent = 'Sound: ' + (GS.sound ? 'on' : 'off');
+  }
+  function gOverlay(html) { var o = $('gOverlay'); o.innerHTML = html; o.hidden = false; }
+  function setBins(on) { document.querySelectorAll('.bin').forEach(function (b) { b.disabled = !on; }); $('gHint').disabled = !on || GS.hints <= 0 || GS.hintUsed; $('gEnd').disabled = (GS.st === 'title' || GS.st === 'over'); }
+  function noteText(c) { return c[3].replace(/^Control:\s*/, ''); }
+  function gTitle() {
+    GS.st = 'title'; $('gCard').hidden = true; setBins(false); drawBot('idle'); gHud();
+    gOverlay('<div class="ovt big">LIGHT SORTER</div><p>Send each AI use case to GO, CAUTION, or STOP.</p><p>Assume you use a company-approved tool.</p><button class="gbtn big" id="gStart">PRESS START</button>' +
+      '<p style="color:#8fa5b3">Best: ' + bestScore() + '</p>');
+    $('gStart').addEventListener('click', gStart);
+  }
+  function gStart() {
+    GS.lives = 3; GS.score = 0; GS.level = 1; GS.combo = 0; GS.correct = 0; GS.inLevel = 0; GS.hints = 3; GS.missed = []; GS.seen = 0;
+    GS.deck = shuffleArr(UC.slice());
+    $('gOverlay').hidden = true; drawBot('idle');
+    $('gLearn').textContent = 'Go! Sort the card before it lands.';
+    nextCard();
+  }
+  function nextCard() {
+    if (!GS.deck.length) GS.deck = shuffleArr(UC.slice());
+    GS.card = GS.deck.pop(); GS.hintUsed = false;
+    var el = $('gCard'); el.hidden = false; el.classList.remove('ok'); el.style.transform = 'translateY(0px)';
+    $('gStage').textContent = GS.card[1];
+    $('gText').textContent = GS.card[2];
+    GS.dur = Math.max(3500, 9000 - (GS.level - 1) * 900);
+    GS.t0 = performance.now(); GS.st = 'play';
+    setBins(true); gHud();
+    cancelAnimationFrame(GS.raf); GS.raf = requestAnimationFrame(gTick);
+  }
+  function gTick(ts) {
+    if (GS.st !== 'play') return;
+    var el = $('gCard'), H = $('gScreen').clientHeight, ch = el.offsetHeight;
+    if (GS.chill) { el.style.transform = 'translateY(' + Math.max(8, (H - ch) / 2 - 10) + 'px)'; return; }
+    var p = (ts - GS.t0) / GS.dur;
+    if (p >= 1) { gResolve(null); return; }
+    el.style.transform = 'translateY(' + (p * (H - ch)) + 'px)';
+    GS.raf = requestAnimationFrame(gTick);
+  }
+  function gResolve(choice) {
+    if (GS.st !== 'play') return;
+    cancelAnimationFrame(GS.raf);
+    var c = GS.card, right = choice === c[0];
+    setBins(false);
+    if (right) {
+      GS.correct++; GS.combo++; GS.inLevel++;
+      var pts = 10 * Math.min(GS.combo, 5); GS.score += pts;
+      var up = false;
+      if (GS.inLevel >= 5) { GS.inLevel = 0; GS.level++; up = true; }
+      $('gCard').classList.add('ok'); drawBot('happy'); beep(660, 0.07); setTimeout(function () { beep(880, 0.09); }, 80);
+      $('gLearn').innerHTML = '<b>Correct, +' + pts + '.</b> ' + c[2] + ' is ' + TIERLABEL[c[0]] + '. <span class="muted">' + noteText(c) + '</span>' + (up ? ' <b>Level up! Cards fall faster.</b>' : '');
+      if (GS.score > bestScore()) store('saf-game-best', String(GS.score));
+      gHud(); GS.st = 'wait';
+      setTimeout(function () { if (GS.st === 'wait') nextCard(); }, 500);
+    } else {
+      GS.combo = 0; GS.missed.push(c);
+      if (!GS.chill) GS.lives--;
+      drawBot('sad'); beep(180, 0.25); gHud(); GS.st = 'feedback';
+      var over = !GS.chill && GS.lives <= 0;
+      gOverlay('<div class="ovt bad">' + (choice === null ? 'TOO SLOW!' : 'NOT QUITE') + '</div><p>' + c[2] + '</p><p>Right answer: <b>' + TIERLABEL[c[0]] + '</b></p><p class="why">' + noteText(c) + '</p><button class="gbtn big" id="gNext">' + (over ? 'SEE RESULT' : 'CONTINUE') + '</button>');
+      $('gNext').addEventListener('click', function () { if (over) gOver(); else { $('gOverlay').hidden = true; nextCard(); } });
+      $('gNext').focus();
+    }
+  }
+  function rankFor(n) { return n >= 35 ? 'AI CHAMPION' : n >= 20 ? 'CLOSER' : n >= 8 ? 'REP' : 'INTERN'; }
+  function gOver() {
+    cancelAnimationFrame(GS.raf); GS.st = 'over'; $('gCard').hidden = true; setBins(false);
+    var best = bestScore(); if (GS.score > best) { best = GS.score; store('saf-game-best', String(best)); }
+    var acc = GS.seen ? Math.round(GS.correct / GS.seen * 100) : 0;
+    var rev = GS.missed.slice(-3).map(function (m) { return '<p class="why"><b>' + m[2] + '</b><br>' + TIERLABEL[m[0]] + '. ' + noteText(m) + '</p>'; }).join('');
+    gHud();
+    gOverlay('<div class="ovt big">GAME OVER</div><p>Score ' + GS.score + ' | Best ' + best + '</p><p>Rank: <b>' + rankFor(GS.correct) + '</b></p><p>' + GS.correct + ' correct, ' + acc + '% accuracy</p>' +
+      (rev ? '<p style="color:#f2b632">REVIEW</p>' + rev : '') +
+      '<button class="gbtn big" id="gAgain">PLAY AGAIN</button><button class="gbtn big" data-go="quiz">TAKE THE QUIZ</button>');
+    $('gAgain').addEventListener('click', gStart);
+    drawBot(acc >= 70 ? 'happy' : 'idle');
+  }
+  function gameLeave() {
+    if (GS.st === 'play') {
+      cancelAnimationFrame(GS.raf); GS.st = 'paused'; setBins(false);
+      gOverlay('<div class="ovt">PAUSED</div><button class="gbtn big" id="gResume">RESUME</button>');
+      $('gResume').addEventListener('click', function () { $('gOverlay').hidden = true; GS.t0 = performance.now(); GS.st = 'play'; setBins(true); GS.raf = requestAnimationFrame(gTick); });
+    }
+  }
+  function gameInit() {
+    document.querySelectorAll('.bin').forEach(function (b) { b.addEventListener('click', function () { gResolve(b.dataset.tier); }); });
+    $('gHint').addEventListener('click', function () {
+      if (GS.st !== 'play' || GS.hints <= 0 || GS.hintUsed) return;
+      var wrong = ['s', 'g', 'n'].filter(function (t) { return t !== GS.card[0]; });
+      var kill = wrong[Math.floor(Math.random() * wrong.length)];
+      document.querySelector('.bin[data-tier="' + kill + '"]').disabled = true;
+      GS.hints--; GS.hintUsed = true; gHud(); $('gHint').disabled = true;
+      $('gLearn').textContent = 'Legal and IT crossed out one wrong answer. Asking early beats guessing.';
+    });
+    $('gMode').addEventListener('click', function () {
+      if (GS.st !== 'title' && GS.st !== 'over') return;
+      GS.chill = !GS.chill; gHud();
+    });
+    $('gSound').addEventListener('click', function () { GS.sound = !GS.sound; gHud(); beep(520, 0.08); });
+    $('gEnd').addEventListener('click', function () { if (GS.st === 'play' || GS.st === 'wait' || GS.st === 'feedback') gOver(); });
+    document.addEventListener('keydown', function (e) {
+      if ($('game').hidden || GS.st !== 'play') return;
+      var map = { '1': 's', 'ArrowLeft': 's', '2': 'g', 'ArrowDown': 'g', '3': 'n', 'ArrowRight': 'n' };
+      if (map[e.key]) { e.preventDefault(); var b = document.querySelector('.bin[data-tier="' + map[e.key] + '"]'); if (!b.disabled) gResolve(map[e.key]); }
+    });
+    gTitle();
+  }
+
+  /* Vendor pages: facts, check dates, and citations */
+  var CHECKED_LABEL = 'October 14, 2026';
+  var SOURCES = {
+    s1: { pub: 'Anthropic', t: 'Is my data used for model training? (Anthropic Privacy Center)', u: 'https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training', how: 'direct', note: 'Page dated August 18, 2026.' },
+    s2: { pub: 'Anthropic', t: 'Updates to our consumer terms', u: 'https://www.anthropic.com/news/updates-to-our-consumer-terms', how: 'direct', note: 'Announced August 28, 2025.' },
+    s3: { pub: 'OpenAI', t: 'Business data privacy, security, and compliance', u: 'https://openai.com/business-data/', how: 'excerpt', note: 'The page blocked automated access. Wording read from a search excerpt of the page.' },
+    s4: { pub: 'Google', t: 'Generative AI in Google Workspace Privacy Hub', u: 'https://knowledge.workspace.google.com/admin/gemini/generative-ai-in-google-workspace-privacy-hub', how: 'direct', note: 'Page dated October 6, 2026.' },
+    s5: { pub: 'xAI', t: 'Frequently Asked Questions (Enterprise)', u: 'https://x.ai/legal/faq-enterprise', how: 'excerpt', note: 'The page blocked automated access. Wording read from a search excerpt of the page.' },
+    s6: { pub: 'Amazon Web Services', t: 'Amazon Bedrock: Data protection', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html', how: 'direct', note: 'AWS documentation.' },
+    s7: { pub: 'Amazon Web Services', t: 'Amazon Bedrock: Data retention', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html', how: 'direct', note: 'AWS documentation.' },
+    s8: { pub: 'Amazon Web Services', t: 'Amazon Bedrock: Model lifecycle (Legacy)', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html', how: 'direct', note: 'AWS documentation covering models launched before September 7, 2026.' },
+    s9: { pub: 'Meta', t: 'Llama 4 Community License Agreement', u: 'https://www.llama.com/llama4/license/', how: 'direct', note: 'Redirects to dev.meta.ai. Version effective April 5, 2025.' },
+    s10: { pub: 'Microsoft', t: 'Data, Privacy, and Security for Microsoft Copilot', u: 'https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy', how: 'direct', note: 'Page metadata shows an update on October 8, 2026.' },
+    s11: { pub: 'Perplexity', t: 'Data collection at Perplexity (Help Center)', u: 'https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity', how: 'direct', note: 'Article dated March 3, 2026.' }
+  };
+  var VENDORS = [
+    { id: 'claude', name: 'Anthropic Claude', status: 'direct', vendorDate: 'Anthropic privacy page dated August 18, 2026.',
+      summary: 'Claude is available through Claude apps, an API, and cloud marketplaces. Data handling depends on whether you are on a commercial plan or a consumer plan.',
+      claims: [
+        ['Anthropic states that by default it does not use inputs or outputs from its commercial products to train its models.', ['s1']],
+        ['Feedback you submit, or an explicit opt-in, can be used for training. Anthropic says feedback is kept for up to five years and de-linked from user and customer IDs before use.', ['s1']],
+        ['Free, Pro, and Max users choose whether their data is used to improve Claude. Opting in extends retention to five years. Otherwise the existing 30-day period applies, and the change covers new or resumed chats and coding sessions.', ['s2']],
+        ['Commercial Terms services, including Claude for Work (Team and Enterprise) and API use through Amazon Bedrock and Google Cloud Vertex AI, are excluded from the consumer changes.', ['s2']]
+      ],
+      watch: ['Confirm which plan each rep is actually on. A personal account is a consumer plan.', 'Neither page covers data residency. Ask for it in writing if it matters to you.'],
+      ask: ['Is our organization on Commercial Terms?', 'What retention and zero-data-retention options does our contract offer?', 'Where is our data processed?'] },
+    { id: 'openai', name: 'OpenAI GPT', status: 'excerpt', vendorDate: 'Vendor page date not captured.',
+      summary: 'OpenAI offers ChatGPT plans, an API, and cloud availability through partners. Business products have different terms from personal accounts.',
+      claims: [
+        ['OpenAI states that by default it does not use data from ChatGPT Enterprise, ChatGPT Business, ChatGPT Edu, or its API platform, including inputs or outputs, for training or improving its models.', ['s3']],
+        ['OpenAI states that your organization\'s data remains confidential and owned by you, and that API customers can opt in to help improve models.', ['s3']]
+      ],
+      watch: ['The official page blocked automated access, so confirm the exact wording on openai.com.', 'Personal ChatGPT accounts follow different terms than business plans.'],
+      ask: ['Which plan covers our team, and does it include a data processing addendum?', 'What are the retention controls for our workspace?', 'Which compliance reports can you provide?'] },
+    { id: 'gemini', name: 'Google Gemini', status: 'direct', vendorDate: 'Google privacy hub dated October 6, 2026 (footer shows an update on October 13, 2026).',
+      summary: 'Gemini is built into Google Workspace and also available through the Gemini app and Google Cloud.',
+      claims: [
+        ['Google states that Workspace does not use customer data for training models without the customer\'s prior permission or instruction.', ['s4']],
+        ['Google states that chats and uploaded files in the Gemini app are not reviewed by human reviewers.', ['s4']],
+        ['Google lists SOC 1, 2, and 3 and ISO certifications for Gemini, including ISO 42001, FedRAMP High for Gemini in Workspace apps and the Gemini app, and support for HIPAA workloads.', ['s4']],
+        ['Gemini Notebook and Gemini in Chrome are listed as currently lacking ISO, SOC, and FedRAMP certifications and as not covered by the HIPAA business associate agreement.', ['s4']]
+      ],
+      watch: ['Some Gemini features have different certification coverage than the main Workspace apps.', 'Organization data-region settings do not apply to Gemini Notebook data, according to the page.'],
+      ask: ['Which Gemini features are enabled for our edition?', 'Which of those are covered by our compliance agreements?', 'Can we restrict features we have not reviewed?'] },
+    { id: 'grok', name: 'xAI Grok', status: 'excerpt', vendorDate: 'The FAQ excerpt references September 2024 for HIPAA, which may be out of date.',
+      summary: 'Grok is available in a consumer app, through X, via an API, and through Business and Enterprise plans.',
+      claims: [
+        ['xAI\'s enterprise FAQ states that it does not use enterprise or API data, inputs, or outputs for training its models.', ['s5']],
+        ['The FAQ states that the customer retains rights to the inputs they provide and the outputs they receive, and that conversations are deleted after 30 days, subject to exceptions for legal retention or flagged potential violations.', ['s5']],
+        ['The FAQ states that xAI signs a data processing addendum with enterprise customers, and an excerpt says Grok for enterprise could not support HIPAA workloads. That excerpt appears dated, so confirm the current position.', ['s5']]
+      ],
+      watch: ['The page blocked automated access, so every statement here should be confirmed on x.ai.', 'Consumer app terms differ from enterprise terms. Do not use personal accounts for work data.'],
+      ask: ['Which terms apply to our plan?', 'What is the current position on regulated data such as health data?', 'Who is the contracting entity?'] },
+    { id: 'nova', name: 'Amazon Nova', status: 'direct', vendorDate: 'AWS documentation pages carry no date. Lifecycle page covers models launched before September 7, 2026.',
+      summary: 'Nova models are used through Amazon Bedrock inside your AWS account. They are typically set up by developers and IT, not by individual reps.',
+      claims: [
+        ['AWS states that Bedrock gives you explicit control over whether prompts and outputs from inference requests are retained, using modes such as none, default, and aws_review.', ['s7']],
+        ['In none mode, AWS says no request or response data is written to durable storage by AWS or shared with the model provider. In default mode the model\'s policy applies and AWS may retain data for safety and abuse prevention.', ['s7']],
+        ['AWS states that model providers do not have access to Bedrock logs or to customer prompts and completions, because models run in AWS-operated deployment accounts.', ['s6']],
+        ['AWS lists Nova Canvas, Nova Reel, and Nova Sonic v1 as having reached end-of-life, with end-of-life dates of September 14 and September 30, 2026.', ['s8']],
+        ['Models in the Legacy state cannot be adopted by new customers, and existing customers may lose access after 15 days of inactivity.', ['s8']]
+      ],
+      watch: ['The model lineup changes. Check the lifecycle page before building on a model.', 'Retention depends on the mode and the model, so check the model card for each model you use.'],
+      ask: ['Which Nova models are Active for our regions?', 'What retention mode applies to our account?', 'What is the notice period before a model we use is retired?'] },
+    { id: 'llama', name: 'Meta Llama', status: 'direct', vendorDate: 'Llama 4 license version effective April 5, 2025.',
+      summary: 'Llama models are open-weight and can be run in your own environment or through cloud providers. Meta\'s consumer assistant is a separate product.',
+      claims: [
+        ['The Llama 4 Community License grants a non-exclusive, worldwide, non-transferable, royalty-free limited license. It is a custom Meta agreement.', ['s9']],
+        ['If the licensee\'s products exceeded 700 million monthly active users in the preceding calendar month on the release date, the licensee must request a license from Meta, which Meta may grant at its sole discretion.', ['s9']],
+        ['Anyone distributing Llama materials or products containing them must prominently display "Built with Llama" and include a notice file. Models created or improved using Llama materials or outputs must have a name beginning with "Llama".', ['s9']],
+        ['The license terminates if the licensee sues Meta over IP claims related to Llama, and California law governs disputes.', ['s9']],
+        ['On Amazon Bedrock, AWS lists Llama 4 Scout and Maverick as Legacy since September 30, 2026, with an end-of-life date of March 30, 2027.', ['s8']]
+      ],
+      watch: ['You own the security, hosting, and safety work when you run the model yourself.', 'This is a summary of the license text, not legal advice. Have counsel read the full agreement.'],
+      ask: ['Which license version applies to the exact model we use?', 'Do our distribution and naming plans meet the attribution terms?', 'Who maintains and patches the deployment?'] },
+    { id: 'copilot', name: 'Microsoft Copilot', status: 'direct', vendorDate: 'Microsoft page metadata shows an update on October 8, 2026.',
+      summary: 'Microsoft Copilot works inside Microsoft 365 apps such as Outlook, Teams, Word, and Excel, and is grounded in content the user can already access.',
+      claims: [
+        ['Microsoft states that prompts, responses, and data accessed through Microsoft Graph are not used to train foundation LLMs, including those used by Microsoft Copilot.', ['s10']],
+        ['Copilot only surfaces organizational data to which individual users have at least view permission, so existing permissions in services such as SharePoint determine what appears.', ['s10']],
+        ['Microsoft offers third-party models from Anthropic and OpenAI as subprocessors in Copilot. Admins can decide whether to use them, and models provided by Anthropic are currently excluded from the EU Data Boundary.', ['s10']],
+        ['Microsoft lists compliance offerings and certifications including GDPR, ISO 27001, HIPAA, and ISO 42001, and says user interaction data is stored encrypted with admin retention controls.', ['s10']]
+      ],
+      watch: ['Because Copilot honors existing permissions, overshared files can show up in answers. Clean up access before rollout.', 'Agents and connected tools have their own terms, so review them before enabling.'],
+      ask: ['Which third-party models are enabled in our tenant?', 'How are sensitive files labeled and protected?', 'What retention policy applies to Copilot interactions?'] },
+    { id: 'perplexity', name: 'Perplexity', status: 'direct', vendorDate: 'Perplexity help article dated March 3, 2026.',
+      summary: 'Perplexity is an answer engine that searches the web and cites sources. Consumer and enterprise plans have different data terms.',
+      claims: [
+        ['Perplexity states that Enterprise data is never used for AI training, and that uploaded files on Enterprise Pro and Max plans are kept for 7 days.', ['s11']],
+        ['On Free, Pro, and Max plans, AI data retention is on by default. Users can opt out in Preferences, but opting out applies only to data collected afterward.', ['s11']],
+        ['If an organization downgrades from an Enterprise plan to a non-Enterprise plan, consumer defaults apply and users must opt out manually.', ['s11']]
+      ],
+      watch: ['Open the cited sources. A citation does not guarantee the page says what the answer claims.', 'Do not use consumer plans for confidential work data.'],
+      ask: ['Which plan covers our team?', 'Can we set custom retention and force deletion?', 'What are the terms for API and search products?'] }
+  ];
+  function vendorById(id) { return VENDORS.filter(function (v) { return v.id === id; })[0]; }
+  MODELS.forEach(function (m) {
+    var v = vendorById(m.id);
+    m.rows.src = v ? (v.status === 'direct' ? 'Checked at source on ' + CHECKED_LABEL + '. See the Vendors tab for citations.' : 'Checked ' + CHECKED_LABEL + ', excerpt only. See the Vendors tab.') : 'Not checked.';
+  });
+  var vIdx = 0;
+  function renderVendor() {
+    var vc = $('vendorChips'); vc.innerHTML = '';
+    VENDORS.forEach(function (v, i) { vc.appendChild(chip(v.name, '', vIdx === i, function () { vIdx = i; renderVendor(); })); });
+    var v = VENDORS[vIdx], used = [], num = {};
+    function ref(ids) { return ids.map(function (id) { if (!(id in num)) { used.push(id); num[id] = used.length; } return '<sup>[' + num[id] + ']</sup>'; }).join(''); }
+    var claims = v.claims.map(function (c) { return '<li>' + c[0] + ' ' + ref(c[1]) + '</li>'; }).join('');
+    var tag = v.status === 'direct' ? '<span class="tag s">Checked at source</span>' : '<span class="tag g">Excerpt only</span>';
+    var srcs = used.map(function (id, i) {
+      var s = SOURCES[id];
+      return '<li><b>[' + (i + 1) + ']</b> ' + s.pub + ', <a href="' + s.u + '" target="_blank" rel="noopener noreferrer">' + s.t + '</a>. ' + s.note + ' ' + (s.how === 'direct' ? 'Opened and read' : 'Excerpt read') + ' ' + CHECKED_LABEL + '.</li>';
+    }).join('');
+    $('vendorPage').innerHTML =
+      '<div class="uc-top"><h3>' + v.name + '</h3>' + tag + '</div>' +
+      '<p class="muted" style="margin-top:8px">' + v.summary + '</p>' +
+      '<p class="count" style="margin-top:10px">Last checked: ' + CHECKED_LABEL + '. ' + v.vendorDate + '</p>' +
+      '<h3 style="margin-top:18px;font-size:16px">What the vendor says</h3><ul style="margin:8px 0 0;padding-left:18px">' + claims + '</ul>' +
+      '<h3 style="margin-top:18px;font-size:16px">Watch out for</h3><ul style="margin:8px 0 0;padding-left:18px">' + v.watch.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul>' +
+      '<h3 style="margin-top:18px;font-size:16px">Ask the vendor</h3><ul style="margin:8px 0 0;padding-left:18px">' + v.ask.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul>' +
+      '<h3 style="margin-top:18px;font-size:16px">Sources</h3><ul class="small" style="margin:8px 0 0;padding-left:18px">' + srcs + '</ul>';
+  }
+
+  /* Go-to-market */
+  var ROLES = [
+    { n: 'SDR / BDR', t: 'Opens conversations at volume',
+      aug: ['Research an account and role before outreach', 'Draft and tighten first-touch messages', 'Practice objection handling'],
+      auto: ['Log activity and update fields', 'Route replies and book meetings with limits', 'Run approved sequences'],
+      ana: ['Spot which messages and segments get replies', 'Rank accounts by fit and signals', 'Summarize intent signals'],
+      watch: 'Volume without relevance damages the brand and may break anti-spam laws. Review samples of every batch.',
+      kpi: ['Reply quality', 'Meetings that become qualified opportunities', 'Time spent researching'] },
+    { n: 'Account Executive', t: 'Runs deals and closes',
+      aug: ['Prepare for calls and role-play tough buyers', 'Draft follow-ups, proposals, and mutual plans', 'Map stakeholders and questions'],
+      auto: ['Capture notes and next steps', 'Update deal fields after calls', 'Schedule follow-ups'],
+      ana: ['Flag deal risks from emails and calls', 'Compare competing quotes', 'Prioritize the pipeline'],
+      watch: 'Never let AI set prices, terms, or commitments. Verify every number and claim.',
+      kpi: ['Win rate', 'Sales cycle length', 'Selling time per week'] },
+    { n: 'Sales Engineer', t: 'Proves it works',
+      aug: ['Draft technical answers and demo scripts', 'Explain complex topics in plain language', 'Prepare for technical objections'],
+      auto: ['Pre-fill security questionnaires from approved answers', 'Summarize technical calls', 'Generate demo environment checklists'],
+      ana: ['Find common technical blockers across deals', 'Summarize competitor technical claims from public sources', 'Detect gaps in documentation'],
+      watch: 'Technical and security claims are formal statements. Subject-matter experts must verify.',
+      kpi: ['Time to answer questionnaires', 'Demo to next-step rate', 'Answer accuracy'] },
+    { n: 'Customer Success / Account Manager', t: 'Keeps and grows customers',
+      aug: ['Draft QBR decks and renewal plans', 'Write onboarding guides', 'Prepare for difficult customer conversations'],
+      auto: ['Summarize tickets and meetings', 'Trigger check-ins on usage changes', 'Draft routine updates for review'],
+      ana: ['Detect churn risk from usage and tickets', 'Find expansion signals', 'Summarize customer feedback themes'],
+      watch: 'Customer data is sensitive. Redact personal data and keep access limited.',
+      kpi: ['Retention', 'Expansion', 'Time to first value'] },
+    { n: 'Sales Manager / Leader', t: 'Coaches and forecasts',
+      aug: ['Prepare coaching points and 1:1 agendas', 'Draft team communications', 'Build call-review rubrics'],
+      auto: ['Roll up pipeline notes', 'Generate weekly summaries', 'Flag stalled deals for follow-up'],
+      ana: ['Spot coaching themes across calls', 'Review forecast risk', 'Compare team behaviors to win patterns'],
+      watch: 'Do not use AI scores to judge people without human review and clear, fair criteria.',
+      kpi: ['Forecast accuracy', 'Ramp time for new reps', 'Coaching hours per rep'] },
+    { n: 'Sales Ops / RevOps', t: 'Keeps the engine clean',
+      aug: ['Draft process documentation', 'Write reporting requests and specs', 'Design territories and routing rules'],
+      auto: ['Deduplicate and enrich records', 'Route and categorize leads', 'Clean fields and flag gaps'],
+      ana: ['Model pipeline coverage and conversion', 'Find data quality issues', 'Analyze win/loss patterns'],
+      watch: 'Test on samples, keep backups, and give automations narrow permissions.',
+      kpi: ['Data quality', 'Lead response time', 'Report turnaround'] },
+    { n: 'Marketing: Demand Gen and Content', t: 'Creates demand',
+      aug: ['Draft campaign copy and variations', 'Repurpose long content into short pieces', 'Brainstorm angles and subject lines'],
+      auto: ['Tag and segment content', 'Personalize approved templates', 'Schedule and format posts'],
+      ana: ['Analyze campaign and audience performance', 'Cluster customer feedback and search topics', 'Summarize market and competitor content'],
+      watch: 'Check brand, copyright, and disclosure rules. Never publish unreviewed AI claims.',
+      kpi: ['Marketing-qualified lead quality', 'Content cycle time', 'Campaign conversion'] },
+    { n: 'Product Marketing', t: 'Owns the story',
+      aug: ['Draft positioning and messaging options', 'Create battlecards from public sources', 'Write launch briefs'],
+      auto: ['Summarize release notes for sales', 'Maintain a competitor update feed', 'Format enablement assets'],
+      ana: ['Analyze win/loss themes', 'Summarize customer interviews', 'Compare competitor positioning'],
+      watch: 'Competitive claims must be accurate and defensible. Cite sources.',
+      kpi: ['Message adoption by reps', 'Win rate vs. key competitors', 'Launch readiness time'] },
+    { n: 'Sales Enablement', t: 'Teaches and equips',
+      aug: ['Build training outlines and quizzes', 'Create role-play scenarios', 'Turn expert knowledge into short lessons'],
+      auto: ['Answer rep questions from approved content', 'Summarize call examples for training', 'Keep content libraries tagged'],
+      ana: ['Find knowledge gaps from call themes', 'Measure content usage', 'Identify skills to coach'],
+      watch: 'Answer only from approved sources and show citations. Retire stale content.',
+      kpi: ['Ramp time', 'Content usage', 'Quiz and skills improvement'] },
+    { n: 'Partnerships / Channel', t: 'Grows through others',
+      aug: ['Research potential partners from public sources', 'Draft joint value propositions', 'Prepare partner briefings'],
+      auto: ['Summarize partner activity', 'Draft routine partner updates', 'Track co-sell tasks'],
+      ana: ['Score partner fit from public criteria', 'Analyze sourced pipeline by partner', 'Spot gaps in coverage'],
+      watch: 'Partner data may be covered by agreements. Check contracts before sharing.',
+      kpi: ['Partner-sourced pipeline', 'Time to activate a partner', 'Joint win rate'] }
+  ];
+  var JOURNEY = [
+    ['Market and ICP', 'Research segments, summarize reports, and draft ideal-customer hypotheses.', 'Validate with real customer data.'],
+    ['Positioning and content', 'Draft messaging options, case-study outlines, and one-pagers from approved facts.', 'Claims need proof and approval.'],
+    ['Pipeline generation', 'Account research, personalized drafts, and prioritization of target accounts.', 'Respect consent and anti-spam rules.'],
+    ['Sales execution', 'Call prep, notes, follow-ups, proposals, and deal risk summaries.', 'People own pricing, terms, and promises.'],
+    ['Onboarding and success', 'Onboarding plans, health summaries, and renewal prep.', 'Protect customer data.'],
+    ['Revenue operations', 'Data cleaning, routing, forecasting commentary, and reporting.', 'Audit automations and keep backups.']
+  ];
+  var STACK = [
+    ['General AI assistants', 'Chat tools for drafting, research, and coaching.', 'Augmentation', 'Each rep, with IT approving the plan', 'Data leaks via personal accounts'],
+    ['AI inside tools you already use', 'Features built into email, documents, meetings, and your CRM.', 'Augmentation and Analysis', 'IT and RevOps', 'Features can expose data across the whole workspace'],
+    ['Conversation intelligence', 'Records and analyzes calls and meetings.', 'Analysis', 'Sales leadership, Legal, and IT', 'Consent and retention rules'],
+    ['Sales engagement and outreach', 'Runs sequences and personalization at scale.', 'Automation', 'Sales leadership and RevOps', 'Quality, compliance, and brand damage at volume'],
+    ['Data enrichment and intent', 'Adds company and contact data and buying signals.', 'Analysis', 'RevOps and Legal', 'Source of data and privacy law'],
+    ['Custom agents and workflows', 'Purpose-built assistants and automations using model APIs.', 'Automation and Analysis', 'IT and engineering with Legal', 'Permissions, errors at scale, and ongoing maintenance']
+  ];
+  var MATURITY = [
+    ['Crawl (first 3 months)', ['Individual use of approved assistants', 'Green use cases only', 'Written acceptable-use rules', 'Quiz and basics for every rep']],
+    ['Walk (months 3 to 9)', ['Shared prompt library', 'Amber use cases with controls', 'AI inside the CRM and meetings', 'Analysis reviewed by managers']],
+    ['Run (month 9 and after)', ['Supervised automations and agents', 'Outcomes tracked end to end', 'Regular audits with Legal and IT', 'Continuous coaching on checking']]
+  ];
+  var OWNERS = [
+    ['Executive sponsor', 'Sets goals, funds, and removes blockers'],
+    ['Legal', 'Contracts, privacy, consent, and claims rules'],
+    ['IT and security', 'Approved tools, access, and data controls'],
+    ['RevOps', 'Data quality, CRM integration, and measurement'],
+    ['Enablement', 'Training, prompt library, and the quiz'],
+    ['Frontline managers', 'Coaching, review habits, and feedback loops'],
+    ['Reps and specialists', 'Use approved tools, check outputs, and report issues']
+  ];
+  var KPIS = [
+    ['Efficiency', ['Hours of admin saved per rep', 'Time to first draft', 'Time to respond to leads']],
+    ['Effectiveness', ['Reply and meeting rates', 'Win rate and cycle length', 'Forecast accuracy']],
+    ['Safety and quality', ['Number of policy exceptions', 'Error rate found in review', 'Rep confidence and quiz scores']]
+  ];
+  var PLAN = [
+    ['Days 1 to 30', ['Talk to Legal and IT', 'Choose approved tools', 'Write acceptable-use rules', 'Train a pilot team']],
+    ['Days 31 to 60', ['Run three green use cases', 'Add one amber use case with controls', 'Build a shared prompt library', 'Collect wins and misses']],
+    ['Days 61 to 90', ['Measure results', 'Review with Legal and IT', 'Expand to more teams', 'Decide what to automate next']]
+  ];
+  function ul(a) { return '<ul>' + a.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>'; }
+  var role = 0;
+  function renderGtm() {
+    var rc = $('gtmRoleChips'); rc.innerHTML = '';
+    ROLES.forEach(function (r, i) { rc.appendChild(chip(r.n, '', role === i, function () { role = i; renderGtm(); })); });
+    var r = ROLES[role];
+    $('gtmRole').innerHTML = '<h3>' + r.n + '</h3><p class="muted" style="margin-top:4px">' + r.t + '</p>' +
+      '<div class="rolegrid"><div><span class="tag type">Augmentation</span>' + ul(r.aug) + '</div>' +
+      '<div><span class="tag type">Analysis</span>' + ul(r.ana) + '</div>' +
+      '<div><span class="tag type">Automation</span>' + ul(r.auto) + '</div></div>' +
+      '<p class="uc-note" style="margin-top:14px"><b>Watch out:</b> ' + r.watch + '</p>' +
+      '<p class="uc-note"><b>Measure:</b> ' + r.kpi.join(', ') + '.</p>';
+    $('gtmJourney').innerHTML = JOURNEY.map(function (j) {
+      return '<div class="card"><h3>' + j[0] + '</h3><p class="muted" style="margin-top:8px">' + j[1] + '</p><p class="uc-note"><b>Watch:</b> ' + j[2] + '</p></div>';
+    }).join('');
+    $('gtmStack').innerHTML = '<thead><tr><th>Layer</th><th>What it does</th><th>Type</th><th>Owner</th><th>Main risk</th></tr></thead><tbody>' +
+      STACK.map(function (s) { return '<tr><th scope="row" style="text-transform:none;font-family:var(--f-body);font-size:14px;color:var(--fg);width:auto">' + s[0] + '</th><td>' + s[1] + '</td><td>' + s[2] + '</td><td>' + s[3] + '</td><td>' + s[4] + '</td></tr>'; }).join('') + '</tbody>';
+    $('gtmMaturity').innerHTML = MATURITY.map(function (m) { return '<div class="card rolegrid" style="display:block;margin-top:0"><h3>' + m[0] + '</h3>' + ul(m[1]) + '</div>'; }).join('');
+    $('gtmOwners').innerHTML = '<thead><tr><th>Who</th><th>Responsible for</th></tr></thead><tbody>' +
+      OWNERS.map(function (o) { return '<tr><th scope="row" style="text-transform:none;font-family:var(--f-body);font-size:14px;color:var(--fg);width:auto">' + o[0] + '</th><td>' + o[1] + '</td></tr>'; }).join('') + '</tbody>';
+    $('gtmKpis').innerHTML = KPIS.map(function (k) { return '<div class="card rolegrid" style="display:block;margin-top:0"><h3>' + k[0] + '</h3>' + ul(k[1]) + '</div>'; }).join('');
+    $('gtmPlan').innerHTML = PLAN.map(function (p) { return '<div class="card rolegrid" style="display:block;margin-top:0"><h3>' + p[0] + '</h3>' + ul(p[1]) + '</div>'; }).join('');
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-gotype]');
+    if (t) { fType = t.dataset.gotype; fTier = null; fStage = null; q = ''; $('search').value = ''; refresh(); showTab('cases'); }
+  });
+
+  /* Quiz */
+  var QUIZ = [
+    { q: "You wrote a cold email yourself and want AI to make it shorter. It has no customer names or private numbers. Which light is this?",
+      o: ["Green: safe to try in an approved tool", "Amber: needs special controls", "Red: do not do it"], a: 0,
+      why: "It is your own text with no confidential data. Still use a tool your company has approved, and read the result before you send it." },
+    { q: "A customer sends you their contract and you want a quick AI summary. Your company has not told you which AI tools are approved. What do you do?",
+      o: ["Paste it into a free chatbot, it only takes a minute", "Ask Legal and IT first, and wait for an approved tool", "Paste it in after deleting the customer name"], a: 1,
+      why: "Contracts are confidential, and removing a name does not make them safe. Free tools may keep or learn from what you paste. Legal and IT decide which tool, if any, is allowed." },
+    { q: "AI drafts a proposal that includes the quote \"Acme cut costs by 40%.\" You never gave it that quote. What now?",
+      o: ["Use it, it sounds credible", "Treat it as unverified and use only quotes you can trace to a real source", "Soften it to \"about 30%\""], a: 1,
+      why: "AI can invent convincing facts and quotes. Only publish claims you can trace to a real, approved source." },
+    { q: "What does \"hallucination\" mean when people talk about AI?",
+      o: ["The AI refuses to answer", "The AI states something false in a confident tone", "The AI responds slowly"], a: 1,
+      why: "A hallucination is a confident answer that is wrong or made up, such as a fake statistic or source. It is why you check everything." },
+    { q: "Which account should you use for AI at work?",
+      o: ["A personal free account, since it is quick", "The business account your company provides and approves", "A friend's account"], a: 1,
+      why: "Business plans usually come with contract terms about data use, and IT can manage them. Personal accounts often have weaker terms and no company visibility." },
+    { q: "You want an AI note-taker on a customer call. What is the first step?",
+      o: ["Turn it on and mention it afterward", "Check company policy and local consent rules, and tell participants", "Use it only on calls that seem low stakes"], a: 1,
+      why: "Recording and transcription rules vary by region and many require consent. Your Legal team can tell you what applies." },
+    { q: "Which prompt will most likely give you a useful answer?",
+      o: ["Write me an email.", "Act as a sales coach. Rewrite my follow-up email below for a busy operations manager. Keep it under 90 words and end with one clear question.", "Make it better."], a: 1,
+      why: "Good prompts give a role, a task, context, and the format you want." },
+    { q: "AI says your solution gives the customer a 3.2x return, and you are about to put that in a proposal. What now?",
+      o: ["Include it, AI is good at math", "Recalculate in a spreadsheet and confirm every input with a source", "Round it up to 3.5x"], a: 1,
+      why: "AI can miscalculate and can invent inputs. Numbers in a proposal must be calculated and verified by you." },
+    { q: "You have six customer visits tomorrow and ask AI for the most logical order of stops. How should you use the answer?",
+      o: ["Follow it exactly, it knows the roads", "Treat it as a first draft, then check drive times and opening hours in a mapping app", "Skip planning and let AI sort it out as you go"], a: 1,
+      why: "AI can group nearby stops and place priority meetings sensibly, but it does not see live traffic or closures. Confirm in a mapping app, and share only the customer details your policy allows." },
+    { q: "Which AI tool is the best choice for every sales team?",
+      o: ["Whichever is newest", "It depends on the tools you already use, your data rules, and what IT has approved", "Whichever is cheapest"], a: 1,
+      why: "Each family has different strengths. Try the same real tasks in the options your company allows, and let results decide." },
+    { q: "A tool reads hundreds of your call recordings and shows which objections come up most. Which type of AI help is that?",
+      o: ["Augmentation, because it helps you write", "Analysis, because it finds patterns in data", "Automation, because it sends emails for you"], a: 1,
+      why: "Finding patterns in large amounts of data is analysis. You still check the inputs and decide what to do with the findings." },
+    { q: "You realize you just pasted a customer's contract into a tool your company has not approved. What is the best next step?",
+      o: ["Delete the chat and say nothing", "Tell your manager, IT, and Legal right away", "Wait and see if anything happens"], a: 1,
+      why: "Fast reporting limits damage and gives your company the most options. Hiding it is what turns a small mistake into a big one." },
+    { q: "An AI agent connected to your inbox can read, send, and delete email. What is the safest setup?",
+      o: ["Full access so it works faster", "Read-only to start, with a person approving anything that leaves your account", "Give it your passwords so it can log in itself"], a: 1,
+      why: "Agents can be steered by hidden instructions in emails or web pages. Give them the least access they need and keep a human approving outside actions." },
+    { q: "A prospect asks, \"Do you use AI on my data?\" What is the best response?",
+      o: ["\"Of course not.\"", "Give the accurate answer your company has approved, and offer to follow up if you are unsure", "Change the subject"], a: 1,
+      why: "Honesty builds trust. Use wording your Legal team has approved, and never guess about data handling." },
+    { q: "Which message is most likely to break anti-spam rules?",
+      o: ["A relevant, reviewed email with an easy opt-out", "An AI-written email blasted to a scraped list with no opt-out", "A follow-up to someone who asked to hear from you"], a: 1,
+      why: "AI does not change the rules. Honest sender details, a working opt-out, and consent where required still apply." },
+    { q: "You ask AI for a prospect brief and it includes the CEO's name and a funding amount you never provided. What now?",
+      o: ["Use it, specifics sound credible", "Verify each detail against a trusted source, or remove it", "Add more detail so it looks complete"], a: 1,
+      why: "Names, amounts, and dates you did not supply are a hallucination warning sign. Check them or cut them." },
+    { q: "Microsoft Copilot can surface any file you already have access to. What does that mean for your team?",
+      o: ["Nothing, it only sees the open document", "Overshared files can appear in answers, so IT should fix permissions first", "It can only see your own email"], a: 1,
+      why: "AI assistants inherit your access. Loose permissions that nobody noticed before can suddenly become visible, so clean them up before rollout." }
+  ];
+  $('hmUc').textContent = UC.length; $('hmQuiz').textContent = QUIZ.length; $('hmModels').textContent = MODELS.length;
+  var qi = 0, score = 0, order = [], missed = [], QUIZ_ALL = null;
+  function startQuiz() {
+    if (!QUIZ_ALL) QUIZ_ALL = QUIZ.slice();
+    QUIZ = shuffleArr(QUIZ_ALL.slice()).slice(0, 10);
+    $('hmQuiz').textContent = QUIZ.length;
+    qi = 0; score = 0; missed = [];
+    order = QUIZ.map(function (q) {
+      var a = q.o.map(function (_, i) { return i; });
+      for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+      return a;
+    });
+    renderQuiz();
+  }
+  function renderQuiz() {
+    var box = $('quizBox');
+    if (qi >= QUIZ.length) {
+      var best = parseInt(store('saf-best') || '0', 10) || 0;
+      if (score > best) { best = score; store('saf-best', String(best)); }
+      var label = score >= 9 ? 'Ready to start a pilot' : (score >= 6 ? 'Almost there' : 'Re-read the basics first');
+      var msg = score >= 9 ? 'You spot the risks. Next, talk to Legal and IT about which tools you can use.' :
+                score >= 6 ? 'Review the answers you missed below, then retake the quiz.' :
+                'Read the AI basics and the safety rules, then try again.';
+      box.innerHTML = '<div class="score">' + score + '/' + QUIZ.length + '</div><h3 style="margin-top:10px">' + label + '</h3><p class="muted" style="margin-top:6px">' + msg + '</p>' +
+        '<p class="count" style="margin-top:8px">Best score on this device: ' + best + '/' + QUIZ.length + '</p>' +
+        (missed.length ? '<div class="review"><b>Review what you missed</b>' + missed.map(function (m) {
+          return '<div class="qwhy"><b>' + m.q + '</b><br>Best answer: ' + m.right + '<br>' + m.why + '</div>';
+        }).join('') + '</div>' : '') +
+        '<div class="btn-row" style="margin-top:16px"><button class="btn" id="qRetake">Retake the quiz</button><button class="btn ghost" data-go="basics">Review AI basics</button><button class="btn ghost" data-go="check">Open the checklist</button></div>';
+      $('qRetake').addEventListener('click', startQuiz);
+      return;
+    }
+    var it = QUIZ[qi], ord = order[qi];
+    box.innerHTML = '<div class="qhead"><span>Question ' + (qi + 1) + ' of ' + QUIZ.length + '</span><span>Score ' + score + '</span></div>' +
+      '<div class="qprog"><i style="width:' + (qi / QUIZ.length * 100) + '%"></i></div>' +
+      '<h3 style="margin-top:16px">' + it.q + '</h3><div id="qOpts">' +
+      ord.map(function (k) { return '<button class="qopt" data-k="' + k + '">' + it.o[k] + '</button>'; }).join('') +
+      '</div><div id="qFeed"></div>';
+    box.querySelectorAll('.qopt').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = parseInt(b.dataset.k, 10), ok = k === it.a;
+        if (ok) score++; else missed.push({ q: it.q, right: it.o[it.a], why: it.why });
+        box.querySelectorAll('.qopt').forEach(function (x) {
+          x.disabled = true;
+          var xk = parseInt(x.dataset.k, 10);
+          if (xk === it.a) x.classList.add('right'); else if (xk === k) x.classList.add('wrong');
+        });
+        $('qFeed').innerHTML = '<div class="qwhy" role="status"><b>' + (ok ? 'Correct.' : 'Not quite.') + '</b> ' + it.why + '</div>' +
+          '<div class="btn-row" style="margin-top:14px"><button class="btn" id="qNext">' + (qi === QUIZ.length - 1 ? 'See my score' : 'Next question') + '</button></div>';
+        $('qNext').addEventListener('click', function () { qi++; renderQuiz(); });
+        $('qNext').focus();
+      });
+    });
+  }
+
+  /* Prompt library */
+  var PROMPTS = [
+    ['Prospecting', 'Account research brief', 'Act as a sales researcher. Using only the public text I paste below about [company], write a six-bullet brief: what they do, recent news, likely priorities, and three questions I could ask. Flag anything you are unsure about. [paste public text]', 'Verify every fact against the source you pasted.'],
+    ['Prospecting', 'First-touch email', 'Write a 90-word cold email from me to a [job title] at a [industry] company. Reason for reaching out: [public trigger]. One clear question. No hype, no jargon. Give three subject lines.', 'Remove any claim you cannot back up, and confirm the trigger is public.'],
+    ['Prospecting', 'Connection notes', 'Write three LinkedIn connection notes under 250 characters, friendly and specific to [shared professional interest]. No flattery.', 'Make sure it is relevant, not creepy.'],
+    ['Prospecting', 'Buyer concerns', 'List ten questions a [role] at a [industry] company is probably asking about [problem area]. Group them by urgency.', 'Treat as hypotheses and test them on real calls.'],
+    ['Discovery', 'Discovery question bank', 'Give me twelve discovery questions for a [role] about [problem]. Mix situation, problem, impact, and decision-process questions. Avoid yes/no questions.', 'Choose the five that fit your style.'],
+    ['Discovery', 'Call agenda', 'Draft a 30-minute call agenda for a first meeting with a [role]. Include a goal, three topics, and a clear close. Keep it to eight lines.', 'Share it with the buyer ahead of time only if you are happy with it.'],
+    ['Discovery', 'Skeptical buyer role-play', 'Play a skeptical purchasing manager at a mid-size [industry] company. I will pitch you. Push back with realistic objections about price and timing. After five exchanges, give me feedback.', 'Use a fictional scenario only.'],
+    ['Discovery', 'Recap from your notes', 'Turn these notes into a recap email: summary, decisions, and next steps with owners and dates. Mark anything unclear as "unclear". [notes with names replaced by roles]', 'Confirm every date and owner before sending.'],
+    ['Proposal', 'Executive summary', 'Using only the facts below, write a 150-word executive summary for a [role]: problem, proposed approach, expected outcome. Do not add numbers or claims that are not in my facts. [facts]', 'Check that nothing was added.'],
+    ['Proposal', 'Plain-English rewrite', 'Rewrite this approved product description for a non-technical buyer in three short sentences, with no jargon. [approved text]', 'Make sure the meaning did not change.'],
+    ['Proposal', 'Objection responses', 'A buyer says: "[objection]". Give three ways to respond: acknowledge, ask a question, and reframe. Keep each under 40 words.', 'Pick the one that sounds like you.'],
+    ['Proposal', 'Mutual action plan outline', 'Create a mutual action plan outline with phases, owners, and example dates for a [deal type] with [number] stakeholders. Use placeholders.', 'Agree real dates with the customer.'],
+    ['Negotiation', 'Trade-off brainstorm', 'List types of concessions I could trade other than price, what each is worth to a buyer, and what to ask for in return. Use generic terms. I will add real numbers myself.', 'Do not paste real prices or margins.'],
+    ['Negotiation', 'Follow-up after silence', 'Write three short follow-up emails to a buyer who has gone quiet after [stage]. One friendly, one direct, one that adds a useful resource. Each under 60 words.', 'Do not invent urgency.'],
+    ['Post-sale', 'Kickoff email', 'Draft a kickoff email to a new customer. Include what happens in week one, who is involved, and what we need from them. Use placeholders for names and dates.', 'Fill in real details yourself.'],
+    ['Post-sale', 'Business review agenda', 'Draft an agenda for a 45-minute quarterly business review: goals recap, results, risks, and plan. Keep it to six lines.', 'Add real results from your own data.'],
+    ['Post-sale', 'Renewal check-in', 'Write a warm, short renewal check-in email that asks how things are going and what would make the next year better. No pressure language.', 'Customize with something true and specific.'],
+    ['Post-sale', 'Feedback themes', 'Group these customer comments into themes, with a one-line summary of each and the number of comments per theme. [comments with names removed]', 'Remove personal data first and spot-check the grouping.'],
+    ['Field sales', 'Plan a route', 'I am visiting these businesses tomorrow: [business names and street addresses]. Suggest the most logical order to reduce backtracking, group nearby stops, and place the most important meeting at the best time of day. Tell me what to double-check in a mapping app.', 'Confirm drive times and opening hours in a map.'],
+    ['Field sales', 'Plan the day', 'Here are my meetings and tasks for tomorrow: [list]. Build a realistic schedule with buffer time and flag anything that conflicts.', 'Check it against your calendar.'],
+    ['Coaching & ops', 'Check my work', 'Review the draft below. List claims that need a source, vague statements, and anything that could be misread. Do not rewrite it. [draft]', 'You decide what to change.'],
+    ['Coaching & ops', 'Pitch feedback', 'Here is my 60-second pitch: [pitch]. Tell me what is unclear, what is strongest, and one change to make it more specific. Do not rewrite it for me.', 'Remove customer names first.'],
+    ['Coaching & ops', 'Learn a topic fast', 'Explain [topic] to a new sales rep in plain language. Give a two-sentence summary, five key terms, and three questions buyers ask about it.', 'Confirm key terms with a subject-matter expert.'],
+    ['Coaching & ops', 'Summarize a public article', 'Summarize this public article in five bullets, then list three questions I could ask a prospect in this industry. [article text]', 'Open the original for anything you plan to quote.'],
+    ['Coaching & ops', 'Tone adjustment', 'Rewrite my message below in a [warmer / more direct / more formal] tone and keep it the same length. [your message]', 'Make sure it still sounds like you.']
+  ];
+  var pStage = null;
+  var PSTAGES = ['Prospecting', 'Discovery', 'Proposal', 'Negotiation', 'Post-sale', 'Field sales', 'Coaching & ops'];
+  function renderPrompts() {
+    var pc = $('promptChips'); pc.innerHTML = '';
+    pc.appendChild(chip('All', '', pStage === null, function () { pStage = null; renderPrompts(); }));
+    PSTAGES.forEach(function (s) { pc.appendChild(chip(s, '', pStage === s, function () { pStage = pStage === s ? null : s; renderPrompts(); })); });
+    var items = PROMPTS.map(function (p, i) { return { p: p, i: i }; }).filter(function (o) { return !pStage || o.p[0] === pStage; });
+    $('promptCount').textContent = items.length + ' of ' + PROMPTS.length + ' prompts';
+    $('promptList').innerHTML = items.map(function (o) {
+      return '<article class="pcard"><div class="uc-top"><div class="uc-title">' + o.p[1] + '</div><span class="tag type">' + o.p[0] + '</span></div>' +
+        '<div class="prompt" id="pr' + o.i + '">' + o.p[2] + '</div>' +
+        '<p class="uc-note" style="margin:0"><b>Check:</b> ' + o.p[3] + '</p>' +
+        '<div><button class="btn sm" data-copy="pr' + o.i + '">Copy prompt</button></div></article>';
+    }).join('');
+  }
+
+  /* Spot-the-error exercise */
+  var SPOT = [
+    ['Northwind Fabrication makes custom metal parts for the construction industry.', false, 'Supported by the blurb you pasted.'],
+    ['The company was founded in 1987 and has 1,240 employees.', true, 'A founding year and headcount were not in your text. Verify or remove.'],
+    ['CEO Dana Whitfield announced a $50 million expansion last quarter.', true, 'A name and dollar amount you never supplied. Classic made-up detail.'],
+    ['Its main customers are regional building contractors.', false, 'Supported by "sells to regional contractors" in your text.'],
+    ['Industry analysts rank Northwind the third-largest supplier in the Midwest.', true, 'A ranking with no source. Do not repeat it without proof.'],
+    ['A recent press release mentions hiring an operations lead.', false, 'Supported by your pasted text.']
+  ];
+  var spotPicked = {}, spotDone = false;
+  function renderSpot() {
+    $('spotList').innerHTML = SPOT.map(function (s, i) {
+      return '<button class="spot" data-spot="' + i + '" aria-pressed="false">' + s[0] + '</button>';
+    }).join('');
+    spotPicked = {}; spotDone = false; $('spotResult').hidden = true;
+    document.querySelectorAll('.spot').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (spotDone) return;
+        var i = b.dataset.spot; spotPicked[i] = !spotPicked[i];
+        b.setAttribute('aria-pressed', String(!!spotPicked[i]));
+      });
+    });
+  }
+  $('spotCheck').addEventListener('click', function () {
+    if (spotDone) { renderSpot(); $('spotCheck').textContent = 'Check my answers'; return; }
+    spotDone = true; var hit = 0, miss = 0, fp = 0, html = '';
+    document.querySelectorAll('.spot').forEach(function (b, i) {
+      var risky = SPOT[i][1], pick = !!spotPicked[i];
+      if (risky && pick) { hit++; b.classList.add('right'); }
+      else if (risky && !pick) { miss++; b.classList.add('wrong'); }
+      else if (!risky && pick) { fp++; }
+      html += '<p style="margin-top:8px"><b>' + (risky ? 'Verify: ' : 'Supported: ') + '</b>' + SPOT[i][2] + '</p>';
+    });
+    var r = $('spotResult'); r.hidden = false;
+    r.innerHTML = '<b>You caught ' + hit + ' of 3 risky sentences.</b>' + (miss ? ' Highlighted red ones were missed.' : '') + (fp ? ' You flagged ' + fp + ' that were fine, which is a safe mistake.' : '') + html;
+    $('spotCheck').textContent = 'Try again';
+  });
+
+  /* Calculator */
+  function calc() {
+    var reps = Math.max(0, parseFloat($('cReps').value) || 0), hrs = Math.max(0, parseFloat($('cHours').value) || 0),
+        pct = Math.min(100, Math.max(0, parseFloat($('cPct').value) || 0)), cost = Math.max(0, parseFloat($('cCost').value) || 0);
+    var week = reps * hrs * pct / 100, year = week * 46;
+    $('cWeek').textContent = Math.round(week).toLocaleString();
+    $('cYear').textContent = Math.round(year).toLocaleString();
+    $('cValue').textContent = '$' + Math.round(year * cost).toLocaleString();
+  }
+  ['cReps', 'cHours', 'cPct', 'cCost'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  /* Home buttons, copy buttons */
+  document.addEventListener('click', function (e) {
+    var go = e.target.closest && e.target.closest('[data-go]');
+    if (go) { showTab(go.dataset.go); return; }
+    var cp = e.target.closest && e.target.closest('[data-copy]');
+    if (cp) {
+      var el = $(cp.dataset.copy), txt = el.textContent;
+      var done = function () { cp.textContent = 'Copied'; setTimeout(function () { cp.textContent = 'Copy prompt'; }, 1500); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        cp.textContent = 'Selected: press copy';
+      };
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (err) { fallback(); }
+    }
+  });
+
+  renderChips(); renderTable(); refresh(); renderCheck(); startQuiz(); renderGtm(); gameInit(); renderPrompts(); renderSpot(); calc(); renderVendor(); renderTable();
+  showTab('home');
+})();
+</script>
+
+</html>
