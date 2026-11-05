@@ -1,0 +1,7 @@
+rep,date,event,value,note
+R1,2026-01-05,quiz_before,0,"score out of 10"
+R1,2026-01-20,green_used,"Tighten your own outreach draft so it is shorter and clearer","what happened"
+R1,2026-02-10,amber_used,"Summarize a recorded call","control used"
+R1,2026-02-15,slip_caught,"Almost pasted a customer name into a free tool","what you did instead"
+R1,2026-02-28,note,"","one sentence"
+R1,2026-04-05,quiz_after,0,"score out of 10"

@@ -2,7 +2,7 @@
 
 > **Status:** TEMPLATE. Replace everything in [BRACKETS] and have your Legal, IT, and Security teams review this document before you publish it internally.
 >
-> **Version:** 1.0  |  **Last updated:** October 14, 2026  |  **Vendor facts last checked:** October 14, 2026
+> **Version:** 1.0  |  **Last updated:** November 4, 2026  |  **Vendor facts last checked:** November 4, 2026
 >
 > **Source:** Adapted from the public AI Ready Reps site at https://aireadyreps.com by Jared Chapman. Released under the MIT License (see the repository). This is general information, not legal advice.
 
@@ -633,11 +633,11 @@ A plain-language overview, not legal advice. Rules differ by location and change
 
 ## 12. Vendor notes (with sources and check dates)
 
-Vendor terms change often. These notes were last checked on **October 14, 2026**. "Checked at source" means the vendor's page was opened and read. "Excerpt only" means the page blocked automated access and the statement was read from a search excerpt. Confirm everything in your contract.
+Vendor terms change often. These notes were last checked on **November 4, 2026**. "Checked at source" means the vendor's page was opened and read. "Excerpt only" means the page blocked automated access and the statement was read from a search excerpt. Confirm everything in your contract.
 
 ### Anthropic Claude
 
-- **Check status:** Checked at source on October 14, 2026. Anthropic privacy page dated August 18, 2026.
+- **Check status:** Checked at source on November 4, 2026. Anthropic privacy page dated August 18, 2026.
 - **Summary:** Claude is available through Claude apps, an API, and cloud marketplaces. Data handling depends on whether you are on a commercial plan or a consumer plan.
 - Anthropic states that by default it does not use inputs or outputs from its commercial products to train its models. [1]
 - Feedback you submit, or an explicit opt-in, can be used for training. Anthropic says feedback is kept for up to five years and de-linked from user and customer IDs before use. [1]
@@ -648,14 +648,14 @@ Vendor terms change often. These notes were last checked on **October 14, 2026**
 
 Sources:
 
-1. Anthropic, [Is my data used for model training? (Anthropic Privacy Center)](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training). Page dated August 18, 2026. Opened and read October 14, 2026.
-2. Anthropic, [Updates to our consumer terms](https://www.anthropic.com/news/updates-to-our-consumer-terms). Announced August 28, 2025. Opened and read October 14, 2026.
+1. Anthropic, [Is my data used for model training? (Anthropic Privacy Center)](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training). Page dated August 18, 2026. Opened and read November 4, 2026.
+2. Anthropic, [Updates to our consumer terms](https://www.anthropic.com/news/updates-to-our-consumer-terms). Announced August 28, 2025. Opened and read November 4, 2026.
 
 Questions to ask: Is our organization on Commercial Terms? What retention and zero-data-retention options does our contract offer? Where is our data processed?
 
 ### OpenAI GPT
 
-- **Check status:** Excerpt only on October 14, 2026. Vendor page date not captured.
+- **Check status:** Excerpt only on November 4, 2026. Vendor page date not captured.
 - **Summary:** OpenAI offers ChatGPT plans, an API, and cloud availability through partners. Business products have different terms from personal accounts.
 - OpenAI states that by default it does not use data from ChatGPT Enterprise, ChatGPT Business, ChatGPT Edu, or its API platform, including inputs or outputs, for training or improving its models. [1]
 - OpenAI states that your organization's data remains confidential and owned by you, and that API customers can opt in to help improve models. [1]
@@ -664,30 +664,30 @@ Questions to ask: Is our organization on Commercial Terms? What retention and ze
 
 Sources:
 
-1. OpenAI, [Business data privacy, security, and compliance](https://openai.com/business-data/). The page blocked automated access. Wording read from a search excerpt of the page. Excerpt read October 14, 2026.
+1. OpenAI, [Business data privacy, security, and compliance](https://openai.com/business-data/). The page blocked automated access. Wording read from a search excerpt of the page. Excerpt read November 4, 2026.
 
 Questions to ask: Which plan covers our team, and does it include a data processing addendum? What are the retention controls for our workspace? Which compliance reports can you provide?
 
 ### Google Gemini
 
-- **Check status:** Checked at source on October 14, 2026. Google privacy hub dated October 6, 2026 (footer shows an update on October 13, 2026).
+- **Check status:** Checked at source on November 4, 2026 (parts of the page were read from a summary, not word for word). Google privacy hub says "Last updated: October 6, 2026".
 - **Summary:** Gemini is built into Google Workspace and also available through the Gemini app and Google Cloud.
 - Google states that Workspace does not use customer data for training models without the customer's prior permission or instruction. [1]
-- Google states that chats and uploaded files in the Gemini app are not reviewed by human reviewers. [1]
+- Google states that, for Workspace, "your content is not human reviewed or otherwise used for Generative AI model training outside your domain without permission." [1]
 - Google lists SOC 1, 2, and 3 and ISO certifications for Gemini, including ISO 42001, FedRAMP High for Gemini in Workspace apps and the Gemini app, and support for HIPAA workloads. [1]
-- Gemini Notebook and Gemini in Chrome are listed as currently lacking ISO, SOC, and FedRAMP certifications and as not covered by the HIPAA business associate agreement. [1]
+- Gemini Notebook and Gemini in Chrome are listed as currently lacking ISO, SOC, and FedRAMP certifications and as not covered by the HIPAA business associate agreement. This part of the page was read from a summary on November 4, 2026, so confirm it on the page. [1]
 - **Watch out:** Some Gemini features have different certification coverage than the main Workspace apps.
-- **Watch out:** Organization data-region settings do not apply to Gemini Notebook data, according to the page.
+- **Watch out:** Organization data-region settings do not apply to Gemini Notebook data, according to the page (read from a summary, so confirm it).
 
 Sources:
 
-1. Google, [Generative AI in Google Workspace Privacy Hub](https://knowledge.workspace.google.com/admin/gemini/generative-ai-in-google-workspace-privacy-hub). Page dated October 6, 2026. Opened and read October 14, 2026.
+1. Google, [Generative AI in Google Workspace Privacy Hub](https://knowledge.workspace.google.com/admin/gemini/generative-ai-in-google-workspace-privacy-hub). Page says "Last updated: October 6, 2026". Opened and read November 4, 2026.
 
 Questions to ask: Which Gemini features are enabled for our edition? Which of those are covered by our compliance agreements? Can we restrict features we have not reviewed?
 
 ### xAI Grok
 
-- **Check status:** Excerpt only on October 14, 2026. The FAQ excerpt references September 2024 for HIPAA, which may be out of date.
+- **Check status:** Excerpt only on November 4, 2026. The FAQ excerpt references September 2024 for HIPAA, which may be out of date.
 - **Summary:** Grok is available in a consumer app, through X, via an API, and through Business and Enterprise plans.
 - xAI's enterprise FAQ states that it does not use enterprise or API data, inputs, or outputs for training its models. [1]
 - The FAQ states that the customer retains rights to the inputs they provide and the outputs they receive, and that conversations are deleted after 30 days, subject to exceptions for legal retention or flagged potential violations. [1]
@@ -697,33 +697,33 @@ Questions to ask: Which Gemini features are enabled for our edition? Which of th
 
 Sources:
 
-1. xAI, [Frequently Asked Questions (Enterprise)](https://x.ai/legal/faq-enterprise). The page blocked automated access. Wording read from a search excerpt of the page. Excerpt read October 14, 2026.
+1. xAI, [Frequently Asked Questions (Enterprise)](https://x.ai/legal/faq-enterprise). The page blocked automated access. Wording read from a search excerpt of the page. Excerpt read October 14, 2026. A search on November 4, 2026 could not retrieve the official page, so these statements were not re-confirmed.
 
 Questions to ask: Which terms apply to our plan? What is the current position on regulated data such as health data? Who is the contracting entity?
 
 ### Amazon Nova
 
-- **Check status:** Checked at source on October 14, 2026. AWS documentation pages carry no date. Lifecycle page covers models launched before September 7, 2026.
+- **Check status:** Checked at source on November 4, 2026. AWS documentation pages carry no date. Lifecycle page covers models launched before September 7, 2026.
 - **Summary:** Nova models are used through Amazon Bedrock inside your AWS account. They are typically set up by developers and IT, not by individual reps.
 - AWS states that Bedrock gives you explicit control over whether prompts and outputs from inference requests are retained, using modes such as none, default, and aws_review. [1]
 - In none mode, AWS says no request or response data is written to durable storage by AWS or shared with the model provider. In default mode the model's policy applies and AWS may retain data for safety and abuse prevention. [1]
 - AWS states that model providers do not have access to Bedrock logs or to customer prompts and completions, because models run in AWS-operated deployment accounts. [2]
-- AWS lists Nova Canvas, Nova Reel, and Nova Sonic v1 as having reached end-of-life, with end-of-life dates of September 14 and September 30, 2026. [3]
+- AWS lists Nova Canvas, Nova Reel, and Nova Sonic v1 as having reached end-of-life, with end-of-life on September 14, 2026 for Nova Sonic v1 and September 30, 2026 for Nova Canvas and Nova Reel. [3]
 - Models in the Legacy state cannot be adopted by new customers, and existing customers may lose access after 15 days of inactivity. [3]
 - **Watch out:** The model lineup changes. Check the lifecycle page before building on a model.
 - **Watch out:** Retention depends on the mode and the model, so check the model card for each model you use.
 
 Sources:
 
-1. Amazon Web Services, [Amazon Bedrock: Data retention](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html). AWS documentation. Opened and read October 14, 2026.
-2. Amazon Web Services, [Amazon Bedrock: Data protection](https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html). AWS documentation. Opened and read October 14, 2026.
-3. Amazon Web Services, [Amazon Bedrock: Model lifecycle (Legacy)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html). AWS documentation covering models launched before September 7, 2026. Opened and read October 14, 2026.
+1. Amazon Web Services, [Amazon Bedrock: Data retention](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html). AWS documentation. Opened and read November 4, 2026.
+2. Amazon Web Services, [Amazon Bedrock: Data protection](https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html). AWS documentation. Opened and read November 4, 2026.
+3. Amazon Web Services, [Amazon Bedrock: Model lifecycle (Legacy)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html). AWS documentation covering models launched before September 7, 2026. Opened and read November 4, 2026.
 
 Questions to ask: Which Nova models are Active for our regions? What retention mode applies to our account? What is the notice period before a model we use is retired?
 
 ### Meta Llama
 
-- **Check status:** Checked at source on October 14, 2026. Llama 4 license version effective April 5, 2025.
+- **Check status:** Checked at source on November 4, 2026. Llama 4 license version effective April 5, 2025.
 - **Summary:** Llama models are open-weight and can be run in your own environment or through cloud providers. Meta's consumer assistant is a separate product.
 - The Llama 4 Community License grants a non-exclusive, worldwide, non-transferable, royalty-free limited license. It is a custom Meta agreement. [1]
 - If the licensee's products exceeded 700 million monthly active users in the preceding calendar month on the release date, the licensee must request a license from Meta, which Meta may grant at its sole discretion. [1]
@@ -735,14 +735,14 @@ Questions to ask: Which Nova models are Active for our regions? What retention m
 
 Sources:
 
-1. Meta, [Llama 4 Community License Agreement](https://www.llama.com/llama4/license/). Redirects to dev.meta.ai. Version effective April 5, 2025. Opened and read October 14, 2026.
-2. Amazon Web Services, [Amazon Bedrock: Model lifecycle (Legacy)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html). AWS documentation covering models launched before September 7, 2026. Opened and read October 14, 2026.
+1. Meta, [Llama 4 Community License Agreement](https://dev.meta.ai/llama/llama4/license/). The old llama.com address redirects here. Version effective April 5, 2025. Opened and read November 4, 2026.
+2. Amazon Web Services, [Amazon Bedrock: Model lifecycle (Legacy)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html). AWS documentation covering models launched before September 7, 2026. Opened and read November 4, 2026.
 
 Questions to ask: Which license version applies to the exact model we use? Do our distribution and naming plans meet the attribution terms? Who maintains and patches the deployment?
 
 ### Microsoft Copilot
 
-- **Check status:** Checked at source on October 14, 2026. Microsoft page metadata shows an update on October 8, 2026.
+- **Check status:** Checked at source on November 4, 2026. Microsoft page metadata shows ms.date July 9, 2026 and an update stamp of November 4, 2026.
 - **Summary:** Microsoft Copilot works inside Microsoft 365 apps such as Outlook, Teams, Word, and Excel, and is grounded in content the user can already access.
 - Microsoft states that prompts, responses, and data accessed through Microsoft Graph are not used to train foundation LLMs, including those used by Microsoft Copilot. [1]
 - Copilot only surfaces organizational data to which individual users have at least view permission, so existing permissions in services such as SharePoint determine what appears. [1]
@@ -753,23 +753,23 @@ Questions to ask: Which license version applies to the exact model we use? Do ou
 
 Sources:
 
-1. Microsoft, [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy). Page metadata shows an update on October 8, 2026. Opened and read October 14, 2026.
+1. Microsoft, [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy). Page metadata shows ms.date July 9, 2026 and an update stamp of November 4, 2026. Opened and read November 4, 2026.
 
 Questions to ask: Which third-party models are enabled in our tenant? How are sensitive files labeled and protected? What retention policy applies to Copilot interactions?
 
 ### Perplexity
 
-- **Check status:** Checked at source on October 14, 2026. Perplexity help article dated March 3, 2026.
+- **Check status:** Excerpt only on November 4, 2026. The help article returned "not found" to automated access that day; it was previously dated March 3, 2026.
 - **Summary:** Perplexity is an answer engine that searches the web and cites sources. Consumer and enterprise plans have different data terms.
-- Perplexity states that Enterprise data is never used for AI training, and that uploaded files on Enterprise Pro and Max plans are kept for 7 days. [1]
+- Perplexity states that Enterprise data is never used for AI training. An earlier note about 7-day file retention could not be re-confirmed on November 4, 2026 and was removed. [1]
 - On Free, Pro, and Max plans, AI data retention is on by default. Users can opt out in Preferences, but opting out applies only to data collected afterward. [1]
-- If an organization downgrades from an Enterprise plan to a non-Enterprise plan, consumer defaults apply and users must opt out manually. [1]
+- Perplexity's help article previously said that if an organization downgrades from Enterprise to a non-Enterprise plan, consumer defaults apply and users must opt out manually. That sentence could not be re-confirmed on November 4, 2026, so check it before relying on it. [1]
 - **Watch out:** Open the cited sources. A citation does not guarantee the page says what the answer claims.
 - **Watch out:** Do not use consumer plans for confidential work data.
 
 Sources:
 
-1. Perplexity, [Data collection at Perplexity (Help Center)](https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity). Article dated March 3, 2026. Opened and read October 14, 2026.
+1. Perplexity, [Data collection at Perplexity (Help Center)](https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity). Article previously dated March 3, 2026. On November 4, 2026 it returned "not found" to automated access; the training and opt-out statements were confirmed from a search excerpt.
 
 Questions to ask: Which plan covers our team? Can we set custom retention and force deletion? What are the terms for API and search products?
 
