@@ -811,6 +811,23 @@ Unsure:     Stop and ask the rep.</pre>
         <a class="btn ghost" href="https://github.com/thejaredchapman/ai-ready-reps/tree/main/pilot" target="_blank" rel="noopener noreferrer">Run a 90-day pilot</a>
       </div>
     </div>
+
+    <div class="card">
+      <h3>7. A fuller example: Callsheet</h3>
+      <p class="muted" style="margin-top:8px"><b>Callsheet</b> takes the same guardrails further up the ladder. It drafts a cited account brief before a call (rung 1), the follow-up email, CRM note and task after it (rung 3), and writes them only after the rep approves the exact content (rung 4). It is built on one tool, Claude, but the pattern works with any tool that can take actions.</p>
+      <ul class="clean" style="margin-top:12px">
+        <li><b>Nothing goes out unseen.</b> Emails, CRM notes and expense submissions each need an approval of the exact text, checked by a fingerprint.</li>
+        <li><b>Every claim has a source</b>, or it goes to a "Verify before the call" list. Priorities read from job posts are labelled as hypotheses.</li>
+        <li><b>Limited writes.</b> CRM notes, tasks and logged activity only. Never stage, amount or close date.</li>
+        <li><b>Untrusted input stays data.</b> Instructions hidden in a job post are flagged and ignored.</li>
+      </ul>
+      <p class="small" style="margin-top:12px">The demos use fictional companies and people. It is a personal project, and its Concur, Expensify and Salesforce connections have not been tested against live accounts.</p>
+      <div class="btn-row" style="margin-top:12px">
+        <a class="btn" href="callsheet/">See what it does</a>
+        <a class="btn ghost" href="callsheet/demo.html">Try the live demo</a>
+        <a class="btn ghost" href="callsheet/tutorial.html">Rep tutorial</a>
+      </div>
+    </div>
   </section>
 
   <section id="compare" class="stack" aria-labelledby="t-compare" hidden>
@@ -2263,7 +2280,8 @@ Unsure:     Stop and ask the rep.</pre>
   });
 
   bindCounts(); renderChips(); renderTable(); refresh(); renderCheck(); startQuiz(); renderGtm(); gameInit(); renderPrompts(); renderSpot(); calc(); renderVendor(); renderTable();
-  showTab('home');
+  var startTab = (location.hash || '').slice(1);
+  showTab(Array.prototype.some.call(tabs, function (x) { return x.dataset.tab === startTab; }) ? startTab : 'home');
 })();
 </script>
 

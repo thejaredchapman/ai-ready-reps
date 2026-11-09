@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Callsheet One-Pager</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Callsheet design tokens: a rep's printed day sheet. Quiet warm-grey chrome, ink text, one ink-blue accent.
+   Richness lives in two places only: the brief sheet (paper, highlighter, source markers) and the route map.
+   Signature: superscript source markers (.src) on claims. Layout credit: unslop by Damir Sokolovsky (@heydamir), CC BY 4.0. */
+:root {
+  --paper: #F6F5F1; --sheet: #FFFFFF; --raised: #EFEDE8; --tool: #EFEDE8;
+  --ink: #1C1A17; --ink-2: #57524A; --muted: #736D62;
+  --line: rgba(28, 26, 23, .10); --line-2: rgba(28, 26, 23, .18);
+  --accent: #24438F; --accent-ink: #FFFFFF; --accent-soft: rgba(36, 67, 143, .08); --link: #24438F; --route: #24438F;
+  --btn: #24438F; --btn-ink: #FFFFFF;
+  --mark: #F2D35C; --mark-ink: #1C1A17; --brief: #FDFBF6; --brief-line: rgba(120, 96, 40, .16);
+  --ok: #1F7A4D; --warn: #9A6206; --stop: #B3261E;
+  --ok-bg: rgba(31, 122, 77, .08); --warn-bg: rgba(154, 98, 6, .09); --stop-bg: rgba(179, 38, 30, .07);
+  --shadow: 0 1px 2px rgba(28, 26, 23, .05); --float: 0 8px 24px rgba(28, 26, 23, .07);
+  --body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display: var(--body);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141413; --sheet: #1B1A18; --raised: #252420; --tool: #252420;
+    --ink: #EEEBE4; --ink-2: #AAA398; --muted: #8C867C;
+    --line: rgba(238, 235, 228, .09); --line-2: rgba(238, 235, 228, .16);
+    --accent: #9DB4F0; --accent-ink: #141413; --accent-soft: rgba(157, 180, 240, .10); --link: #9DB4F0; --route: #9DB4F0;
+    --btn: #EEEBE4; --btn-ink: #141413;
+    --mark: #D9B84A; --mark-ink: #1C1A17; --brief: #201E1B; --brief-line: rgba(238, 235, 228, .10);
+    --ok: #5FC58F; --warn: #E0B25A; --stop: #F07A6E;
+    --ok-bg: rgba(95, 197, 143, .10); --warn-bg: rgba(224, 178, 90, .10); --stop-bg: rgba(240, 122, 110, .10);
+    --shadow: none; --float: 0 8px 24px rgba(0, 0, 0, .35); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #141413; --sheet: #1B1A18; --raised: #252420; --tool: #252420;
+  --ink: #EEEBE4; --ink-2: #AAA398; --muted: #8C867C;
+  --line: rgba(238, 235, 228, .09); --line-2: rgba(238, 235, 228, .16);
+  --accent: #9DB4F0; --accent-ink: #141413; --accent-soft: rgba(157, 180, 240, .10); --link: #9DB4F0; --route: #9DB4F0;
+  --btn: #EEEBE4; --btn-ink: #141413;
+  --mark: #D9B84A; --mark-ink: #1C1A17; --brief: #201E1B; --brief-line: rgba(238, 235, 228, .10);
+  --ok: #5FC58F; --warn: #E0B25A; --stop: #F07A6E;
+  --ok-bg: rgba(95, 197, 143, .10); --warn-bg: rgba(224, 178, 90, .10); --stop-bg: rgba(240, 122, 110, .10);
+  --shadow: none; --float: 0 8px 24px rgba(0, 0, 0, .35); color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--body); font-weight: 500; margin: 0; line-height: 1.2; text-wrap: balance; letter-spacing: 0; }
+h1 { font-size: 28px; letter-spacing: -.01em; }
+h2 { font-size: 24px; letter-spacing: -.005em; }
+h3 { font-size: 17px; }
+p { margin: 0; }
+a { color: var(--link); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+b, strong { font-weight: 500; }
+i, em { font-style: normal; }
+code, kbd { font-family: var(--mono); font-size: .9em; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+mark { background: linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%); color: var(--mark-ink); padding: 0 2px; }
+
+/* Text roles */
+.label { font: 500 12px/16px var(--body); color: var(--muted); letter-spacing: 0; text-transform: none; }
+.hint, .note-line, .disclaimer { font-size: 13px; line-height: 20px; color: var(--muted); }
+.mono { font-family: var(--mono); font-size: .9em; }
+.num, td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Wordmark: the product name plus a small route mark (start ring, line, stop dot) */
+.brand { display: inline-flex; align-items: center; gap: 8px; font: 500 15px/1 var(--body); color: var(--ink); text-decoration: none; }
+.brand svg { flex: none; }
+
+/* Buttons: 36 tall, radius 8; primary is the one accent action */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 0 16px;
+  border: 1px solid var(--line-2); background: var(--sheet); color: var(--ink); border-radius: 8px; font-size: 14px; font-weight: 500;
+  transition: background-color .15s var(--ease), border-color .15s var(--ease), transform .15s var(--ease); }
+.btn:hover { background: var(--raised); }
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--btn); color: var(--btn-ink); border-color: transparent; }
+.btn.primary:hover { background: var(--btn); filter: brightness(1.08); }
+.btn.small { min-height: 32px; padding: 0 12px; font-size: 13px; }
+.btn:disabled { opacity: .45; cursor: default; transform: none; }
+
+/* Status: a dot plus quiet text, never a colored pill */
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 400 13px/20px var(--body); color: var(--ink-2); white-space: nowrap;
+  background: none; padding: 0; border-radius: 0; text-transform: none; letter-spacing: 0; }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex: none; }
+.pill.ok::before, .pill.green::before { background: var(--ok); }
+.pill.warn::before, .pill.amber::before { background: var(--warn); }
+.pill.stop::before, .pill.red::before { background: var(--stop); }
+.pill.info::before { background: var(--muted); opacity: .6; }
+
+/* Signature: a source marker on a claim, linking to where it came from */
+.src { display: inline-flex; align-items: center; justify-content: center; min-width: 16px; height: 16px; padding: 0 4px; margin-left: 4px;
+  font: 500 10px/1 var(--mono); color: var(--accent); background: var(--accent-soft); border-radius: 4px; vertical-align: 2px; text-decoration: none; }
+a.src:hover { background: var(--accent); color: var(--accent-ink); }
+.sources { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 12px; line-height: 16px; color: var(--muted); }
+.sources li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.sources li a { overflow-wrap: anywhere; color: var(--ink-2); }
+.sources .src { margin: 0; }
+
+/* The brief sheet: the one rich surface. Paper, ruled rows, highlighter on why-now */
+.three { background: var(--brief); border: 1px solid var(--brief-line); border-radius: 12px; box-shadow: var(--float); display: grid; overflow: hidden;
+  background-image: linear-gradient(90deg, transparent 103px, var(--brief-line) 103px, var(--brief-line) 104px, transparent 104px); }
+.three > div { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 16px; padding: 12px 16px; border-top: 1px solid var(--brief-line); align-items: baseline; }
+.three > div:first-child { border-top: 0; }
+.three b { font: 500 12px/20px var(--body); color: var(--muted); text-transform: none; letter-spacing: 0; }
+.three > div:first-child span:not(.src) { justify-self: start; background: linear-gradient(transparent 14%, var(--mark) 14%, var(--mark) 86%, transparent 86%); color: var(--mark-ink);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 2px; }
+.three .src { grid-column: 3; grid-row: 1; margin: 0; }
+
+/* Tables */
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; vertical-align: top; }
+.tw, .tablewrap { overflow-x: auto; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* One-pager: a single printed sheet. Thesis + sample brief on top, four moments of the day, then guardrails and connections. */
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 0 48px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
+.hero h1 { font-size: 40px; line-height: 1.1; letter-spacing: -.02em; }
+.hero .lede { font-size: 17px; line-height: 28px; color: var(--ink-2); margin-top: 16px; max-width: 34rem; }
+.hero .facts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 24px; font-size: 14px; color: var(--ink-2); }
+.hero .facts b { font: 500 22px/1.1 var(--body); color: var(--ink); display: block; font-variant-numeric: tabular-nums; }
+.sheet { display: grid; gap: 12px; }
+.sheet .cap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.sheet .sources { margin-top: 4px; }
+.day { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.moment { padding: 24px 24px 0 0; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.moment + .moment { padding-left: 24px; border-left: 1px solid var(--line); }
+.moment .when { font: 400 12px/16px var(--mono); color: var(--muted); }
+.moment h2 { font-size: 20px; }
+.moment ul { margin: 0; padding-left: 16px; display: grid; gap: 8px; font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.moment ul b { color: var(--ink); }
+.say { justify-self: start; font: 400 12px/18px var(--mono); color: var(--ink-2); background: var(--raised); border-radius: 6px; padding: 6px 8px; }
+.lower { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 16px; box-shadow: var(--shadow); min-width: 0; }
+.card h2 { font-size: 18px; }
+.rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.rules li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.rules li:first-child { border-top: 0; padding-top: 0; }
+.rules li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; }
+.rules b { color: var(--ink); }
+.conn { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 16px; margin: 0; font-size: 14px; line-height: 20px; }
+.conn dt { color: var(--muted); }
+.conn dd { margin: 0; color: var(--ink); }
+.foot { display: flex; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
+.foot code { font-size: 12px; background: var(--raised); padding: 2px 6px; border-radius: 4px; }
+@media (max-width: 900px) {
+  .hero, .lower { grid-template-columns: 1fr; gap: 32px; }
+  .day { grid-template-columns: 1fr 1fr; }
+  .moment:nth-child(3) { padding-left: 0; border-left: 0; }
+  .moment:nth-child(n+3) { padding-top: 32px; }
+}
+@media (max-width: 560px) {
+  .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .hero h1 { font-size: 32px; }
+  .day { grid-template-columns: 1fr; }
+  .moment, .moment + .moment { padding: 24px 0 0; border-left: 0; }
+  .three > div { grid-template-columns: 1fr; gap: 2px; } .three { background-image: none; }
+}
+
+.site-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; min-height: 40px; font: 400 13px/20px var(--body, system-ui, sans-serif);
+  background: var(--raised, #EFEDE8); color: var(--ink-2, #57524A);
+  padding: 8px max(24px, env(safe-area-inset-right, 0px)) 8px max(24px, env(safe-area-inset-left, 0px)); }
+.site-bar a { color: inherit; text-decoration: none; }
+.site-bar a:hover { color: var(--ink, #1C1A17); text-decoration: underline; }
+.site-bar a[aria-current="page"] { color: var(--ink, #1C1A17); font-weight: 500; }
+.site-bar .home { margin-right: auto; }
+@media (max-width: 560px) { .site-bar { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
+</style>
+</head>
+<body>
+<nav class="site-bar" aria-label="Callsheet example pages"><a class="home" href="../#advanced">← AI Ready Reps</a><a href="index.html" aria-current="page">Overview</a><a href="demo.html">Live demo</a><a href="worlds.html">Demo worlds</a><a href="tutorial.html">Rep tutorial</a></nav>
+
+<div class="wrap">
+  <header class="top"><span class="brand"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="14" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 12.5 C 10 10, 11 8, 13.5 7" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="6" r="2.5" fill="var(--accent)"/></svg>Callsheet</span><span class="hint">What it does, on one page</span></header>
+
+  <section class="hero">
+    <div>
+      <h1>Walk in prepared. Walk out with the follow-up written.</h1>
+      <p class="lede">Callsheet is a sales assistant that runs in Claude. It preps each call from public sources, drafts the follow-up, plans the drive and logs the expenses. Nothing is sent, booked or written to a CRM until the rep approves it.</p>
+      <div class="facts">
+        <span><b>3 lines</b>to read before the meeting</span>
+        <span><b>0</b>emails sent without your approval</span>
+        <span><b>1 tap</b>to approve a whole follow-up</span>
+      </div>
+    </div>
+    <div class="sheet" aria-label="Sample brief">
+      <div class="cap"><span class="label">Sample brief: "prep northwind"</span><span class="label">fictional company</span></div>
+      <div class="three">
+        <div><b>Why now</b><span>Wed, Oct 28: reported quarterly results</span><span class="src" title="8-K filing">1</span></div>
+        <div><b>Lead with</b><span>Lumora Review, because "GitHub" shows up in 3 job posts (hypothesis)</span><span class="src" title="Job board">2</span></div>
+        <div><b>Ask first</b><span>Your results came out in October: what changed about next year's priorities?</span></div>
+      </div>
+      <ol class="sources">
+        <li><span class="src">1</span><span>SEC 8-K, item 2.02, filed Oct 28</span></li>
+        <li><span class="src">2</span><span>Public job board, 7 open roles</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="day" aria-label="Through the day">
+    <div class="moment">
+      <span class="when">Before the call</span>
+      <h2>Prep</h2>
+      <ul>
+        <li><b>Cited account brief</b> from SEC filings, job posts, news from the last 90 days and what peers filed, with likely effects marked "our analysis"</li>
+        <li><b>Contact card</b> from the person's professional public record only</li>
+        <li><b>Morning digest</b> at 7 am: every meeting, leave-by times, what needs you</li>
+        <li><b>Practice mode</b>: Claude plays the buyer, then scores you</li>
+      </ul>
+      <span class="say">prep northwind</span>
+    </div>
+    <div class="moment">
+      <span class="when">After the call</span>
+      <h2>Follow up</h2>
+      <ul>
+        <li><b>Email, CRM note and task</b> drafted from your notes or a transcript</li>
+        <li><b>One approval card</b> with a fingerprint covers all of it</li>
+        <li><b>Send now or later</b>; held automatically if they reply first</li>
+        <li><b>Catch-up and reply drafts</b>: "where are we with Northwind?"</li>
+      </ul>
+      <span class="say">follow up on my northwind call</span>
+    </div>
+    <div class="moment">
+      <span class="when">On the road</span>
+      <h2>Plan</h2>
+      <ul>
+        <li><b>Best order for the day</b>; set meetings keep their times</li>
+        <li><b>Group the week by area</b> to cut miles, with reschedule notes to approve</li>
+        <li><b>Directions</b> to meetings and company offices, never homes</li>
+        <li><b>Live gas prices</b> near the next stop</li>
+      </ul>
+      <span class="say">plan my day</span>
+    </div>
+    <div class="moment">
+      <span class="when">Any time</span>
+      <h2>Expense</h2>
+      <ul>
+        <li><b>Log in plain words</b>: "parking $18", a receipt photo, mileage</li>
+        <li><b>26 categories</b>, refunds, foreign currency and card statements</li>
+        <li><b>Flags, not refusals</b>: a lunch without a purpose is logged and flagged</li>
+        <li><b>Send to Concur or Expensify</b> after a preview, never twice</li>
+      </ul>
+      <span class="say">send my expenses to Concur</span>
+    </div>
+  </section>
+
+  <section class="lower">
+    <div class="card">
+      <h2>The rules it follows</h2>
+      <ul class="rules">
+        <li><span><b>Nothing goes out unseen.</b> Emails, invites, CRM writes and expense submissions each need an explicit approval of the exact content.</span></li>
+        <li><span><b>Every claim has a source</b>, or it moves to a "Verify before the call" list. Priorities from job posts need 2 or more postings and are labelled as hypotheses.</span></li>
+        <li><span><b>Professional record only.</b> No home addresses, family, personal accounts or people-search sites.</span></li>
+        <li><span><b>Limited CRM writes.</b> Notes, tasks and logged activity only. It never changes stage, amount or close date.</span></li>
+        <li><span><b>Instructions hidden in web pages are ignored</b> and flagged to the rep.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Where it works</h2>
+      <dl class="conn">
+        <dt>Runs in</dt><dd>Claude Desktop (one-click extension), Claude Code, or by voice through a Siri Shortcut</dd>
+        <dt>CRM</dt><dd>HubSpot, Salesforce, or both</dd>
+        <dt>Email and calendar</dt><dd>Gmail and Google Calendar</dd>
+        <dt>Time sheet</dt><dd>Local log, synced to Google Sheets</dd>
+        <dt>Expenses</dt><dd>SAP Concur, Expensify, a webhook or CSV</dd>
+        <dt>Other tools</dt><dd>REST API with OpenAPI, signed webhooks, MCP over HTTP</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span class="hint">Try it on fictional data: seven demo worlds across tech, healthcare, finance, real estate, insurance, manufacturing and hospitality. Run <code>uv run callsheet demo-data all --sheets</code></span>
+    <span class="hint">A personal project, not affiliated with Anthropic, HubSpot, Salesforce, SAP Concur or Expensify. The Concur, Expensify and Salesforce connections haven't been run against live accounts yet.</span>
+  </footer>
+</div>
+
+</body>
+</html>
