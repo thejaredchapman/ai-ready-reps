@@ -857,7 +857,7 @@ Unsure:     Stop and ask the rep.</pre>
     </div>
 
     <div class="card small muted">
-      <b style="color:var(--fg)">Disclosure.</b> This guide was drafted with Claude, which is made by Anthropic, one of the vendors covered. Every vendor row includes real limits, including Anthropic's. Vendor facts were last checked on November 4, 2026, mostly against each vendor's own pages. The Vendors tab shows, for every vendor, which statements were read at the source and which were read only from an excerpt. Verify against your contract before relying on any of them.
+      <b style="color:var(--fg)">Disclosure.</b> This guide was drafted with Claude, which is made by Anthropic, one of the vendors covered. Every vendor row includes real limits, including Anthropic's. Vendor facts were last checked on November 4, 2026 (cloud platform pages on November 11, 2026), mostly against each vendor's own pages. The Vendors tab shows, for every vendor, which statements were read at the source and which were read only from an excerpt. Verify against your contract before relying on any of them.
     </div>
   </section>
 
@@ -1156,7 +1156,7 @@ Unsure:     Stop and ask the rep.</pre>
       setup: 'Reps for chat. IT for admin controls and integrations.' } },
     { id: 'gemini', name: 'Google Gemini', rows: {
       known: 'Built into Gmail, Docs, Sheets, and Meet. Strong with images, video, and very long inputs.',
-      access: 'Gemini app, Workspace add-ons, and Google Cloud Vertex AI.',
+      access: 'Gemini app, Workspace add-ons, Gemini Enterprise, and Google Cloud (the Agent Platform, formerly Vertex AI).',
       data: 'Google states Workspace does not use customer data to train models without permission, and that Gemini app chats are not human reviewed. Some features, such as Gemini Notebook, lack certifications.',
       fits: 'Teams already living in Google Workspace.',
       watch: 'Available features depend on your Workspace edition. Consumer and Workspace terms are different.',
@@ -1505,7 +1505,17 @@ Unsure:     Stop and ask the rep.</pre>
     ['n','Sales ops','Bypass security or data-loss controls to use AI faster','Policy violation and incident risk.'],
     ['n','Proposal','Submit AI-written security questionnaire answers without verification','These are formal attestations.'],
     ['n','Post-sale','Let AI write incident, outage, or layoff communications alone','Sensitive. Needs communications and Legal review.'],
-    ['n','Sales ops','Give an AI agent unrestricted write access to the CRM or email','One bad instruction can change or send everything. Scope permissions tightly.']
+    ['n','Sales ops','Give an AI agent unrestricted write access to the CRM or email','One bad instruction can change or send everything. Scope permissions tightly.'],
+    ['g','Sales ops','Ask an IT-approved assistant (such as Amazon Quick, Gemini Enterprise, or Microsoft Copilot) questions across your connected company files','It only searches what you can already open, so fix over-shared files first. Check any figure against the source.'],
+    ['g','Prospecting','Run an IT-built research agent that combines CRM history with public web sources before a call','Open the cited sources. Keep it read-only on the CRM.'],
+    ['g','Discovery','Auto-summarize recorded calls into draft CRM notes with an IT-built workflow','Get recording consent where the law requires it. Review before the notes are saved.'],
+    ['g','Proposal','Draft RFP and questionnaire answers from your approved answer library with a retrieval assistant','Approved content only. A subject-matter expert signs off on every answer.'],
+    ['g','Proposal','Extract key terms from order forms or contracts into a table with a document-processing workflow','Legal reads the source. Extraction can miss or misread a clause.'],
+    ['g','Post-sale','Flag churn-risk wording in support tickets and notify the account owner','Flag only. A person decides what to do. Check for false alarms and bias.'],
+    ['g','Sales ops','Score and route inbound leads with a model-based workflow','Keep the rules explainable, let a manager override, and review results for bias.'],
+    ['s','Coaching','Practice with the approved cloud assistant on made-up account data before using real data','A safe sandbox for learning what it can and cannot do.'],
+    ['n','Sales ops','Use a personal, free-trial, or self-service cloud AI account for company data','Shadow IT. Your company loses control, retention settings, and audit logs.'],
+    ['n','Negotiation','Let an agent send quotes, discounts, or approvals to customers automatically','Pricing commitments need a person and your approval process.']
   ];
 
   var CHECK = [
@@ -1811,7 +1821,16 @@ Unsure:     Stop and ask the rep.</pre>
     s8: { pub: 'Amazon Web Services', t: 'Amazon Bedrock: Model lifecycle (Legacy)', u: 'https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle-legacy.html', how: 'direct', note: 'AWS documentation covering models launched before September 7, 2026.' },
     s9: { pub: 'Meta', t: 'Llama 4 Community License Agreement', u: 'https://dev.meta.ai/llama/llama4/license/', how: 'direct', note: 'The old llama.com address now redirects to dev.meta.ai. Version effective April 5, 2025. No newer Llama license was listed on Meta\'s Llama docs page.' },
     s10: { pub: 'Microsoft', t: 'Data, Privacy, and Security for Microsoft Copilot', u: 'https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy', how: 'direct', note: 'Page metadata shows ms.date July 9, 2026 and an update stamp of November 4, 2026.' },
-    s11: { pub: 'Perplexity', t: 'Data collection at Perplexity (Help Center)', u: 'https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity', how: 'excerpt', note: 'On November 4, 2026 the help article returned "not found" to automated access, so the wording was read from a search excerpt of the page. Previously dated March 3, 2026.' }
+    s11: { pub: 'Perplexity', t: 'Data collection at Perplexity (Help Center)', u: 'https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity', how: 'excerpt', note: 'On November 4, 2026 the help article returned "not found" to automated access, so the wording was read from a search excerpt of the page. Previously dated March 3, 2026.' },
+    s12: { pub: 'Amazon Web Services', t: 'What is AWS Quick?', u: 'https://docs.aws.amazon.com/quick/latest/userguide/what-is.html', how: 'direct', on: 'November 11, 2026', note: 'AWS documentation, undated.' },
+    s13: { pub: 'Amazon Web Services', t: 'Data protection in AWS Quick', u: 'https://docs.aws.amazon.com/quick/latest/userguide/sec-data-protection.html', how: 'direct', on: 'November 11, 2026', note: 'AWS documentation, undated.' },
+    s14: { pub: 'Google Cloud', t: 'Gemini Enterprise Agent Platform name changes', u: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes', how: 'direct', on: 'November 11, 2026', note: 'Google documentation, undated.' },
+    s15: { pub: 'Google Cloud', t: 'Data governance (Gemini Enterprise Agent Platform)', u: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/data-governance', how: 'direct', on: 'November 11, 2026', note: 'Google documentation, undated. The old cloud.google.com address redirects here.' },
+    s16: { pub: 'Google Cloud', t: 'Gemini Enterprise overview', u: 'https://docs.cloud.google.com/gemini/enterprise/docs/overview', how: 'direct', on: 'November 11, 2026', note: 'Google documentation, undated.' },
+    s17: { pub: 'Microsoft', t: 'What is Microsoft Foundry?', u: 'https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry', how: 'direct', on: 'November 11, 2026', note: 'Page metadata shows ms.date August 13, 2026.' },
+    s18: { pub: 'Microsoft', t: 'Data, privacy, and security for Foundry Models sold by Azure', u: 'https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy', how: 'direct', on: 'November 11, 2026', note: 'Page metadata shows ms.date May 18, 2026.' },
+    s19: { pub: 'Microsoft', t: 'Deploy and use Claude models in Microsoft Foundry', u: 'https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-claude', how: 'direct', on: 'November 11, 2026', note: 'Page metadata shows ms.date September 21, 2026.' },
+    s20: { pub: 'Microsoft', t: 'Publish agents to Microsoft Copilot and Microsoft Teams', u: 'https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/publish-copilot', how: 'excerpt', on: 'November 11, 2026', note: 'Wording read from a search summary of the page, not the page itself.' }
   };
   var VENDORS = [
     { id: 'claude', name: 'Anthropic Claude', status: 'direct', vendorDate: 'Anthropic privacy page dated August 18, 2026.',
@@ -1891,7 +1910,46 @@ Unsure:     Stop and ask the rep.</pre>
         ['Perplexity\'s help article previously said that if an organization downgrades from Enterprise to a non-Enterprise plan, consumer defaults apply and users must opt out manually. That sentence could not be re-confirmed on November 4, 2026, so check it before relying on it.', ['s11']]
       ],
       watch: ['Open the cited sources. A citation does not guarantee the page says what the answer claims.', 'Do not use consumer plans for confidential work data.'],
-      ask: ['Which plan covers our team?', 'Can we set custom retention and force deletion?', 'What are the terms for API and search products?'] }
+      ask: ['Which plan covers our team?', 'Can we set custom retention and force deletion?', 'What are the terms for API and search products?'] },
+    { id: 'bedrock', name: 'Amazon Bedrock and AWS Quick', status: 'direct', checked: 'November 11, 2026', vendorDate: 'AWS documentation pages carry no date. Bedrock pages were read November 4, 2026 and Quick pages November 11, 2026.',
+      summary: 'Bedrock is the AWS platform where IT or developers build with models such as Nova, Claude, and Llama. AWS Quick is the packaged assistant that employees can use directly. Reps normally meet Bedrock only through something IT built on it.',
+      claims: [
+        ['AWS describes Quick as an AI-powered service for automating tasks, analyzing data, building web applications, and conducting research, used through natural-language chat against connected data sources and applications. It lists Quick Sight, Flows, Automate, Index, Research, and Apps as parts of Quick.', ['s12']],
+        ['AWS says Quick evolved from Amazon QuickSight, and that QuickSight continues as Quick Sight, a feature within Quick.', ['s12']],
+        ['AWS says you can use Quick from the web, a desktop application, or inside Chrome, Slack, Microsoft Teams, and Microsoft 365 applications.', ['s12']],
+        ['AWS offers two ways to start: a self-service sign-up with an email or social login that needs no AWS account (Free and Plus plans), or provisioning by your organization through the AWS console with IAM Identity Center or IAM Federation.', ['s12']],
+        ['AWS states that Quick does not use customer data for training or improving underlying LLMs.', ['s13']],
+        ['For Bedrock itself, AWS states that you control whether prompts and outputs are retained, and that model providers cannot access Bedrock logs or customer prompts.', ['s6', 's7']],
+        ['Anthropic states that API use of Claude through Amazon Bedrock is a Commercial Terms service and is excluded from its consumer changes.', ['s2']]
+      ],
+      watch: ['The self-service sign-up path means a rep could create a personal Quick account. Tell reps to use only the account IT provisions.', 'The Quick pages that were read do not say which CRM or email connectors are available. Ask IT which ones are turned on and what permissions they use.', 'The Bedrock data-retention rules depend on the model and the retention mode. See the Amazon Nova page.'],
+      ask: ['Is our Quick account provisioned through our identity provider, and are personal sign-ups blocked?', 'Which data sources and action connectors are enabled, and who approved them?', 'Which Bedrock retention mode applies to our account?'] },
+    { id: 'gcp', name: 'Google Gemini Enterprise and Agent Platform (formerly Vertex AI)', status: 'direct', checked: 'November 11, 2026', vendorDate: 'The Google documentation pages read carry no date.',
+      summary: 'Google has renamed parts of Vertex AI. The developer platform is now called Gemini Enterprise Agent Platform. Gemini Enterprise is the employee-facing product for search, assistants, and agents. Gemini inside Workspace is separate, and is covered on the Google Gemini page.',
+      claims: [
+        ['Google states that, with the introduction of Gemini Enterprise Agent Platform, some Vertex AI products and features have been renamed. For example, Vertex AI Studio became Agent Studio, and Vertex AI Model Garden became Gemini Enterprise Agent Platform Model Garden.', ['s14']],
+        ['Google describes Gemini Enterprise as an intranet search, AI assistant, and agentic platform that gives knowledge workers generative AI and agents grounded in organization data, with search results that respect user permissions.', ['s16']],
+        ['The Gemini Enterprise overview lists prebuilt connectors for Confluence, Jira, Microsoft SharePoint, and ServiceNow. It does not name Salesforce or HubSpot, and it makes no statement about training on customer data.', ['s16']],
+        ['On the Agent Platform data governance page, Google states it will not use your data to train or fine-tune any AI or ML models without your prior permission or instruction.', ['s15']],
+        ['Google says its published Gemini models cache customer data by default, in memory or durably, and deletes it within 24 hours. You can turn caching off.', ['s15']],
+        ['Google says zero data retention takes specific configuration, and some features cannot meet it. For example, Grounding with Google Search logs are kept for up to three days and cannot be disabled, and Grounding with Google Maps data is stored for 30 days.', ['s15']],
+        ['Google says that with regional or multi-regional endpoints, cached data stays within the selected location, but with the global endpoint, requests and cached data can be served from any region.', ['s15']]
+      ],
+      watch: ['Contracts, invoices, and older documents may still say Vertex AI. Confirm with Google that they cover the renamed products.', 'Gemini Enterprise is not Gemini in Workspace. Features and certifications differ, so check each one.', 'Zero data retention is not the default. Ask IT whether it was requested and which features break it.'],
+      ask: ['Which of our contracts name Gemini Enterprise Agent Platform, and do they still say Vertex AI?', 'Are we on regional or global endpoints?', 'Do we need zero data retention, and which features does that rule out?'] },
+    { id: 'foundry', name: 'Microsoft Foundry (formerly Azure AI Foundry)', status: 'direct', checked: 'November 11, 2026', vendorDate: 'Microsoft page metadata shows ms.date August 13, 2026 for the overview, May 18, 2026 for data privacy, and September 21, 2026 for the Claude page.',
+      summary: 'Microsoft Foundry is the Azure platform where IT or developers build agents and apps on many models. Reps reach it through an internal app, or through an agent published into Teams or Microsoft Copilot. Microsoft 365 Copilot itself is covered on the Microsoft Copilot page.',
+      claims: [
+        ['Microsoft lists the previous brand as Azure AI Studio and Azure AI Foundry, and describes Foundry as one platform for agents, models, and tools with role-based access control, networking, and policies.', ['s17']],
+        ['Microsoft says the Foundry model catalog has more than 10,000 models from Microsoft, OpenAI, Anthropic, Meta, and others.', ['s17']],
+        ['For models sold by Azure, which includes Azure OpenAI models, Microsoft states that your prompts, completions, and embeddings are not available to other customers, are not available to OpenAI or other model providers, and are not used to train foundation models without your permission.', ['s18']],
+        ['Microsoft says abuse monitoring may select a sample of prompts and completions for review, by automated means and, when needed, by human reviewers. Approved customers can apply to modify abuse monitoring, which turns off the stored data and human review.', ['s18']],
+        ['For Global and DataZone deployment types, Microsoft says prompts and responses may be processed outside your geography, while data stored at rest stays in your designated geography.', ['s18']],
+        ['Microsoft says Claude models in Foundry need an Azure Marketplace subscription, and come either as Hosted on Azure or Hosted on Anthropic infrastructure. It says Anthropic independently manages data retention for Claude on Azure, so Microsoft cannot change that setting for you.', ['s19']],
+        ['Microsoft says a Foundry agent can be published to Teams and Microsoft Copilot. Sharing it with the organization needs approval from a Microsoft 365 admin.', ['s20']]
+      ],
+      watch: ['The data privacy page is about models sold by Azure. Claude is offered through a different arrangement, so ask which terms apply to each model you deploy.', 'Preview features can follow different privacy practices.', 'Choosing a Global deployment can change where prompts are processed.'],
+      ask: ['Which models are deployed, and are any of them Marketplace or partner models?', 'Did we apply for modified abuse monitoring, and was it approved?', 'Which deployment type are we on: regional, DataZone, or Global?'] }
   ];
   function vendorById(id) { return VENDORS.filter(function (v) { return v.id === id; })[0]; }
   MODELS.forEach(function (m) {
@@ -1908,12 +1966,12 @@ Unsure:     Stop and ask the rep.</pre>
     var tag = v.status === 'direct' ? '<span class="tag s">Checked at source</span>' : '<span class="tag g">Excerpt only</span>';
     var srcs = used.map(function (id, i) {
       var s = SOURCES[id];
-      return '<li><b>[' + (i + 1) + ']</b> ' + s.pub + ', <a href="' + s.u + '" target="_blank" rel="noopener noreferrer">' + s.t + '</a>. ' + s.note + ' ' + (s.how === 'direct' ? 'Opened and read' : 'Excerpt read') + ' ' + CHECKED_LABEL + '.</li>';
+      return '<li><b>[' + (i + 1) + ']</b> ' + s.pub + ', <a href="' + s.u + '" target="_blank" rel="noopener noreferrer">' + s.t + '</a>. ' + s.note + ' ' + (s.how === 'direct' ? 'Opened and read' : 'Excerpt read') + ' ' + (s.on || CHECKED_LABEL) + '.</li>';
     }).join('');
     $('vendorPage').innerHTML =
       '<div class="uc-top"><h3>' + v.name + '</h3>' + tag + '</div>' +
       '<p class="muted" style="margin-top:8px">' + v.summary + '</p>' +
-      '<p class="count" style="margin-top:12px">Last checked: ' + CHECKED_LABEL + '. ' + v.vendorDate + '</p>' +
+      '<p class="count" style="margin-top:12px">Last checked: ' + (v.checked || CHECKED_LABEL) + '. ' + v.vendorDate + '</p>' +
       '<h3 style="margin-top:18px;font-size:16px">What the vendor says</h3><ul style="margin:8px 0 0;padding-left:20px">' + claims + '</ul>' +
       '<h3 style="margin-top:18px;font-size:16px">Watch out for</h3><ul style="margin:8px 0 0;padding-left:20px">' + v.watch.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul>' +
       '<h3 style="margin-top:18px;font-size:16px">Ask the vendor</h3><ul style="margin:8px 0 0;padding-left:20px">' + v.ask.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ul>' +

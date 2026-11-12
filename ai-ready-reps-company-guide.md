@@ -75,9 +75,9 @@ Anything not listed above is **not approved** until IT and Legal approve it.
 
 ## 8. Use case catalog
 
-This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust the rating for each to match your policy.
+This catalog contains **297** use cases: 110 green, 105 amber, and 82 red. Adjust the rating for each to match your policy.
 
-### Prospecting (48)
+### Prospecting (49)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -129,8 +129,9 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Clone an executive's or customer's voice or likeness without consent | Augmentation | Impersonation and fraud risk. |
 | Red (not safe) | Target or score people by protected traits such as age, race, or religion | Analysis | Discrimination risk. |
 | Red (not safe) | Upload a competitor's confidential material you were not meant to have | Augmentation | Legal exposure. Report it to Legal instead. |
+| Amber (guardrails) | Run an IT-built research agent that combines CRM history with public web sources before a call | Analysis | Open the cited sources. Keep it read-only on the CRM. |
 
-### Discovery (26)
+### Discovery (27)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -160,8 +161,9 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Paste a prospect's private messages into a tool for tone analysis | Analysis | Private communication shared with a third party. |
 | Red (not safe) | Record or transcribe calls with an AI note-taker without consent | Automation | Violates recording laws in many places. |
 | Red (not safe) | Pass an AI off as a human when disclosure is required or someone sincerely asks | Augmentation | Deceptive, and illegal in some places. |
+| Amber (guardrails) | Auto-summarize recorded calls into draft CRM notes with an IT-built workflow | Automation | Get recording consent where the law requires it. Review before the notes are saved. |
 
-### Proposal (39)
+### Proposal (41)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -204,8 +206,10 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | State security or compliance certifications from AI memory | Augmentation | Wrong claims create liability. Use the vendor's current documents. |
 | Red (not safe) | Trust AI arithmetic in a quote or ROI without checking | Analysis | Models can miscalculate. Use a spreadsheet and verify. |
 | Red (not safe) | Submit AI-written security questionnaire answers without verification | Augmentation | These are formal attestations. |
+| Amber (guardrails) | Draft RFP and questionnaire answers from your approved answer library with a retrieval assistant | Augmentation | Approved content only. A subject-matter expert signs off on every answer. |
+| Amber (guardrails) | Extract key terms from order forms or contracts into a table with a document-processing workflow | Automation | Legal reads the source. Extraction can miss or misread a clause. |
 
-### Negotiation (19)
+### Negotiation (20)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -228,8 +232,9 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Share non-public pricing, margins, or discount matrices in an unapproved tool | Augmentation | Competitive and contractual risk. |
 | Red (not safe) | Let AI set prices, discounts, or contract commitments | Augmentation | Binding commitments need a human with authority. |
 | Red (not safe) | Use AI to fabricate urgency, scarcity, or false claims | Augmentation | Deceptive practice. |
+| Red (not safe) | Let an agent send quotes, discounts, or approvals to customers automatically | Automation | Pricing commitments need a person and your approval process. |
 
-### Post-sale (33)
+### Post-sale (34)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -266,6 +271,7 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Let an AI answer customer questions about pricing or contracts unsupervised | Augmentation | Binding statements need a person with authority. |
 | Red (not safe) | Paste patient or health information without a signed agreement | Analysis | Regulated data. Needs a business associate agreement and Legal sign-off. |
 | Red (not safe) | Let AI write incident, outage, or layoff communications alone | Augmentation | Sensitive. Needs communications and Legal review. |
+| Amber (guardrails) | Flag churn-risk wording in support tickets and notify the account owner | Analysis | Flag only. A person decides what to do. Check for false alarms and bias. |
 
 ### Field sales (60)
 
@@ -332,7 +338,7 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Use AI to profile a customer's employees' personal routines | Augmentation | Invasive and potentially harassment. |
 | Red (not safe) | Trust AI-estimated drive times or distances without checking a map | Analysis | AI does not see live traffic or closures, and a missed appointment costs trust. Instead: confirm the plan in a mapping app. |
 
-### Sales ops (45)
+### Sales ops (48)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -381,8 +387,11 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Red (not safe) | Use personal AI accounts for work data | Augmentation | Shadow IT. The company loses control and visibility. |
 | Red (not safe) | Bypass security or data-loss controls to use AI faster | Automation | Policy violation and incident risk. |
 | Red (not safe) | Give an AI agent unrestricted write access to the CRM or email | Automation | One bad instruction can change or send everything. Scope permissions tightly. |
+| Amber (guardrails) | Ask an IT-approved assistant (such as Amazon Quick, Gemini Enterprise, or Microsoft Copilot) questions across your connected company files | Augmentation | It only searches what you can already open, so fix over-shared files first. Check any figure against the source. |
+| Amber (guardrails) | Score and route inbound leads with a model-based workflow | Automation | Keep the rules explainable, let a manager override, and review results for bias. |
+| Red (not safe) | Use a personal, free-trial, or self-service cloud AI account for company data | Augmentation | Shadow IT. Your company loses control, retention settings, and audit logs. |
 
-### Coaching (17)
+### Coaching (18)
 
 | Light | Use case | Type | Guardrail or reason |
 |---|---|---|---|
@@ -403,6 +412,7 @@ This catalog contains **287** use cases: 109 green, 98 amber, and 80 red. Adjust
 | Green (safe) | Create a study guide for a product or certification exam from public material | Augmentation | Learning aid built from public sources. |
 | Amber (guardrails) | Convert recorded training sessions into written guides | Automation | participant consent and an accuracy check. |
 | Amber (guardrails) | Create onboarding quizzes for new reps from internal playbooks | Augmentation | approved sources, and Enablement verifies the answers. |
+| Green (safe) | Practice with the approved cloud assistant on made-up account data before using real data | Augmentation | A safe sandbox for learning what it can and cannot do. |
 
 ## 9. Prompt library
 
@@ -772,6 +782,74 @@ Sources:
 1. Perplexity, [Data collection at Perplexity (Help Center)](https://intercom.help/perplexity-ai/en/articles/11564572-data-collection-at-perplexity). Article previously dated March 3, 2026. On November 4, 2026 it returned "not found" to automated access; the training and opt-out statements were confirmed from a search excerpt.
 
 Questions to ask: Which plan covers our team? Can we set custom retention and force deletion? What are the terms for API and search products?
+
+### Cloud AI platforms: Amazon Bedrock and Quick, Google Gemini Enterprise Agent Platform, Microsoft Foundry
+
+These three are developer and IT platforms. Reps rarely open them directly. They use an assistant or app that IT built on top, or a packaged assistant such as AWS Quick, Gemini Enterprise, or Microsoft Copilot. These notes were checked on **November 11, 2026**. Bedrock pages were last read on November 4, 2026, and are listed with Amazon Nova above.
+
+#### Amazon Bedrock and AWS Quick
+
+- **Check status:** Checked at source. AWS documentation pages carry no date.
+- **Summary:** Bedrock is where IT builds with models such as Nova, Claude, and Llama. AWS Quick is the packaged assistant employees can use directly.
+- AWS describes Quick as an AI-powered service for automating tasks, analyzing data, building web applications, and conducting research, used through chat against connected data sources and applications. [1]
+- AWS says Quick evolved from Amazon QuickSight, which continues as Quick Sight inside Quick. [1]
+- AWS says you can use Quick from the web, a desktop app, or inside Chrome, Slack, Microsoft Teams, and Microsoft 365 applications. [1]
+- AWS offers a self-service sign-up with an email or social login that needs no AWS account (Free and Plus plans), or provisioning by your organization through IAM Identity Center or IAM Federation. [1]
+- AWS states that Quick does not use customer data for training or improving underlying LLMs. [2]
+- **Watch out:** The self-service sign-up means a rep could create a personal Quick account. Tell reps to use only the account IT provisions.
+- **Watch out:** The Quick pages read do not say which CRM or email connectors exist. Ask IT which are on and what permissions they use.
+
+Sources:
+
+1. Amazon Web Services, [What is AWS Quick?](https://docs.aws.amazon.com/quick/latest/userguide/what-is.html). AWS documentation. Opened and read November 11, 2026.
+2. Amazon Web Services, [Data protection in AWS Quick](https://docs.aws.amazon.com/quick/latest/userguide/sec-data-protection.html). AWS documentation. Opened and read November 11, 2026.
+
+Questions to ask: Is Quick provisioned through our identity provider, and are personal sign-ups blocked? Which data sources and action connectors are enabled? Which Bedrock retention mode applies to our account?
+
+#### Google Gemini Enterprise and Agent Platform (formerly Vertex AI)
+
+- **Check status:** Checked at source. The Google documentation pages carry no date.
+- **Summary:** Google has renamed parts of Vertex AI. The developer platform is now Gemini Enterprise Agent Platform. Gemini Enterprise is the employee-facing product for search, assistants, and agents. Gemini in Workspace is separate (see Google Gemini above).
+- Google states that some Vertex AI products and features were renamed with the introduction of Gemini Enterprise Agent Platform. Vertex AI Studio became Agent Studio, and Model Garden became Gemini Enterprise Agent Platform Model Garden. [1]
+- Google describes Gemini Enterprise as an intranet search, AI assistant, and agentic platform grounded in organization data, with search results that respect user permissions. [2]
+- The overview lists prebuilt connectors for Confluence, Jira, Microsoft SharePoint, and ServiceNow. It does not name Salesforce or HubSpot, and it makes no statement about training on customer data. [2]
+- On the data governance page, Google states it will not use your data to train or fine-tune any AI or ML models without your prior permission or instruction. [3]
+- Google says published Gemini models cache customer data by default and delete it within 24 hours. Caching can be turned off. [3]
+- Google says zero data retention takes specific configuration. Grounding with Google Search logs are kept for up to three days and cannot be disabled, and Grounding with Google Maps data is stored for 30 days. [3]
+- With regional endpoints, cached data stays in the selected location. With the global endpoint, requests and cached data can be served from any region. [3]
+- **Watch out:** Contracts and older documents may still say Vertex AI. Confirm they cover the renamed products.
+- **Watch out:** Zero data retention is not the default.
+
+Sources:
+
+1. Google Cloud, [Gemini Enterprise Agent Platform name changes](https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes). Undated. Opened and read November 11, 2026.
+2. Google Cloud, [Gemini Enterprise overview](https://docs.cloud.google.com/gemini/enterprise/docs/overview). Undated. Opened and read November 11, 2026.
+3. Google Cloud, [Data governance](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/data-governance). Undated. Opened and read November 11, 2026.
+
+Questions to ask: Do our contracts name Gemini Enterprise Agent Platform or still say Vertex AI? Are we on regional or global endpoints? Do we need zero data retention, and which features does that rule out?
+
+#### Microsoft Foundry (formerly Azure AI Foundry)
+
+- **Check status:** Checked at source, except the publishing statement, which was read from a search summary. Page metadata shows ms.date August 13, 2026 (overview), May 18, 2026 (data privacy), and September 21, 2026 (Claude).
+- **Summary:** Foundry is the Azure platform where IT builds agents and apps on many models. Microsoft 365 Copilot is covered under Microsoft Copilot above.
+- Microsoft lists the previous brand as Azure AI Studio and Azure AI Foundry, and describes one platform for agents, models, and tools with role-based access control, networking, and policies. [1]
+- Microsoft says the catalog has more than 10,000 models from Microsoft, OpenAI, Anthropic, Meta, and others. [1]
+- For models sold by Azure, which includes Azure OpenAI models, Microsoft states that prompts, completions, and embeddings are not available to other customers, are not available to OpenAI or other providers, and are not used to train foundation models without your permission. [2]
+- Microsoft says abuse monitoring may sample prompts and completions for automated review and, when needed, human review. Approved customers can apply to modify abuse monitoring. [2]
+- For Global and DataZone deployment types, prompts and responses may be processed outside your geography, while data at rest stays in your designated geography. [2]
+- Microsoft says Claude in Foundry needs an Azure Marketplace subscription, comes as Hosted on Azure or Hosted on Anthropic infrastructure, and that Anthropic independently manages data retention for Claude on Azure. [3]
+- Microsoft says a Foundry agent can be published to Teams and Microsoft Copilot, and organization-wide sharing needs Microsoft 365 admin approval. [4]
+- **Watch out:** The data privacy page is about models sold by Azure. Claude is offered through a different arrangement, so ask which terms apply to each model.
+- **Watch out:** Preview features can follow different privacy practices.
+
+Sources:
+
+1. Microsoft, [What is Microsoft Foundry?](https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry). Opened and read November 11, 2026.
+2. Microsoft, [Data, privacy, and security for Foundry Models sold by Azure](https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy). Opened and read November 11, 2026.
+3. Microsoft, [Deploy and use Claude models in Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-claude). Opened and read November 11, 2026.
+4. Microsoft, [Publish agents to Microsoft Copilot and Microsoft Teams](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/publish-copilot). Wording read from a search summary, not the page. November 11, 2026.
+
+Questions to ask: Which models are deployed, and are any of them partner models? Did we apply for modified abuse monitoring? Which deployment type are we on: regional, DataZone, or Global?
 
 ## 13. Roles and responsibilities
 

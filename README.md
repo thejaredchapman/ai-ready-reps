@@ -12,7 +12,7 @@ This is a personal portfolio project by [Jared Chapman](https://www.linkedin.com
 
 - AI basics for people who have never used AI at work
 - The three kinds of AI help: augmentation, analysis, and automation
-- A library of 287 sales use cases rated green (safe), amber (guardrails), or red (not safe)
+- A library of 297 sales use cases rated green (safe), amber (guardrails), or red (not safe)
 - A prompt library with 25 copy-ready prompts
 - A playbook with worked examples, customer scripts, and a rep FAQ
 - Go-to-market guidance for 10 roles, plus a time-saved calculator
